@@ -3,7 +3,12 @@
 kotlin = "1.9.21"
 androidGrdlePlugin = "8.2.0"
 
+# Library Versions
+annotation = "1.7.1"
+
+
 [libraries]
+androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 
 
 [plugins]

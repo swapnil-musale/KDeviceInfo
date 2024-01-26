@@ -30,6 +30,11 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            // Put your multiplatform dependencies here
+        }
+
+        androidMain.dependencies {
+            implementation(libs.androidx.annotation)
         }
 
         commonTest.dependencies {
@@ -48,7 +53,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        minSdk = 24
+        minSdk = 21
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

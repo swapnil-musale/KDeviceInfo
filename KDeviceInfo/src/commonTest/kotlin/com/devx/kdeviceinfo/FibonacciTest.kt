@@ -1,6 +1,8 @@
 package com.devx.kdeviceinfo
 
-import kotlin.test.*
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFails
 
 class FibonacciTest {
 
