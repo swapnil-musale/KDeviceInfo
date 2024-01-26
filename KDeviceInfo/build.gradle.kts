@@ -1,11 +1,11 @@
 plugins {
-    alias(libs.plugins.multiplatform)
-    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.androidLibrary)
     id("convention.publication")
 }
 
-group = "com.devx.kdeviceinfo"
-version = "1.0"
+group = "io.github.swapnil-musale"
+version = "0.0.1"
 
 kotlin {
     androidTarget {

@@ -1,11 +1,7 @@
 //Publishing your Kotlin Multiplatform library to Maven Central
 //https://dev.to/kotlin/how-to-build-and-publish-a-kotlin-multiplatform-library-going-public-4a8k
 
-import org.gradle.api.publish.maven.MavenPublication
-import org.gradle.api.tasks.bundling.Jar
-import org.gradle.kotlin.dsl.`maven-publish`
-import org.gradle.kotlin.dsl.signing
-import java.util.*
+import java.util.Properties
 
 plugins {
     id("maven-publish")
@@ -19,11 +15,13 @@ ext["signing.secretKeyRingFile"] = null
 ext["ossrhUsername"] = null
 ext["ossrhPassword"] = null
 
-// Grabbing secrets from local.properties file or from environment variables, which could be used on CI
+// Grabbing secrets from local.properties file or from Github workflow environment variables, which could be used on CI
 val secretPropsFile = project.rootProject.file("local.properties")
 if (secretPropsFile.exists()) {
     secretPropsFile.reader().use {
-        Properties().apply { load(it) }
+        Properties().apply {
+            load(it)
+        }
     }.onEach { (name, value) ->
         ext[name.toString()] = value
     }
@@ -55,31 +53,43 @@ publishing {
     }
 
     // Configure all publications
-    publications.withType<MavenPublication> {
-        // Stub javadoc.jar artifact
-        artifact(javadocJar.get())
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "io.github.swapnil-musale"
+            artifactId = "kdeviceinfo"
+            version = "0.0.1"
+            from(components["kotlin"])
+        }
 
-        // Provide artifacts information requited by Maven Central
-        pom {
-            name.set("KMP DeviceInfo")
-            description.set("Kotlin Multiplatform library")
-            //url.set("") todo
+        // Configure all publications
+        withType<MavenPublication> {
+            // Stub javadoc.jar artifact
+            artifact(javadocJar.get())
 
-            licenses {
-                license {
-                    name.set("MIT")
-                    url.set("https://opensource.org/licenses/MIT")
+            // Provide artifacts information requited by Maven Central
+            pom {
+                name.set("KDeviceInfo")
+                description.set("KDeviceInfo is Kotlin Multiplatform library to access the device info without writing the boilerplate code")
+                url.set("https://github.com/swapnil-musale/KDeviceInfo")
+
+                licenses {
+                    license {
+                        name.set("MIT")
+                        url.set("https://opensource.org/licenses/MIT")
+                    }
                 }
-            }
-            developers {
-                developer {
-                    //id.set("") todo
-                    //name.set("") todo
-                    //email.set("") todo
+                developers {
+                    developer {
+                        id.set("swapnilmusale")
+                        name.set("Swapnil Musale")
+                        email.set("swapnilmusale19@gmail.com")
+                    }
                 }
-            }
-            scm {
-                //url.set("") todo
+                scm {
+                    connection.set("scm:git:github.com/swapnil-musale/KDeviceInfo.git")
+                    developerConnection.set("scm:git:ssh://github.com/swapnil-musale/KDeviceInfo.git")
+                    url.set("https://github.com/swapnil-musale/KDeviceInfo")
+                }
             }
         }
     }

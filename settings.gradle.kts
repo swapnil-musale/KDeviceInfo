@@ -1,7 +1,3 @@
-rootProject.name = "KMP-DeviceInfo"
-include(":KDeviceInfo")
-includeBuild("convention-plugins")
-
 pluginManagement {
     repositories {
         google()
@@ -16,3 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
+rootProject.name = "KMP-DeviceInfo"
+include(":KDeviceInfo")
+includeBuild("convention-plugins")
