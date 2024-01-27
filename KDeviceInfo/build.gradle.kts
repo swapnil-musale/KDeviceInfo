@@ -36,10 +36,6 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.androidx.annotation)
         }
-
-        commonTest.dependencies {
-            implementation(kotlin("test"))
-        }
     }
 
     //https://kotlinlang.org/docs/native-objc-interop.html#export-of-kdoc-comments-to-generated-objective-c-headers
