@@ -37,14 +37,25 @@ val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
 }
 
-fun getExtraString(name: String) = ext[name]?.toString()
+val libraryVersion = "0.0.1-SNAPSHOT"
+
+fun getExtraString(name: String): String = ext[name]?.toString().orEmpty()
 
 publishing {
     // Configure maven central repository
     repositories {
         maven {
             name = "sonatype"
-            setUrl("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+            val releasesRepoUrl =
+                "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            val snapShotRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+
+            val publishingUrl = if (libraryVersion.endsWith("SNAPSHOT")) {
+                snapShotRepoUrl
+            } else {
+                releasesRepoUrl
+            }
+            setUrl(publishingUrl)
             credentials {
                 username = getExtraString("ossrhUsername")
                 password = getExtraString("ossrhPassword")
@@ -57,11 +68,10 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "io.github.swapnil-musale"
             artifactId = "kdeviceinfo"
-            version = "0.0.1"
+            version = libraryVersion
             from(components["kotlin"])
         }
 
-        // Configure all publications
         withType<MavenPublication> {
             // Stub javadoc.jar artifact
             artifact(javadocJar.get())
@@ -97,7 +107,7 @@ publishing {
 
 // Signing artifacts. Signing.* extra properties values will be used
 signing {
-    if (getExtraString("signing.keyId") != null) {
+    if (getExtraString("signing.keyId").isNotEmpty()) {
         sign(publishing.publications)
     }
 }

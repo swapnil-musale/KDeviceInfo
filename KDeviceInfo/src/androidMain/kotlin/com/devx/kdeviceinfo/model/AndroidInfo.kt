@@ -69,7 +69,7 @@ internal actual class AndroidInfo {
         get() = Build.TAGS
     actual val isPhysicalDevice: Boolean
         get() = getIsPhysicalDevice()
-    actual val systemFeatures: List<String>
+    actual val systemFeatureList: List<String>
         get() = getSystemFeatures()
 
     actual val displaySizeInches: Double

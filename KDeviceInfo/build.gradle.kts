@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "io.github.swapnil-musale"
-version = "0.0.1"
+version = "0.0.1-SNAPSHOT"
 
 kotlin {
     androidTarget {

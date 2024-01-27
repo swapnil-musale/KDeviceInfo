@@ -53,7 +53,7 @@ internal actual class AndroidInfo {
         get() = TODO("Not yet implemented")
     actual val isPhysicalDevice: Boolean
         get() = TODO("Not yet implemented")
-    actual val systemFeatures: List<String>
+    actual val systemFeatureList: List<String>
         get() = TODO("Not yet implemented")
     actual val displaySizeInches: Double
         get() = TODO("Not yet implemented")

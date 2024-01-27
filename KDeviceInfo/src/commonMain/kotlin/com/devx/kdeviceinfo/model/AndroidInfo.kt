@@ -27,7 +27,7 @@ internal expect class AndroidInfo {
     val supported64BitAbis: Array<String>
     val tags: String
     val isPhysicalDevice: Boolean
-    val systemFeatures: List<String>
+    val systemFeatureList: List<String>
     val displaySizeInches: Double
     val displayWidthPixels: Double
     val displayWidthInches: Double
