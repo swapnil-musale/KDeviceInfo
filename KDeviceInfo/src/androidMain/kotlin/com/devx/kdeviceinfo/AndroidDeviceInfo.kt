@@ -10,5 +10,5 @@ actual class DeviceInfoX {
     actual val androidInfo: AndroidInfo
         get() = AndroidInfo()
     actual val iosInfo: IosInfo
-        get() = throw Exception("Incorrect platform trying to access")
+        get() = throw Exception("trying to access incorrect platform")
 }
