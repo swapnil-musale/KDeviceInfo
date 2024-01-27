@@ -2,7 +2,7 @@ package com.devx.kdeviceinfo.model
 
 import platform.UIKit.UIDevice
 
-actual class IosInfo {
+internal actual class IosInfo {
     actual val name: String
         get() = UIDevice.currentDevice.name
     actual val systemName: String

@@ -7,8 +7,8 @@ import com.devx.kdeviceinfo.model.Platform
 actual class DeviceInfoX {
     actual val currentPlatform: Platform
         get() = Platform.ANDROID
-    actual val androidInfo: AndroidInfo
+    internal actual val androidInfo: AndroidInfo
         get() = AndroidInfo()
-    actual val iosInfo: IosInfo
+    internal actual val iosInfo: IosInfo
         get() = throw Exception("trying to access incorrect platform")
 }

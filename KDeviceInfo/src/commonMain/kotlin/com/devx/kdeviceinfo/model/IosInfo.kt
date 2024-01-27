@@ -6,7 +6,7 @@ package com.devx.kdeviceinfo.model
 //'utsname.version:': data.utsname.version,
 //'utsname.machine:': data.utsname.machine,
 
-expect class IosInfo {
+internal expect class IosInfo {
     val name: String
     val systemName: String
     val systemVersion: String

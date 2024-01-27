@@ -1,6 +1,6 @@
 package com.devx.kdeviceinfo.model
 
-expect class AndroidInfo {
+internal expect class AndroidInfo {
     val baseOs: String
     val sdkInt: Int
     val codeName: String

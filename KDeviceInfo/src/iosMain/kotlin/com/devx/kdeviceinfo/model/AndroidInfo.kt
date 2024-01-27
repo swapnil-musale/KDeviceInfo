@@ -1,6 +1,6 @@
 package com.devx.kdeviceinfo.model
 
-actual class AndroidInfo {
+internal actual class AndroidInfo {
     actual val baseOs: String
         get() = TODO("Not yet implemented")
     actual val sdkInt: Int

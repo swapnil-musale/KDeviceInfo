@@ -5,7 +5,7 @@ import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
 
-actual class AndroidInfo {
+internal actual class AndroidInfo {
 
     // TODO("Not yet implemented")
     private lateinit var applicationContext: Context
