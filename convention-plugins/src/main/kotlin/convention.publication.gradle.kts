@@ -14,11 +14,13 @@ ext["signing.password"] = null
 ext["signing.secretKeyRingFile"] = null
 ext["ossrhUsername"] = null
 ext["ossrhPassword"] = null
+ext["ossrhEmailAddress"] = null
+ext["library.author"] = null
 
 // Grabbing secrets from local.properties file or from Github workflow environment variables, which could be used on CI
-val secretPropsFile = project.rootProject.file("local.properties")
-if (secretPropsFile.exists()) {
-    secretPropsFile.reader().use {
+val secretPropertiesFile: File = project.rootProject.file("local.properties")
+if (secretPropertiesFile.exists()) {
+    secretPropertiesFile.reader().use {
         Properties().apply {
             load(it)
         }
@@ -31,6 +33,8 @@ if (secretPropsFile.exists()) {
     ext["signing.secretKeyRingFile"] = System.getenv("SIGNING_SECRET_KEY_RING_FILE")
     ext["ossrhUsername"] = System.getenv("OSSRH_USERNAME")
     ext["ossrhPassword"] = System.getenv("OSSRH_PASSWORD")
+    ext["ossrhEmailAddress"] = System.getenv("OSSRH_EMAIL_ADDRESS")
+    ext["library.author"] = System.getenv("OSSRH_LIBRARY_AUTHOR")
 }
 
 val javadocJar by tasks.registering(Jar::class) {
@@ -90,9 +94,9 @@ publishing {
                 }
                 developers {
                     developer {
-                        id.set("swapnilmusale")
-                        name.set("Swapnil Musale")
-                        email.set("swapnilmusale19@gmail.com")
+                        id.set(getExtraString("ossrhUsername"))
+                        name.set(getExtraString("library.author"))
+                        email.set(getExtraString("ossrhEmailAddress"))
                     }
                 }
                 scm {
