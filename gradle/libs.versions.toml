@@ -1,13 +1,15 @@
 [versions]
 # Plugin Versions
-kotlin = "1.9.22"
+kotlin = "1.9.21"
 androidGrdlePlugin = "8.2.2"
 
 # Library Versions
 annotation = "1.7.1"
+jetbrainsCompose = "1.5.11"
 
 
 [libraries]
+compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "jetbrainsCompose" }
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 
 

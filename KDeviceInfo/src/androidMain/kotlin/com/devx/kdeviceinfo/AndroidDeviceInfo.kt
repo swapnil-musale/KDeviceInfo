@@ -1,14 +1,24 @@
 package com.devx.kdeviceinfo
 
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import com.devx.kdeviceinfo.model.AndroidInfo
 import com.devx.kdeviceinfo.model.IosInfo
 import com.devx.kdeviceinfo.model.Platform
 
-actual class DeviceInfoX {
-    actual val currentPlatform: Platform
+class AndroidDeviceInfoX : DeviceInfoX {
+    override val currentPlatform: Platform
         get() = Platform.ANDROID
-    internal actual val androidInfo: AndroidInfo
+    override val androidInfo: AndroidInfo
         get() = AndroidInfo()
-    internal actual val iosInfo: IosInfo
-        get() = throw Exception("trying to access incorrect platform")
+    override val iosInfo: IosInfo
+        get() = throw Exception("trying to access incorrect platform info")
+}
+
+actual fun DeviceInfoState(): DeviceInfoX = AndroidDeviceInfoX()
+
+@Composable
+actual fun rememberDeviceInfoXState(): DeviceInfoX {
+    return remember { mutableStateOf(value = AndroidDeviceInfoX()) }.value
 }

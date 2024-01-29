@@ -1,6 +1,6 @@
 package com.devx.kdeviceinfo.model
 
-internal actual class IosInfo {
+actual class IosInfo {
     actual val name: String
         get() = TODO("Not yet implemented")
     actual val systemName: String

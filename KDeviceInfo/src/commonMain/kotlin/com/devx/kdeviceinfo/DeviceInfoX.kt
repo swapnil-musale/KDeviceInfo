@@ -1,11 +1,17 @@
 package com.devx.kdeviceinfo
 
+import androidx.compose.runtime.Composable
 import com.devx.kdeviceinfo.model.AndroidInfo
 import com.devx.kdeviceinfo.model.IosInfo
 import com.devx.kdeviceinfo.model.Platform
 
-expect class DeviceInfoX() {
+interface DeviceInfoX {
     val currentPlatform: Platform
-    internal val androidInfo: AndroidInfo
-    internal val iosInfo: IosInfo
+    val androidInfo: AndroidInfo
+    val iosInfo: IosInfo
 }
+
+expect fun DeviceInfoState(): DeviceInfoX
+
+@Composable
+expect fun rememberDeviceInfoXState(): DeviceInfoX

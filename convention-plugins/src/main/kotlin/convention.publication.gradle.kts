@@ -8,6 +8,8 @@ plugins {
     id("signing")
 }
 
+val libraryVersion = "0.0.1-ALPHA"
+
 // Stub secrets to let the project sync and build without the publication values set up
 ext["signing.keyId"] = null
 ext["signing.password"] = null
@@ -41,8 +43,6 @@ val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
 }
 
-val libraryVersion = "0.0.1-SNAPSHOT"
-
 fun getExtraString(name: String): String = ext[name]?.toString().orEmpty()
 
 publishing {
@@ -71,7 +71,7 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             groupId = "io.github.swapnil-musale"
-            artifactId = "kdeviceinfo"
+            artifactId = "KDeviceInfo"
             version = libraryVersion
             from(components["kotlin"])
         }

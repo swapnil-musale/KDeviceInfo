@@ -35,7 +35,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            // Put your multiplatform dependencies here
+            implementation(libs.compose.runtime)
         }
 
         androidMain.dependencies {
@@ -66,4 +66,15 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.7"
+    }
+}
+
+task("testClasses").doLast {
+    println("This is a dummy testClasses task")
 }
