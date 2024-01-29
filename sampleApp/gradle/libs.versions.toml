@@ -6,12 +6,15 @@ androidGrdlePlugin = "8.2.2"
 androidx-appcompat = "1.6.1"
 androidx-activityCompose = "1.8.2"
 compose-uitooling = "1.6.0"
+kdeviceInfo = "0.0.1-ALPHA"
 
 [libraries]
 
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
 androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 compose-uitooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose-uitooling" }
+kdeviceInfo = { module = "io.github.swapnil-musale:KDeviceInfo", version.ref = "kdeviceInfo" }
+
 
 [plugins]
 

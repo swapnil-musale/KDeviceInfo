@@ -33,6 +33,7 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.material3)
+            implementation(libs.kdeviceInfo)
         }
 
         commonTest.dependencies {
