@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.dp
 import com.devx.kdeviceinfo.DeviceInfoX
 import com.devx.kdeviceinfo.model.AndroidInfo
 import com.devx.kdeviceinfo.model.IosInfo
-import com.devx.kdeviceinfo.model.Platform
 import com.devx.kdeviceinfo.rememberDeviceInfoXState
 import com.devx.kdeviceinfo.sample.theme.AppTheme
 
@@ -38,7 +37,7 @@ internal fun App() = AppTheme {
                 .padding(all = 16.dp)
                 .windowInsetsPadding(insets = WindowInsets.safeDrawing),
         ) {
-            if (deviceInfoXState.currentPlatform == Platform.ANDROID) {
+            if (deviceInfoXState.isAndroid) {
                 ShowAndroidDeviceInfo(deviceInfoXState.androidInfo)
             } else {
                 ShowIosDeviceInfo(deviceInfoXState.iosInfo)
@@ -100,5 +99,8 @@ private fun ShowIosDeviceInfo(iosInfo: IosInfo) {
         Text(text = "LocalizedModel : ${iosInfo.localizedModel}")
         Text(text = "IsPhysicalDevice : ${iosInfo.isPhysicalDevice}")
         Text(text = "IdentifierForVendor : ${iosInfo.identifierForVendor}")
+        Text(text = "IsMultitaskingSupported : ${iosInfo.isMultitaskingSupported}")
+        Text(text = "IsGeneratingDeviceOrientationNotifications : ${iosInfo.isGeneratingDeviceOrientationNotifications}")
+        Text(text = "UIDeviceOrientation : ${iosInfo.uiDeviceOrientation.orientation}")
     }
 }

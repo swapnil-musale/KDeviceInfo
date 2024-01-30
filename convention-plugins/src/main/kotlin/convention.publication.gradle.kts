@@ -8,7 +8,9 @@ plugins {
     id("signing")
 }
 
-val libraryVersion = "0.0.1-ALPHA"
+val Project.versionCatalog
+    get(): VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
+val libraryVersion = "${versionCatalog.findVersion("kDeviceInfoLibraryVersion").get()}"
 
 // Stub secrets to let the project sync and build without the publication values set up
 ext["signing.keyId"] = null

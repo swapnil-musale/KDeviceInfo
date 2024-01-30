@@ -28,8 +28,8 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.material3)
-//            implementation(libs.kdeviceInfo)
-            implementation(project(":KDeviceInfo"))
+//            implementation(libs.kDevice.info)
+            implementation(projects.kDeviceInfo)
         }
 
         commonTest.dependencies {
@@ -69,6 +69,6 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.4"
+        kotlinCompilerExtensionVersion = "1.5.8"
     }
 }

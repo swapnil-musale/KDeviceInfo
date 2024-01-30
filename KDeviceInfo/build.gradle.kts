@@ -10,8 +10,9 @@ plugins {
     id("convention.publication")
 }
 
+val Project.versionCatalog get(): VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
 group = "io.github.swapnil-musale"
-version = "0.0.1-ALPHA"
+version = "${versionCatalog.findVersion("kDeviceInfoLibraryVersion").get()}"
 
 kotlin {
     androidTarget {
@@ -31,6 +32,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(libs.compose.ui)
             implementation(libs.compose.runtime)
         }
 

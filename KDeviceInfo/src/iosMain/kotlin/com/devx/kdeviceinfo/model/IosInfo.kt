@@ -18,4 +18,23 @@ actual class IosInfo {
 
     actual val isPhysicalDevice: Boolean
         get() = false
+    actual val isMultitaskingSupported: Boolean
+        get() = UIDevice.currentDevice.isMultitaskingSupported()
+    actual val isGeneratingDeviceOrientationNotifications: Boolean
+        get() = UIDevice.currentDevice.isGeneratingDeviceOrientationNotifications()
+    actual val uiDeviceOrientation: UIDeviceOrientation
+        get() = getDeviceOrientation()
+
+    private fun getDeviceOrientation(): UIDeviceOrientation {
+        return when (UIDevice.currentDevice.orientation.value) {
+            0L -> UIDeviceOrientation.UNKNOWN
+            1L -> UIDeviceOrientation.PORTRAIT
+            2L -> UIDeviceOrientation.PORTRAIT_UPSIDE_DOWN
+            3L -> UIDeviceOrientation.LANDSCAPE_LEFT
+            4L -> UIDeviceOrientation.LANDSCAPE_RIGHT
+            5L -> UIDeviceOrientation.FACE_UP
+            6L -> UIDeviceOrientation.FACE_DOWN
+            else -> UIDeviceOrientation.UNKNOWN
+        }
+    }
 }

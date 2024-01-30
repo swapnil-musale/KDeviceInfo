@@ -1,26 +1,31 @@
 [versions]
 # Plugin Versions
-kotlin = "1.9.21"
+kotlin = "1.9.22"
 androidGrdlePlugin = "8.2.2"
+jetbrainsCompose = "1.5.12"
 
 # Library Versions
 annotation = "1.7.1"
-jetbrainsCompose = "1.5.12"
+kDeviceInfoLibraryVersion = "0.0.1-ALPHA"
 
-androidx-appcompat = "1.6.1"
-androidx-activityCompose = "1.8.2"
-compose-uitooling = "1.6.0"
-kdeviceInfo = "0.0.1-ALPHA"
+# sampleApp Versions
+androidxAppcompat = "1.6.1"
+androidxActivityCompose = "1.8.2"
+androidXCompose = "1.6.0"
+kDeviceInfo = "0.0.1-ALPHA"
 
 
 [libraries]
-compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "jetbrainsCompose" }
+# KDeviceInfo module libraries
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
+compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "jetbrainsCompose" }
+compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "jetbrainsCompose" }
 
-androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
-androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
-compose-uitooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose-uitooling" }
-kdeviceInfo = { module = "io.github.swapnil-musale:KDeviceInfo", version.ref = "kdeviceInfo" }
+# sampleApp module libraries
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidxAppcompat" }
+androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidxActivityCompose" }
+compose-uitooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "androidXCompose" }
+kDevice-info = { module = "io.github.swapnil-musale:KDeviceInfo", version.ref = "kDeviceInfo" }
 
 
 [plugins]
