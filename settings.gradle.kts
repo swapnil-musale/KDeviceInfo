@@ -2,6 +2,7 @@ pluginManagement {
     repositories {
         google()
         gradlePluginPortal()
+        mavenLocal()
         mavenCentral()
     }
 }
@@ -9,6 +10,7 @@ pluginManagement {
 dependencyResolutionManagement {
     repositories {
         google()
+        mavenLocal()
         mavenCentral()
     }
 }
@@ -16,4 +18,4 @@ dependencyResolutionManagement {
 rootProject.name = "KMP-DeviceInfo"
 include(":KDeviceInfo")
 includeBuild("convention-plugins")
-includeBuild("sampleApp")
+include("sampleApp:composeApp")

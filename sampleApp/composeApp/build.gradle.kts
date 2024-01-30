@@ -1,7 +1,7 @@
 plugins {
-    alias(libs.plugins.multiplatform)
-    alias(libs.plugins.compose)
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.androidApplication)
 }
 
 kotlin {
@@ -25,15 +25,11 @@ kotlin {
     }
 
     sourceSets {
-        all {
-            languageSettings {
-                optIn("org.jetbrains.compose.resources.ExperimentalResourceApi")
-            }
-        }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.material3)
-            implementation(libs.kdeviceInfo)
+//            implementation(libs.kdeviceInfo)
+            implementation(project(":KDeviceInfo"))
         }
 
         commonTest.dependencies {

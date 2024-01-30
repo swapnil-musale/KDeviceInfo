@@ -7,12 +7,24 @@ androidGrdlePlugin = "8.2.2"
 annotation = "1.7.1"
 jetbrainsCompose = "1.5.12"
 
+androidx-appcompat = "1.6.1"
+androidx-activityCompose = "1.8.2"
+compose-uitooling = "1.6.0"
+kdeviceInfo = "0.0.1-ALPHA"
+
 
 [libraries]
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "jetbrainsCompose" }
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
+androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+compose-uitooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose-uitooling" }
+kdeviceInfo = { module = "io.github.swapnil-musale:KDeviceInfo", version.ref = "kdeviceInfo" }
+
 
 [plugins]
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "jetbrainsCompose" }
 androidLibrary = { id = "com.android.library", version.ref = "androidGrdlePlugin" }
+androidApplication = { id = "com.android.application", version.ref = "androidGrdlePlugin" }

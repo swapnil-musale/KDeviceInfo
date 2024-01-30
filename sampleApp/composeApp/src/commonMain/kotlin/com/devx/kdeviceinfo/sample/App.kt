@@ -14,22 +14,20 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.devx.kdeviceinfo.DeviceInfoState
+import com.devx.kdeviceinfo.DeviceInfoX
 import com.devx.kdeviceinfo.model.AndroidInfo
 import com.devx.kdeviceinfo.model.IosInfo
 import com.devx.kdeviceinfo.model.Platform
+import com.devx.kdeviceinfo.rememberDeviceInfoXState
 import com.devx.kdeviceinfo.sample.theme.AppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun App() = AppTheme {
 
-    val deviceInfoXState by remember { mutableStateOf(value = DeviceInfoState()) }
+    val deviceInfoXState: DeviceInfoX = rememberDeviceInfoXState()
 
     Scaffold(topBar = {
         TopAppBar(title = { Text(text = "KDeviceInfo Sample App") })
