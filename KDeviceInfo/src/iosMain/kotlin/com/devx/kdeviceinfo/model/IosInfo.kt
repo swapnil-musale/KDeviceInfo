@@ -16,7 +16,6 @@ actual class IosInfo {
     actual val identifierForVendor: String
         get() = UIDevice.currentDevice.identifierForVendor?.UUIDString.orEmpty()
 
-    // TODO
     actual val isPhysicalDevice: Boolean
         get() = false
 }

@@ -5,7 +5,7 @@ androidGrdlePlugin = "8.2.2"
 
 # Library Versions
 annotation = "1.7.1"
-jetbrainsCompose = "1.5.11"
+jetbrainsCompose = "1.5.12"
 
 
 [libraries]

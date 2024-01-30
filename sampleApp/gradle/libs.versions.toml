@@ -1,7 +1,7 @@
 [versions]
 
 kotlin = "1.9.21"
-compose = "1.5.11"
+compose = "1.5.12"
 androidGrdlePlugin = "8.2.2"
 androidx-appcompat = "1.6.1"
 androidx-activityCompose = "1.8.2"

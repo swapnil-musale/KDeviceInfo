@@ -59,6 +59,8 @@ android {
     namespace = "com.devx.kdeviceinfo"
     compileSdk = 34
 
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+
     defaultConfig {
         minSdk = 21
     }
