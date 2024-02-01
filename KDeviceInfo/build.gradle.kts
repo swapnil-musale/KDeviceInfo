@@ -10,7 +10,8 @@ plugins {
     id("convention.publication")
 }
 
-val Project.versionCatalog get(): VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
+val Project.versionCatalog
+    get(): VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
 group = "io.github.swapnil-musale"
 version = "${versionCatalog.findVersion("kDeviceInfoLibraryVersion").get()}"
 

@@ -22,7 +22,5 @@ actual fun DeviceInfoState(): DeviceInfoX = AndroidDeviceInfoX()
 
 @Composable
 actual fun rememberDeviceInfoXState(key: Any?): DeviceInfoX {
-    return remember(key1 = key) {
-        AndroidDeviceInfoX()
-    }
+    return remember(key1 = key) { AndroidDeviceInfoX() }
 }

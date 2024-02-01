@@ -38,9 +38,9 @@ internal fun App() = AppTheme {
                 .windowInsetsPadding(insets = WindowInsets.safeDrawing),
         ) {
             if (deviceInfoXState.isAndroid) {
-                ShowAndroidDeviceInfo(deviceInfoXState.androidInfo)
+                ShowAndroidDeviceInfo(androidInfo = deviceInfoXState.androidInfo)
             } else {
-                ShowIosDeviceInfo(deviceInfoXState.iosInfo)
+                ShowIosDeviceInfo(iosInfo = deviceInfoXState.iosInfo)
             }
         }
     }
