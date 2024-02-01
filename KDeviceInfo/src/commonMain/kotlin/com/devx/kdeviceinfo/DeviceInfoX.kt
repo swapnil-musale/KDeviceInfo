@@ -3,8 +3,8 @@
 package com.devx.kdeviceinfo
 
 import androidx.compose.runtime.Composable
-import com.devx.kdeviceinfo.model.AndroidInfo
-import com.devx.kdeviceinfo.model.IosInfo
+import com.devx.kdeviceinfo.model.android.AndroidInfo
+import com.devx.kdeviceinfo.model.ios.IosInfo
 
 interface DeviceInfoX {
     val isAndroid: Boolean
@@ -16,4 +16,4 @@ interface DeviceInfoX {
 expect fun DeviceInfoState(): DeviceInfoX
 
 @Composable
-expect fun rememberDeviceInfoXState(key: Any? = Unit): DeviceInfoX
+expect fun rememberDeviceInfoXState(): DeviceInfoX

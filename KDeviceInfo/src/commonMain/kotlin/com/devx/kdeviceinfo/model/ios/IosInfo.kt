@@ -1,6 +1,6 @@
-package com.devx.kdeviceinfo.model
+package com.devx.kdeviceinfo.model.ios
 
-expect class IosInfo {
+interface IosInfo {
     val name: String
     val systemName: String
     val systemVersion: String
@@ -10,5 +10,5 @@ expect class IosInfo {
     val isPhysicalDevice: Boolean
     val isMultitaskingSupported: Boolean
     val isGeneratingDeviceOrientationNotifications: Boolean
-    val uiDeviceOrientation: UIDeviceOrientation
+    val deviceOrientation: String
 }

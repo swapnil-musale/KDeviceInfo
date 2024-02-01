@@ -35,9 +35,6 @@ kotlin {
         commonMain.dependencies {
             implementation(libs.compose.ui)
             implementation(libs.compose.runtime)
-        }
-
-        androidMain.dependencies {
             implementation(libs.androidx.annotation)
         }
     }

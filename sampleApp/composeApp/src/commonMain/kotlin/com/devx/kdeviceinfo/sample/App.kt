@@ -1,9 +1,9 @@
 package com.devx.kdeviceinfo.sample
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
@@ -12,13 +12,16 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.devx.kdeviceinfo.DeviceInfoX
-import com.devx.kdeviceinfo.model.AndroidInfo
-import com.devx.kdeviceinfo.model.IosInfo
+import com.devx.kdeviceinfo.model.android.AndroidInfo
+import com.devx.kdeviceinfo.model.ios.IosInfo
 import com.devx.kdeviceinfo.rememberDeviceInfoXState
 import com.devx.kdeviceinfo.sample.theme.AppTheme
 
@@ -31,15 +34,24 @@ internal fun App() = AppTheme {
     Scaffold(topBar = {
         TopAppBar(title = { Text(text = "KDeviceInfo Sample App") })
     }) {
-        Box(
+        Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(all = 16.dp)
                 .windowInsetsPadding(insets = WindowInsets.safeDrawing),
         ) {
+            val state = remember { mutableStateOf("") }
+            TextField(
+                modifier = Modifier.height(50.dp),
+                value = state.value, onValueChange = {
+                    state.value = it
+                })
+            Text(deviceInfoXState.toString())
             if (deviceInfoXState.isAndroid) {
+                Text(deviceInfoXState.androidInfo.toString())
                 ShowAndroidDeviceInfo(androidInfo = deviceInfoXState.androidInfo)
             } else {
+                Text(deviceInfoXState.iosInfo.toString())
                 ShowIosDeviceInfo(iosInfo = deviceInfoXState.iosInfo)
             }
         }
@@ -50,26 +62,26 @@ internal fun App() = AppTheme {
 private fun ShowAndroidDeviceInfo(androidInfo: AndroidInfo) {
     val verticalScrollState = rememberScrollState()
 
+    androidInfo.VERSION_CODES.LOLLIPOP
     Column(modifier = Modifier.verticalScroll(state = verticalScrollState)) {
         Text(text = "Device : ${androidInfo.device}")
-        Text(text = "BaseOs : ${androidInfo.baseOs}")
-        Text(text = "Release : ${androidInfo.release}")
-        Text(text = "SecurityPatch : ${androidInfo.securityPatch}")
-        Text(text = "previewSdkInt : ${androidInfo.previewSdkInt}")
-        Text(text = "ReleaseOrCodeName : ${androidInfo.releaseOrCodeName}")
-        Text(text = "MediaPerformanceClass : ${androidInfo.mediaPerformanceClass}")
-        Text(text = "Incremental : ${androidInfo.incremental}")
-        Text(text = "ReleaseOrPreviewDisplay : ${androidInfo.releaseOrPreviewDisplay}")
-        Text(text = "CodeName : ${androidInfo.codeName}")
+        Text(text = "SdkInt : ${androidInfo.version.sdkInt}")
+        Text(text = "BaseOs : ${androidInfo.version.baseOs}")
+        Text(text = "Release : ${androidInfo.version.release}")
+        Text(text = "SecurityPatch : ${androidInfo.version.securityPatch}")
+        Text(text = "previewSdkInt : ${androidInfo.version.previewSdkInt}")
+        Text(text = "ReleaseOrCodeName : ${androidInfo.version.releaseOrCodeName}")
+        Text(text = "MediaPerformanceClass : ${androidInfo.version.mediaPerformanceClass}")
+        Text(text = "Incremental : ${androidInfo.version.incremental}")
+        Text(text = "ReleaseOrPreviewDisplay : ${androidInfo.version.releaseOrPreviewDisplay}")
+        Text(text = "CodeName : ${androidInfo.version.codeName}")
         Text(text = "Board : ${androidInfo.board}")
         Text(text = "Bootloader : ${androidInfo.bootloader}")
         Text(text = "Display : ${androidInfo.display}")
-        Text(text = "DisplayWidthPixels : ${androidInfo.displayWidthPixels}")
-        Text(text = "DdisplayHeightPixels : ${androidInfo.displayHeightPixels}")
-        Text(text = "DisplayWidthInches : ${androidInfo.displayWidthInches}")
-        Text(text = "DisplayHeightInches : ${androidInfo.displayHeightInches}")
-        Text(text = "DisplayXDpi : ${androidInfo.displayXDpi}")
-        Text(text = "DisplayYDpi : ${androidInfo.displayYDpi}")
+        Text(text = "DisplayWidthInches : ${androidInfo.displayMetrics.widthInches}")
+        Text(text = "DisplayHeightInches : ${androidInfo.displayMetrics.heightInches}")
+        Text(text = "DisplayXDpi : ${androidInfo.displayMetrics.xDpi}")
+        Text(text = "DisplayYDpi : ${androidInfo.displayMetrics.yDpi}")
         Text(text = "Fingerprint : ${androidInfo.fingerprint}")
         Text(text = "Hardware : ${androidInfo.hardware}")
         Text(text = "Host : ${androidInfo.host}")
@@ -78,7 +90,6 @@ private fun ShowAndroidDeviceInfo(androidInfo: AndroidInfo) {
         Text(text = "Manufacturer : ${androidInfo.manufacturer}")
         Text(text = "Model : ${androidInfo.model}")
         Text(text = "Product : ${androidInfo.product}")
-        Text(text = "SdkInt : ${androidInfo.sdkInt}")
 //        Text(text = "SerialNumber : ${androidInfo.serialNumber}")
 //        Text(text = "SystemFeatureList : ${androidInfo.systemFeatureList}")
         Text(text = "SupportedAbis : ${androidInfo.supportedAbis}")
@@ -101,6 +112,6 @@ private fun ShowIosDeviceInfo(iosInfo: IosInfo) {
         Text(text = "IdentifierForVendor : ${iosInfo.identifierForVendor}")
         Text(text = "IsMultitaskingSupported : ${iosInfo.isMultitaskingSupported}")
         Text(text = "IsGeneratingDeviceOrientationNotifications : ${iosInfo.isGeneratingDeviceOrientationNotifications}")
-        Text(text = "UIDeviceOrientation : ${iosInfo.uiDeviceOrientation.orientation}")
+        Text(text = "DeviceOrientation : ${iosInfo.deviceOrientation}")
     }
 }
