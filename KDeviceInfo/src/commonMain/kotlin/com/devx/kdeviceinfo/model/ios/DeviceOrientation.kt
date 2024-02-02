@@ -12,6 +12,5 @@ interface DeviceOrientation {
     val FACE_UP: String
     val FACE_DOWN: String
     val isPortrait: Boolean
-    val isLandscape: Boolean
     fun getDeviceOrientation(): String
 }

@@ -3,7 +3,6 @@ package com.devx.kdeviceinfo.sample
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
@@ -12,11 +11,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.devx.kdeviceinfo.DeviceInfoX
@@ -40,13 +36,6 @@ internal fun App() = AppTheme {
                 .padding(all = 16.dp)
                 .windowInsetsPadding(insets = WindowInsets.safeDrawing),
         ) {
-            val state = remember { mutableStateOf("") }
-            TextField(
-                modifier = Modifier.height(50.dp),
-                value = state.value, onValueChange = {
-                    state.value = it
-                })
-            Text(deviceInfoXState.toString())
             if (deviceInfoXState.isAndroid) {
                 Text(deviceInfoXState.androidInfo.toString())
                 ShowAndroidDeviceInfo(androidInfo = deviceInfoXState.androidInfo)
@@ -112,6 +101,6 @@ private fun ShowIosDeviceInfo(iosInfo: IosInfo) {
         Text(text = "IdentifierForVendor : ${iosInfo.identifierForVendor}")
         Text(text = "IsMultitaskingSupported : ${iosInfo.isMultitaskingSupported}")
         Text(text = "IsGeneratingDeviceOrientationNotifications : ${iosInfo.isGeneratingDeviceOrientationNotifications}")
-        Text(text = "DeviceOrientation : ${iosInfo.deviceOrientation}")
+        Text(text = "DeviceOrientation : ${iosInfo.deviceOrientation.getDeviceOrientation()}")
     }
 }

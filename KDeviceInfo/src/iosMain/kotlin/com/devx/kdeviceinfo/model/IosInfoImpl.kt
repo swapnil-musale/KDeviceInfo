@@ -2,6 +2,7 @@ package com.devx.kdeviceinfo.model
 
 import com.devx.kdeviceinfo.model.ios.DeviceOrientation
 import com.devx.kdeviceinfo.model.ios.IosInfo
+import platform.Foundation.NSProcessInfo
 import platform.UIKit.UIDevice
 
 class IosInfoImpl : IosInfo {
@@ -22,16 +23,16 @@ class IosInfoImpl : IosInfo {
         get() = UIDevice.currentDevice.identifierForVendor?.UUIDString.orEmpty()
 
     override val isPhysicalDevice: Boolean
-        get() = false
+        get() = NSProcessInfo.processInfo.environment["SIMULATOR_UDID"] == null
     override val isMultitaskingSupported: Boolean
         get() = UIDevice.currentDevice.isMultitaskingSupported()
     override val isGeneratingDeviceOrientationNotifications: Boolean
         get() = UIDevice.currentDevice.isGeneratingDeviceOrientationNotifications()
-    override val deviceOrientation: String
+    override val deviceOrientation: DeviceOrientation
         get() {
             if (::cachedDeviceOrientation.isInitialized.not()) {
                 cachedDeviceOrientation = IosDeviceOrientationImpl()
             }
-            return cachedDeviceOrientation.getDeviceOrientation()
+            return cachedDeviceOrientation
         }
 }

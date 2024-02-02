@@ -1,20 +1,22 @@
-@file:Suppress("FunctionName")
+@file:Suppress("FunctionName", "unused")
 
 package com.devx.kdeviceinfo
 
+import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 import com.devx.kdeviceinfo.model.AndroidInfoImpl
 import com.devx.kdeviceinfo.model.android.AndroidInfo
 import com.devx.kdeviceinfo.model.ios.IosInfo
 
-class AndroidDeviceInfoX : DeviceInfoX {
+class AndroidDeviceInfoX(private val context: Context? = null) : DeviceInfoX {
 
     private lateinit var cachedAndroidInfo: AndroidInfo
     override val androidInfo: AndroidInfo
         get() {
-            if (::cachedAndroidInfo.isInitialized.not()) {
-                cachedAndroidInfo = AndroidInfoImpl()
+            if (::cachedAndroidInfo.isInitialized.not() && context != null) {
+                cachedAndroidInfo = AndroidInfoImpl(context = context)
             }
             return cachedAndroidInfo
         }
@@ -30,5 +32,6 @@ actual fun DeviceInfoState(): DeviceInfoX = AndroidDeviceInfoX()
 
 @Composable
 actual fun rememberDeviceInfoXState(): DeviceInfoX {
-    return remember { AndroidDeviceInfoX() }
+    val context = LocalContext.current
+    return remember { AndroidDeviceInfoX(context = context) }
 }

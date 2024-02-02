@@ -10,5 +10,5 @@ interface IosInfo {
     val isPhysicalDevice: Boolean
     val isMultitaskingSupported: Boolean
     val isGeneratingDeviceOrientationNotifications: Boolean
-    val deviceOrientation: String
+    val deviceOrientation: DeviceOrientation
 }

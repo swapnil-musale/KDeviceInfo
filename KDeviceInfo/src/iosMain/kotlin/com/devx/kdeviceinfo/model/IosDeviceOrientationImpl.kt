@@ -8,7 +8,6 @@ internal class IosDeviceOrientationImpl : DeviceOrientation {
         get() = "unknown"
     override val PORTRAIT: String
         get() = "portrait"
-
     override val LANDSCAPE: String
         get() = "landscape"
     override val PORTRAIT_UPSIDE_DOWN: String
@@ -23,10 +22,17 @@ internal class IosDeviceOrientationImpl : DeviceOrientation {
         get() = "faceDown"
     override val isPortrait: Boolean
         get() = UIDevice.currentDevice.orientation.value.toString() == PORTRAIT
-    override val isLandscape: Boolean
-        get() = UIDevice.currentDevice.orientation.value.toString() == LANDSCAPE
 
     override fun getDeviceOrientation(): String {
-        return UIDevice.currentDevice.orientation.value.toString()
+        return when (UIDevice.currentDevice.orientation.value.toInt()) {
+            0 -> UNKNOWN
+            1 -> PORTRAIT
+            2 -> PORTRAIT_UPSIDE_DOWN
+            3 -> LANDSCAPE_LEFT
+            4 -> LANDSCAPE_RIGHT
+            5 -> FACE_UP
+            6 -> FACE_DOWN
+            else -> UNKNOWN
+        }
     }
 }

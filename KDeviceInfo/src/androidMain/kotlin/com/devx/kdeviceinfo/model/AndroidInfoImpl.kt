@@ -10,14 +10,11 @@ import com.devx.kdeviceinfo.model.android.DisplayMetrics
 import com.devx.kdeviceinfo.model.android.Version
 import com.devx.kdeviceinfo.model.android.VersionCode
 
-internal class AndroidInfoImpl : AndroidInfo {
+internal class AndroidInfoImpl(private val context: Context) : AndroidInfo {
 
     init {
         Log.d("DeviceX", "${this.javaClass.name} Initialized")
     }
-
-    // TODO("Not yet implemented")
-    private lateinit var applicationContext: Context
 
     private lateinit var cachedAndroidVersion: Version
     private lateinit var cachedAndroidVersionCode: VersionCode
@@ -101,7 +98,7 @@ internal class AndroidInfoImpl : AndroidInfo {
     }
 
     private fun getSystemFeatures(): List<String> {
-        val packageManager = applicationContext.packageManager
+        val packageManager = context.packageManager
         return packageManager.systemAvailableFeatures
             .filterNot {
                 it.name == null
