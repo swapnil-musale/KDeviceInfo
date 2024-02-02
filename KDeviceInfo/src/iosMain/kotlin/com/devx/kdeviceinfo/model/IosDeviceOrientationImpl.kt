@@ -3,7 +3,7 @@ package com.devx.kdeviceinfo.model
 import com.devx.kdeviceinfo.model.ios.DeviceOrientation
 import platform.UIKit.UIDevice
 
-class IosDeviceOrientationImpl : DeviceOrientation {
+internal class IosDeviceOrientationImpl : DeviceOrientation {
     override val UNKNOWN: String
         get() = "unknown"
     override val PORTRAIT: String

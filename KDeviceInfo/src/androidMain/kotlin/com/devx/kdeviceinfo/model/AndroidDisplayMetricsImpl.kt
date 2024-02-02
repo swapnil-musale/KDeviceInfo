@@ -4,7 +4,7 @@ import android.content.res.Resources
 import android.util.Log
 import com.devx.kdeviceinfo.model.android.DisplayMetrics
 
-class AndroidDisplayMetricsImpl : DisplayMetrics {
+internal class AndroidDisplayMetricsImpl : DisplayMetrics {
 
     init {
         Log.d("DeviceX", "${this.javaClass.name} Initialized")

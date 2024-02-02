@@ -10,7 +10,7 @@ import com.devx.kdeviceinfo.model.android.DisplayMetrics
 import com.devx.kdeviceinfo.model.android.Version
 import com.devx.kdeviceinfo.model.android.VersionCode
 
-class AndroidInfoImpl : AndroidInfo {
+internal class AndroidInfoImpl : AndroidInfo {
 
     init {
         Log.d("DeviceX", "${this.javaClass.name} Initialized")

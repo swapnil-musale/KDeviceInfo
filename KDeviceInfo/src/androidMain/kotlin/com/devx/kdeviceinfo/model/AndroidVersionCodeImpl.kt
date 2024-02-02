@@ -3,7 +3,7 @@ package com.devx.kdeviceinfo.model
 import android.os.Build
 import com.devx.kdeviceinfo.model.android.VersionCode
 
-class AndroidVersionCodeImpl : VersionCode {
+internal class AndroidVersionCodeImpl : VersionCode {
     override val CUR_DEVELOPMENT: Int
         get() = Build.VERSION_CODES.CUR_DEVELOPMENT
     override val LOLLIPOP: Int
