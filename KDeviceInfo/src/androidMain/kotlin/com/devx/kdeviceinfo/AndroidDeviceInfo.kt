@@ -10,7 +10,7 @@ import com.devx.kdeviceinfo.model.AndroidInfoImpl
 import com.devx.kdeviceinfo.model.android.AndroidInfo
 import com.devx.kdeviceinfo.model.ios.IosInfo
 
-class AndroidDeviceInfoX(private val context: Context? = null) : DeviceInfoX {
+internal class AndroidDeviceInfoX(private val context: Context? = null) : DeviceInfoX {
 
     private lateinit var cachedAndroidInfo: AndroidInfo
     override val androidInfo: AndroidInfo

@@ -23,7 +23,7 @@ internal class AndroidInfoImpl(private val context: Context) : AndroidInfo {
     override val version: Version
         get() {
             if (::cachedAndroidVersion.isInitialized.not()) {
-                cachedAndroidVersion = AndroidVersion()
+                cachedAndroidVersion = AndroidVersionImpl()
             }
             return cachedAndroidVersion
         }

@@ -33,14 +33,12 @@ internal fun App() = AppTheme {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(all = 16.dp)
+                .padding(horizontal = 16.dp)
                 .windowInsetsPadding(insets = WindowInsets.safeDrawing),
         ) {
             if (deviceInfoXState.isAndroid) {
-                Text(deviceInfoXState.androidInfo.toString())
                 ShowAndroidDeviceInfo(androidInfo = deviceInfoXState.androidInfo)
             } else {
-                Text(deviceInfoXState.iosInfo.toString())
                 ShowIosDeviceInfo(iosInfo = deviceInfoXState.iosInfo)
             }
         }
@@ -51,7 +49,6 @@ internal fun App() = AppTheme {
 private fun ShowAndroidDeviceInfo(androidInfo: AndroidInfo) {
     val verticalScrollState = rememberScrollState()
 
-    androidInfo.VERSION_CODES.LOLLIPOP
     Column(modifier = Modifier.verticalScroll(state = verticalScrollState)) {
         Text(text = "Device : ${androidInfo.device}")
         Text(text = "SdkInt : ${androidInfo.version.sdkInt}")
@@ -67,10 +64,6 @@ private fun ShowAndroidDeviceInfo(androidInfo: AndroidInfo) {
         Text(text = "Board : ${androidInfo.board}")
         Text(text = "Bootloader : ${androidInfo.bootloader}")
         Text(text = "Display : ${androidInfo.display}")
-        Text(text = "DisplayWidthInches : ${androidInfo.displayMetrics.widthInches}")
-        Text(text = "DisplayHeightInches : ${androidInfo.displayMetrics.heightInches}")
-        Text(text = "DisplayXDpi : ${androidInfo.displayMetrics.xDpi}")
-        Text(text = "DisplayYDpi : ${androidInfo.displayMetrics.yDpi}")
         Text(text = "Fingerprint : ${androidInfo.fingerprint}")
         Text(text = "Hardware : ${androidInfo.hardware}")
         Text(text = "Host : ${androidInfo.host}")
@@ -79,11 +72,6 @@ private fun ShowAndroidDeviceInfo(androidInfo: AndroidInfo) {
         Text(text = "Manufacturer : ${androidInfo.manufacturer}")
         Text(text = "Model : ${androidInfo.model}")
         Text(text = "Product : ${androidInfo.product}")
-//        Text(text = "SerialNumber : ${androidInfo.serialNumber}")
-//        Text(text = "SystemFeatureList : ${androidInfo.systemFeatureList}")
-        Text(text = "SupportedAbis : ${androidInfo.supportedAbis}")
-        Text(text = "Supported32BitAbis : ${androidInfo.supported32BitAbis}")
-        Text(text = "Supported64BitAbis : ${androidInfo.supported64BitAbis}")
     }
 }
 

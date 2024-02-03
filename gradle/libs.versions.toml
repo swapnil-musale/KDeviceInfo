@@ -25,7 +25,7 @@ compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.re
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidxAppcompat" }
 androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidxActivityCompose" }
 compose-uitooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "androidXCompose" }
-kDevice-info = { module = "io.github.swapnil-musale:KDeviceInfo", version.ref = "kDeviceInfo" }
+kDeviceinfo = { module = "io.github.swapnil-musale:KDeviceInfo", version.ref = "kDeviceInfo" }
 
 
 [plugins]

@@ -8,7 +8,7 @@ import com.devx.kdeviceinfo.model.IosInfoImpl
 import com.devx.kdeviceinfo.model.android.AndroidInfo
 import com.devx.kdeviceinfo.model.ios.IosInfo
 
-class IosDeviceInfoX : DeviceInfoX {
+internal class IosDeviceInfoX : DeviceInfoX {
 
     private val cachedAndroidInfo: IosInfoImpl? = null
 

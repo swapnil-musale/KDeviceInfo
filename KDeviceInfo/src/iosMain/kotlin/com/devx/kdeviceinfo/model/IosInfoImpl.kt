@@ -5,7 +5,7 @@ import com.devx.kdeviceinfo.model.ios.IosInfo
 import platform.Foundation.NSProcessInfo
 import platform.UIKit.UIDevice
 
-class IosInfoImpl : IosInfo {
+internal class IosInfoImpl : IosInfo {
 
     private lateinit var cachedDeviceOrientation: DeviceOrientation
 

@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import com.devx.kdeviceinfo.model.android.Version
 
-internal class AndroidVersion : Version {
+internal class AndroidVersionImpl : Version {
 
     init {
         Log.d("DeviceX", "${this.javaClass.name} Initialized")

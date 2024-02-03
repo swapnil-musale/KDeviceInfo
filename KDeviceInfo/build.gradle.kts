@@ -17,6 +17,11 @@ version = "${versionCatalog.findVersion("kDeviceInfoLibraryVersion").get()}"
 
 kotlin {
     androidTarget {
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "17"
+            }
+        }
         publishLibraryVariants("release")
     }
 
