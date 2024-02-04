@@ -10,12 +10,12 @@ import com.devx.kdeviceinfo.model.AndroidInfoImpl
 import com.devx.kdeviceinfo.model.android.AndroidInfo
 import com.devx.kdeviceinfo.model.ios.IosInfo
 
-internal class AndroidDeviceInfoX(private val context: Context? = null) : DeviceInfoX {
+internal class AndroidDeviceInfoXState(private val context: Context) : DeviceInfoXState {
 
     private lateinit var cachedAndroidInfo: AndroidInfo
     override val androidInfo: AndroidInfo
         get() {
-            if (::cachedAndroidInfo.isInitialized.not() && context != null) {
+            if (::cachedAndroidInfo.isInitialized.not()) {
                 cachedAndroidInfo = AndroidInfoImpl(context = context)
             }
             return cachedAndroidInfo
@@ -28,10 +28,10 @@ internal class AndroidDeviceInfoX(private val context: Context? = null) : Device
         get() = false
 }
 
-actual fun DeviceInfoState(): DeviceInfoX = AndroidDeviceInfoX()
+//actual fun DeviceInfoState(): DeviceInfoX = AndroidDeviceInfoX()
 
 @Composable
-actual fun rememberDeviceInfoXState(): DeviceInfoX {
+actual fun rememberDeviceInfoXState(): DeviceInfoXState {
     val context = LocalContext.current
-    return remember { AndroidDeviceInfoX(context = context) }
+    return remember { AndroidDeviceInfoXState(context = context) }
 }

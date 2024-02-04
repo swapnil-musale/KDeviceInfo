@@ -15,7 +15,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.devx.kdeviceinfo.DeviceInfoX
+import com.devx.kdeviceinfo.DeviceInfoXState
 import com.devx.kdeviceinfo.model.android.AndroidInfo
 import com.devx.kdeviceinfo.model.ios.IosInfo
 import com.devx.kdeviceinfo.rememberDeviceInfoXState
@@ -25,7 +25,7 @@ import com.devx.kdeviceinfo.sample.theme.AppTheme
 @Composable
 internal fun App() = AppTheme {
 
-    val deviceInfoXState: DeviceInfoX = rememberDeviceInfoXState()
+    val deviceInfoXState: DeviceInfoXState = rememberDeviceInfoXState()
 
     Scaffold(topBar = {
         TopAppBar(title = { Text(text = "KDeviceInfo Sample App") })

@@ -8,23 +8,28 @@ import com.devx.kdeviceinfo.model.IosInfoImpl
 import com.devx.kdeviceinfo.model.android.AndroidInfo
 import com.devx.kdeviceinfo.model.ios.IosInfo
 
-internal class IosDeviceInfoX : DeviceInfoX {
+internal class IosDeviceInfoXState : DeviceInfoXState {
 
-    private val cachedAndroidInfo: IosInfoImpl? = null
+    private lateinit var cachedIosInfo: IosInfo
 
     override val androidInfo: AndroidInfo
         get() = throw Exception("trying to access incorrect platform info")
     override val iosInfo: IosInfo
-        get() = cachedAndroidInfo ?: IosInfoImpl()
+        get() {
+            if (::cachedIosInfo.isInitialized.not()) {
+                cachedIosInfo = IosInfoImpl()
+            }
+            return cachedIosInfo
+        }
     override val isAndroid: Boolean
         get() = false
     override val isIos: Boolean
         get() = true
 }
 
-actual fun DeviceInfoState(): DeviceInfoX = IosDeviceInfoX()
+//actual fun DeviceInfoState(): DeviceInfoX = IosDeviceInfoX()
 
 @Composable
-actual fun rememberDeviceInfoXState(): DeviceInfoX {
-    return remember { IosDeviceInfoX() }
+actual fun rememberDeviceInfoXState(): DeviceInfoXState {
+    return remember { IosDeviceInfoXState() }
 }

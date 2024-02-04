@@ -6,14 +6,14 @@ import androidx.compose.runtime.Composable
 import com.devx.kdeviceinfo.model.android.AndroidInfo
 import com.devx.kdeviceinfo.model.ios.IosInfo
 
-interface DeviceInfoX {
+interface DeviceInfoXState {
     val isAndroid: Boolean
     val androidInfo: AndroidInfo
     val isIos: Boolean
     val iosInfo: IosInfo
 }
 
-expect fun DeviceInfoState(): DeviceInfoX
+//expect fun DeviceInfoState(): DeviceInfoX
 
 @Composable
-expect fun rememberDeviceInfoXState(): DeviceInfoX
+expect fun rememberDeviceInfoXState(): DeviceInfoXState
