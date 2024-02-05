@@ -34,7 +34,7 @@ Add the library dependency in Compose Multiplatform project shared module (```bu
 ```
 commonMain.dependencies {
     ...
-    implementation("io.github.swapnil-musale:KDeviceInfo:0.0.1-ALPHA")
+    implementation("io.github.swapnil-musale:KDeviceInfo:0.0.2")
 }
 ```
 
