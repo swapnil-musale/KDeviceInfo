@@ -2,6 +2,8 @@ package com.devx.kdeviceinfo.model
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
@@ -16,9 +18,18 @@ internal class AndroidInfoImpl(private val context: Context) : AndroidInfo {
         Log.d("DeviceX", "${this.javaClass.name} Initialized")
     }
 
+    private val packageManager: PackageManager = context.packageManager
+    private val packageInfo: PackageInfo = packageManager.getPackageInfo(context.packageName, 0)
+
     private lateinit var cachedAndroidVersion: Version
     private lateinit var cachedAndroidVersionCode: VersionCode
     private lateinit var cachedAndroidDisplayMetrics: DisplayMetrics
+
+    override val appName: String
+        get() = packageInfo.applicationInfo?.loadLabel(packageManager)?.toString().orEmpty()
+
+    override val packageName: String
+        get() = context.packageName
 
     override val version: Version
         get() {
