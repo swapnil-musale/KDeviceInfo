@@ -1,14 +1,15 @@
 <h1 align="center">KDeviceInfo</h1>
 
-KDeviceInfo is Compose Multiplatform Library to provide access to device information for android and ios platofrm.
+KDeviceInfo is Compose Multiplatform Library - provide access to device information of android and
+ios platform.
 
 <p align="center">
 <a href="https://github.com/swapnil-musale/KDeviceInfo"><img alt="Android" src="https://img.shields.io/badge/Platform-Android-Blue?style=for-the-badge"/></a>
 <a href="https://github.com/swapnil-musale/KDeviceInfo"><img alt="Ios" src="https://img.shields.io/badge/Platform-Ios-Blue?style=for-the-badge"/></a>
 <a href="https://github.com/swapnil-musale/KDeviceInfo"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/io.github.swapnil-musale/KDeviceInfo?style=for-the-badge"/></a>
 
-
 # Demo ❤️
+
 <table style="width:100%">
   <tr>
     <th>Android</th>
@@ -21,7 +22,9 @@ KDeviceInfo is Compose Multiplatform Library to provide access to device informa
 </table>
 
 # Installation
-This library is available on mavenCentral. To use it in your project add following block of code in ```settings.gradle.kts``` file
+
+This library is available on mavenCentral. To use it in your project add following block of code
+in ```settings.gradle.kts``` file
 
 ```
 repositories { 
@@ -31,6 +34,7 @@ repositories {
 ```
 
 Add the library dependency in Compose Multiplatform project shared module (```build.gradle.kts```)
+
 ```
 commonMain.dependencies {
     ...
@@ -39,7 +43,10 @@ commonMain.dependencies {
 ```
 
 # Usage
-Implementation of **KDeviceInfo** is pretty straightforward. Simply import the **DeviceInfoXState** and start accessing device information in your Compose Multiplatform project.
+
+Implementation of **KDeviceInfo** is pretty straightforward. Simply import the **DeviceInfoXState**
+and start accessing device information in your Compose Multiplatform project.
+
 ```
 @Composable
 fun DeviceInfoExample() {
@@ -66,12 +73,16 @@ fun DeviceInfoExample() {
 }
 ```
 
-You can access more info using this **State** API, for more information about API usage in your Compose Multiplatform project check out [Sample App][0].
+You can access more info using this **State** API, for more information about API usage in your
+Compose Multiplatform project check out [Sample App][0].
 
 # Contrubutions
-Contributions to KDeviceInfo are welcome! If you encounter any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request on GitHub.
 
-# Licence 
+Contributions to KDeviceInfo are welcome. If you encounter any issues or have suggestions for
+improvements, please feel free to open an issue or submit a pull request on GitHub.
+
+# Licence
+
 ```
 MIT License
 
@@ -95,6 +106,5 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
-
 
 [0]: https://github.com/swapnil-musale/KDeviceInfo/tree/read_me/sampleApp
