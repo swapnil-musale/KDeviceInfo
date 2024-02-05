@@ -3,6 +3,8 @@
 package com.devx.kdeviceinfo.model.android
 
 interface AndroidInfo {
+    val appName: String
+    val packageName: String
     val version: Version
     val board: String
     val bootloader: String

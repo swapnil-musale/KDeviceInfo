@@ -54,6 +54,8 @@ private fun ShowAndroidDeviceInfo(androidInfo: AndroidInfo) {
         Text(text = "SdkInt : ${androidInfo.version.sdkInt}")
         Text(text = "BaseOs : ${androidInfo.version.baseOs}")
         Text(text = "Release : ${androidInfo.version.release}")
+        Text(text = "App Name : ${androidInfo.appName}")
+        Text(text = "Package Name : ${androidInfo.packageName}")
         Text(text = "SecurityPatch : ${androidInfo.version.securityPatch}")
         Text(text = "previewSdkInt : ${androidInfo.version.previewSdkInt}")
         Text(text = "ReleaseOrCodeName : ${androidInfo.version.releaseOrCodeName}")
