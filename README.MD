@@ -76,10 +76,20 @@ fun DeviceInfoExample() {
 You can access more info using this **State** API, for more information about API usage in your
 Compose Multiplatform project check out [Sample App][0].
 
-# Contrubutions
+# Contributions
 
 Contributions to KDeviceInfo are welcome. If you encounter any issues or have suggestions for
 improvements, please feel free to open an issue or submit a pull request on GitHub.
+
+## Connect with me:
+
+[![Github Profile](https://skillicons.dev/icons?i=github)][1]
+[![LinkedIn](https://skillicons.dev/icons?i=linkedin)][2]
+
+
+[0]: https://github.com/swapnil-musale/KDeviceInfo/tree/read_me/sampleApp
+[1]: https://github.com/swapnil-musale
+[2]: https://linkedin.com/in/swapnil-musale
 
 # Licence
 
@@ -106,5 +116,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
-
-[0]: https://github.com/swapnil-musale/KDeviceInfo/blob/master/sampleApp/composeApp/src/commonMain/kotlin/com/devx/kdeviceinfo/sample/App.kt
