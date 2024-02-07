@@ -6,6 +6,7 @@ jetbrainsCompose = "1.5.12"
 
 # Library Versions
 annotation = "1.7.1"
+startupRuntime = "1.1.1"
 kDeviceInfoLibraryVersion = "0.0.2"
 
 # sampleApp Versions
@@ -20,6 +21,7 @@ kDeviceInfo = "0.0.2"
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "jetbrainsCompose" }
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "jetbrainsCompose" }
+startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "startupRuntime" }
 
 # sampleApp module libraries
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidxAppcompat" }

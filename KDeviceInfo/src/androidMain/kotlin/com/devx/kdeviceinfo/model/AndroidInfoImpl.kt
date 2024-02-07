@@ -1,25 +1,26 @@
 package com.devx.kdeviceinfo.model
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import com.devx.kdeviceinfo.initilizer.applicationContext
 import com.devx.kdeviceinfo.model.android.AndroidInfo
 import com.devx.kdeviceinfo.model.android.DisplayMetrics
 import com.devx.kdeviceinfo.model.android.Version
 import com.devx.kdeviceinfo.model.android.VersionCode
 
-internal class AndroidInfoImpl(private val context: Context) : AndroidInfo {
+internal class AndroidInfoImpl : AndroidInfo {
 
     init {
         Log.d("DeviceX", "${this.javaClass.name} Initialized")
     }
 
-    private val packageManager: PackageManager = context.packageManager
-    private val packageInfo: PackageInfo = packageManager.getPackageInfo(context.packageName, 0)
+    private val packageManager: PackageManager = applicationContext.packageManager
+    private val packageInfo: PackageInfo =
+        packageManager.getPackageInfo(applicationContext.packageName, 0)
 
     private lateinit var cachedAndroidVersion: Version
     private lateinit var cachedAndroidVersionCode: VersionCode
@@ -29,7 +30,7 @@ internal class AndroidInfoImpl(private val context: Context) : AndroidInfo {
         get() = packageInfo.applicationInfo?.loadLabel(packageManager)?.toString().orEmpty()
 
     override val packageName: String
-        get() = context.packageName
+        get() = applicationContext.packageName
 
     override val version: Version
         get() {
@@ -109,8 +110,7 @@ internal class AndroidInfoImpl(private val context: Context) : AndroidInfo {
     }
 
     private fun getSystemFeatures(): List<String> {
-        val packageManager = context.packageManager
-        return packageManager.systemAvailableFeatures
+        return applicationContext.packageManager.systemAvailableFeatures
             .filterNot {
                 it.name == null
             }.map {
