@@ -107,4 +107,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-[0]: https://github.com/swapnil-musale/KDeviceInfo/tree/read_me/sampleApp
+[0]: https://github.com/swapnil-musale/KDeviceInfo/blob/master/sampleApp/composeApp/src/commonMain/kotlin/com/devx/kdeviceinfo/sample/App.kt
