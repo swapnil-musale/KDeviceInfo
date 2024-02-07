@@ -7,13 +7,13 @@ jetbrainsCompose = "1.5.12"
 # Library Versions
 annotation = "1.7.1"
 startupRuntime = "1.1.1"
-kDeviceInfoLibraryVersion = "0.0.2"
+kDeviceInfoLibraryVersion = "0.0.3"
 
 # sampleApp Versions
 androidxAppcompat = "1.6.1"
 androidxActivityCompose = "1.8.2"
 androidXCompose = "1.6.0"
-kDeviceInfo = "0.0.2"
+kDeviceInfo = "0.0.3"
 
 
 [libraries]
