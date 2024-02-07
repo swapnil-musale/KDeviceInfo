@@ -1,7 +1,7 @@
 <h1 align="center">KDeviceInfo</h1>
 
-KDeviceInfo is Compose Multiplatform Library - provide access to device information of android and
-ios platform.
+KDeviceInfo is Kotlin Multiplatform Library - allows to access the device details of android and
+ios devices without writing expect actual boilerplate code.
 
 <p align="center">
 <a href="https://github.com/swapnil-musale/KDeviceInfo"><img alt="Android" src="https://img.shields.io/badge/Platform-Android-Blue?style=for-the-badge"/></a>
@@ -24,7 +24,7 @@ ios platform.
 # Installation
 
 This library is available on mavenCentral. To use it in your project add following block of code
-in ```settings.gradle.kts``` file
+in ```settings.gradle.kts``` file if not available.
 
 ```
 repositories { 
@@ -33,12 +33,24 @@ repositories {
 }
 ```
 
-Add the library dependency in Compose Multiplatform project shared module (```build.gradle.kts```)
+### 1. Kotlin Multiplatform
+Add the library dependency in ```shared``` module (```build.gradle.kts```)
 
 ```
 commonMain.dependencies {
     ...
-    implementation("io.github.swapnil-musale:KDeviceInfo:0.0.2")
+    api or implementation("io.github.swapnil-musale:KDeviceInfo:0.0.3")
+}
+```
+
+### 2. Compose Multiplatform
+
+Add the library dependency in ```composeApp``` module (```build.gradle.kts```)
+
+```
+commonMain.dependencies {
+    ...
+    implementation("io.github.swapnil-musale:KDeviceInfo:0.0.3")
 }
 ```
 
@@ -68,6 +80,25 @@ fun DeviceInfoExample() {
             Text(text = "SystemName : ${iosInfo.systemName}")
             Text(text = "SystemVersion : ${iosInfo.systemVersion}")
             Text(text = "IsPhysicalDevice : ${iosInfo.isPhysicalDevice}")
+        }
+    }
+}
+```
+
+To access the device details outside the Composable function you can make use of **DeviceInfoState** as below
+
+```
+class AppViewModel {
+
+    private val deviceInfoXState: DeviceInfoXState = DeviceInfoState()
+
+    init {
+        if (deviceInfoXState.isAndroid) {
+            val androidInfo: AndroidInfo = deviceInfoXState.androidInfo
+            println("DeviceInfoX - App Name : ${androidInfo.appName}")
+        } else {
+            val iosInfo: IosInfo = deviceInfoXState.iosInfo
+            println("DeviceInfoX - System Name : ${iosInfo.systemName}")
         }
     }
 }
