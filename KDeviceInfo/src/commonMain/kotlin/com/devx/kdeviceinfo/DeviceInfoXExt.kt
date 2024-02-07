@@ -23,7 +23,7 @@ fun OnPlatform(
 //    onAndroid: ((AndroidInfo) -> Unit)? = null,
 //    onIos: ((IosInfo) -> Unit)? = null,
 //) {
-//    val deviceInfoXState = DeviceInfoXState()
+//    val deviceInfoXState = DeviceInfoState()
 //    if (deviceInfoXState.isAndroid) {
 //        onAndroid?.invoke(deviceInfoXState.androidInfo)
 //    } else {

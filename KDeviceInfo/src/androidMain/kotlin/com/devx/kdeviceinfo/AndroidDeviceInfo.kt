@@ -27,7 +27,7 @@ internal class AndroidDeviceInfoXState : DeviceInfoXState {
         get() = false
 }
 
-//actual fun DeviceInfoState(): DeviceInfoX = AndroidDeviceInfoX()
+actual fun DeviceInfoState(): DeviceInfoXState = AndroidDeviceInfoXState()
 
 @Composable
 actual fun rememberDeviceInfoXState(): DeviceInfoXState {

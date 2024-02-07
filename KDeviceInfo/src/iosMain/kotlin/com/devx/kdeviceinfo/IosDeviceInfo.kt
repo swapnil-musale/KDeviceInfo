@@ -1,4 +1,4 @@
-@file:Suppress("FunctionName")
+@file:Suppress("FunctionName", "unused")
 
 package com.devx.kdeviceinfo
 
@@ -27,7 +27,7 @@ internal class IosDeviceInfoXState : DeviceInfoXState {
         get() = true
 }
 
-//actual fun DeviceInfoState(): DeviceInfoX = IosDeviceInfoX()
+actual fun DeviceInfoState(): DeviceInfoXState = IosDeviceInfoXState()
 
 @Composable
 actual fun rememberDeviceInfoXState(): DeviceInfoXState {

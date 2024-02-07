@@ -13,7 +13,7 @@ interface DeviceInfoXState {
     val iosInfo: IosInfo
 }
 
-//expect fun DeviceInfoState(): DeviceInfoX
+expect fun DeviceInfoState(): DeviceInfoXState
 
 @Composable
 expect fun rememberDeviceInfoXState(): DeviceInfoXState
