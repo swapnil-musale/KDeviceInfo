@@ -12,7 +12,7 @@ kDeviceInfoLibraryVersion = "0.0.3"
 # sampleApp Versions
 androidxAppcompat = "1.6.1"
 androidxActivityCompose = "1.8.2"
-androidXCompose = "1.6.0"
+androidXCompose = "1.6.1"
 kDeviceInfo = "0.0.3"
 
 
