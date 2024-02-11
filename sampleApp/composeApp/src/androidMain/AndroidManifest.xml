@@ -4,7 +4,7 @@
     <application
         android:name=".AndroidApp"
         android:icon="@android:drawable/ic_menu_compass"
-        android:label="sampleApp"
+        android:label="KDeviceInfo"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
         <activity
             android:name=".AppActivity"

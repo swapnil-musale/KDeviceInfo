@@ -1,15 +1,10 @@
 package com.devx.kdeviceinfo.model
 
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
 import com.devx.kdeviceinfo.model.android.Version
 
 internal class AndroidVersionImpl : Version {
-
-    init {
-        Log.d("DeviceX", "${this.javaClass.name} Initialized")
-    }
 
     override val baseOs: String
         @RequiresApi(Build.VERSION_CODES.M)

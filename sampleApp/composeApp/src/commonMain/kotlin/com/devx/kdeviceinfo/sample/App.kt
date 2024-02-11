@@ -1,11 +1,8 @@
 package com.devx.kdeviceinfo.sample
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -33,8 +30,8 @@ internal fun App() = AppTheme {
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .padding(paddingValues = it)
                 .padding(horizontal = 16.dp)
-                .windowInsetsPadding(insets = WindowInsets.safeDrawing),
         ) {
             if (deviceInfoXState.isAndroid) {
                 ShowAndroidDeviceInfo(androidInfo = deviceInfoXState.androidInfo)
@@ -50,30 +47,20 @@ private fun ShowAndroidDeviceInfo(androidInfo: AndroidInfo) {
     val verticalScrollState = rememberScrollState()
 
     Column(modifier = Modifier.verticalScroll(state = verticalScrollState)) {
+        Text(text = "Language Code : ${androidInfo.locale.languageCode}")
+        Text(text = "Region : ${androidInfo.locale.region}")
+        Text(text = "Version Code : ${androidInfo.versionCode}")
+        Text(text = "Version Name : ${androidInfo.versionName}")
         Text(text = "Device : ${androidInfo.device}")
         Text(text = "SdkInt : ${androidInfo.version.sdkInt}")
-        Text(text = "BaseOs : ${androidInfo.version.baseOs}")
         Text(text = "Release : ${androidInfo.version.release}")
         Text(text = "App Name : ${androidInfo.appName}")
         Text(text = "Package Name : ${androidInfo.packageName}")
-        Text(text = "SecurityPatch : ${androidInfo.version.securityPatch}")
-        Text(text = "previewSdkInt : ${androidInfo.version.previewSdkInt}")
-        Text(text = "ReleaseOrCodeName : ${androidInfo.version.releaseOrCodeName}")
-        Text(text = "MediaPerformanceClass : ${androidInfo.version.mediaPerformanceClass}")
-        Text(text = "Incremental : ${androidInfo.version.incremental}")
-        Text(text = "ReleaseOrPreviewDisplay : ${androidInfo.version.releaseOrPreviewDisplay}")
         Text(text = "CodeName : ${androidInfo.version.codeName}")
         Text(text = "Board : ${androidInfo.board}")
-        Text(text = "Bootloader : ${androidInfo.bootloader}")
-        Text(text = "Display : ${androidInfo.display}")
-        Text(text = "Fingerprint : ${androidInfo.fingerprint}")
-        Text(text = "Hardware : ${androidInfo.hardware}")
-        Text(text = "Host : ${androidInfo.host}")
-        Text(text = "Id : ${androidInfo.id}")
         Text(text = "IsPhysicalDevice : ${androidInfo.isPhysicalDevice}")
         Text(text = "Manufacturer : ${androidInfo.manufacturer}")
         Text(text = "Model : ${androidInfo.model}")
-        Text(text = "Product : ${androidInfo.product}")
     }
 }
 
@@ -82,15 +69,18 @@ private fun ShowIosDeviceInfo(iosInfo: IosInfo) {
     val verticalScrollState = rememberScrollState()
 
     Column(modifier = Modifier.verticalScroll(state = verticalScrollState)) {
+        Text(text = "Language Code : ${iosInfo.locale.languageCode}")
+        Text(text = "Region : ${iosInfo.locale.region}")
+        Text(text = "App Name : ${iosInfo.appName}")
+        Text(text = "Bundle Id : ${iosInfo.bundleId}")
+        Text(text = "App Version : ${iosInfo.appVersion}")
+        Text(text = "App Short Version : ${iosInfo.appShortVersion}")
         Text(text = "Name : ${iosInfo.name}")
         Text(text = "Model : ${iosInfo.model}")
         Text(text = "SystemName : ${iosInfo.systemName}")
         Text(text = "SystemVersion : ${iosInfo.systemVersion}")
         Text(text = "LocalizedModel : ${iosInfo.localizedModel}")
         Text(text = "IsPhysicalDevice : ${iosInfo.isPhysicalDevice}")
-        Text(text = "IdentifierForVendor : ${iosInfo.identifierForVendor}")
-        Text(text = "IsMultitaskingSupported : ${iosInfo.isMultitaskingSupported}")
-        Text(text = "IsGeneratingDeviceOrientationNotifications : ${iosInfo.isGeneratingDeviceOrientationNotifications}")
         Text(text = "DeviceOrientation : ${iosInfo.deviceOrientation.getDeviceOrientation()}")
     }
 }

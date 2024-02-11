@@ -1,14 +1,9 @@
 package com.devx.kdeviceinfo.model
 
 import android.content.res.Resources
-import android.util.Log
 import com.devx.kdeviceinfo.model.android.DisplayMetrics
 
 internal class AndroidDisplayMetricsImpl : DisplayMetrics {
-
-    init {
-        Log.d("DeviceX", "${this.javaClass.name} Initialized")
-    }
 
     private val displayMetrics: android.util.DisplayMetrics? = Resources.getSystem().displayMetrics
     private val widthPx: Double = displayMetrics?.widthPixels?.toDouble() ?: 0.0

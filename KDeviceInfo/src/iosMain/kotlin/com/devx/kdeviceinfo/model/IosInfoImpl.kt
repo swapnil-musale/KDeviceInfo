@@ -1,8 +1,14 @@
 package com.devx.kdeviceinfo.model
 
+import com.devx.kdeviceinfo.model.common.Locale
 import com.devx.kdeviceinfo.model.ios.DeviceOrientation
 import com.devx.kdeviceinfo.model.ios.IosInfo
+import platform.Foundation.NSBundle
+import platform.Foundation.NSLocale
 import platform.Foundation.NSProcessInfo
+import platform.Foundation.currentLocale
+import platform.Foundation.languageCode
+import platform.Foundation.regionCode
 import platform.UIKit.UIDevice
 
 internal class IosInfoImpl : IosInfo {
@@ -21,7 +27,6 @@ internal class IosInfoImpl : IosInfo {
         get() = UIDevice.currentDevice.localizedModel
     override val identifierForVendor: String
         get() = UIDevice.currentDevice.identifierForVendor?.UUIDString.orEmpty()
-
     override val isPhysicalDevice: Boolean
         get() = NSProcessInfo.processInfo.environment["SIMULATOR_UDID"] == null
     override val isMultitaskingSupported: Boolean
@@ -35,4 +40,18 @@ internal class IosInfoImpl : IosInfo {
             }
             return cachedDeviceOrientation
         }
+    override val appName: String
+        get() = (NSBundle.mainBundle.infoDictionary?.get("CFBundleDisplayName")
+            ?: NSBundle.mainBundle.infoDictionary?.get("CFBundleName")) as String
+    override val bundleId: String
+        get() = NSBundle.mainBundle.bundleIdentifier.orEmpty()
+    override val appVersion: String
+        get() = NSBundle.mainBundle.infoDictionary?.get("CFBundleVersion") as String
+    override val appShortVersion: String
+        get() = NSBundle.mainBundle.infoDictionary?.get("CFBundleShortVersionString") as String
+    override val locale: Locale
+        get() = Locale(
+            languageCode = NSLocale.currentLocale.languageCode,
+            region = NSLocale.currentLocale.regionCode.orEmpty()
+        )
 }
