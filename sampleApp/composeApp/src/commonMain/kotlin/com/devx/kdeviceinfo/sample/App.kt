@@ -53,28 +53,14 @@ private fun ShowAndroidDeviceInfo(androidInfo: AndroidInfo) {
         Text(text = "Version Name : ${androidInfo.versionName}")
         Text(text = "Device : ${androidInfo.device}")
         Text(text = "SdkInt : ${androidInfo.version.sdkInt}")
-        Text(text = "BaseOs : ${androidInfo.version.baseOs}")
         Text(text = "Release : ${androidInfo.version.release}")
         Text(text = "App Name : ${androidInfo.appName}")
         Text(text = "Package Name : ${androidInfo.packageName}")
-        Text(text = "SecurityPatch : ${androidInfo.version.securityPatch}")
-        Text(text = "previewSdkInt : ${androidInfo.version.previewSdkInt}")
-        Text(text = "ReleaseOrCodeName : ${androidInfo.version.releaseOrCodeName}")
-        Text(text = "MediaPerformanceClass : ${androidInfo.version.mediaPerformanceClass}")
-        Text(text = "Incremental : ${androidInfo.version.incremental}")
-        Text(text = "ReleaseOrPreviewDisplay : ${androidInfo.version.releaseOrPreviewDisplay}")
         Text(text = "CodeName : ${androidInfo.version.codeName}")
         Text(text = "Board : ${androidInfo.board}")
-        Text(text = "Bootloader : ${androidInfo.bootloader}")
-        Text(text = "Display : ${androidInfo.display}")
-        Text(text = "Fingerprint : ${androidInfo.fingerprint}")
-        Text(text = "Hardware : ${androidInfo.hardware}")
-        Text(text = "Host : ${androidInfo.host}")
-        Text(text = "Id : ${androidInfo.id}")
         Text(text = "IsPhysicalDevice : ${androidInfo.isPhysicalDevice}")
         Text(text = "Manufacturer : ${androidInfo.manufacturer}")
         Text(text = "Model : ${androidInfo.model}")
-        Text(text = "Product : ${androidInfo.product}")
     }
 }
 
@@ -95,9 +81,6 @@ private fun ShowIosDeviceInfo(iosInfo: IosInfo) {
         Text(text = "SystemVersion : ${iosInfo.systemVersion}")
         Text(text = "LocalizedModel : ${iosInfo.localizedModel}")
         Text(text = "IsPhysicalDevice : ${iosInfo.isPhysicalDevice}")
-        Text(text = "IdentifierForVendor : ${iosInfo.identifierForVendor}")
-        Text(text = "IsMultitaskingSupported : ${iosInfo.isMultitaskingSupported}")
-        Text(text = "IsGeneratingDeviceOrientationNotifications : ${iosInfo.isGeneratingDeviceOrientationNotifications}")
         Text(text = "DeviceOrientation : ${iosInfo.deviceOrientation.getDeviceOrientation()}")
     }
 }
