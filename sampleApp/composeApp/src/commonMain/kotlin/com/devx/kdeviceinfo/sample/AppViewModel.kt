@@ -1,13 +1,12 @@
 package com.devx.kdeviceinfo.sample
 
-import com.devx.kdeviceinfo.DeviceInfoState
 import com.devx.kdeviceinfo.DeviceInfoXState
 import com.devx.kdeviceinfo.model.android.AndroidInfo
 import com.devx.kdeviceinfo.model.ios.IosInfo
 
 class AppViewModel {
 
-    private val deviceInfoXState: DeviceInfoXState = DeviceInfoState()
+    private val deviceInfoXState: DeviceInfoXState = DeviceInfoXState()
 
     init {
         if (deviceInfoXState.isAndroid) {

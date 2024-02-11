@@ -2,6 +2,8 @@
 
 package com.devx.kdeviceinfo.model.android
 
+import com.devx.kdeviceinfo.model.common.Locale
+
 interface AndroidInfo {
     val appName: String
     val packageName: String
@@ -26,4 +28,7 @@ interface AndroidInfo {
     val displayMetrics: DisplayMetrics
     val serialNumber: String
     val VERSION_CODES: VersionCode
+    val versionName: String
+    val versionCode: Long
+    val locale: Locale
 }

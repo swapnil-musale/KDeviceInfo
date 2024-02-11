@@ -87,6 +87,7 @@ publishing {
                 name.set("KDeviceInfo")
                 description.set("KDeviceInfo is Kotlin Multiplatform library to access the device info without writing the boilerplate code")
                 url.set("https://github.com/swapnil-musale/KDeviceInfo")
+                inceptionYear = "2024"
 
                 licenses {
                     license {

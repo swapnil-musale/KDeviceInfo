@@ -4,19 +4,17 @@ import android.annotation.SuppressLint
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.core.app.LocaleManagerCompat
+import androidx.core.content.pm.PackageInfoCompat
 import com.devx.kdeviceinfo.initilizer.applicationContext
 import com.devx.kdeviceinfo.model.android.AndroidInfo
 import com.devx.kdeviceinfo.model.android.DisplayMetrics
 import com.devx.kdeviceinfo.model.android.Version
 import com.devx.kdeviceinfo.model.android.VersionCode
+import com.devx.kdeviceinfo.model.common.Locale
 
 internal class AndroidInfoImpl : AndroidInfo {
-
-    init {
-        Log.d("DeviceX", "${this.javaClass.name} Initialized")
-    }
 
     private val packageManager: PackageManager = applicationContext.packageManager
     private val packageInfo: PackageInfo =
@@ -92,6 +90,21 @@ internal class AndroidInfoImpl : AndroidInfo {
                 cachedAndroidVersionCode = AndroidVersionCodeImpl()
             }
             return cachedAndroidVersionCode
+        }
+
+    override val versionName: String
+        get() = packageInfo.versionName
+
+    override val versionCode: Long
+        get() = PackageInfoCompat.getLongVersionCode(packageInfo)
+
+    override val locale: Locale
+        get() {
+            val locale = LocaleManagerCompat.getSystemLocales(applicationContext).get(0)
+            return Locale(
+                languageCode = locale?.language.orEmpty(),
+                region = locale?.country.orEmpty()
+            )
         }
 
     private fun getIsPhysicalDevice(): Boolean {

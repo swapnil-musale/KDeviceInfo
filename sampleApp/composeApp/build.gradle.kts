@@ -28,8 +28,8 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.material3)
-            implementation(libs.kDeviceinfo)
-//            implementation(projects.kDeviceInfo)
+//            implementation(libs.kDeviceinfo)
+            implementation(projects.kDeviceInfo)
         }
 
         androidMain.dependencies {
