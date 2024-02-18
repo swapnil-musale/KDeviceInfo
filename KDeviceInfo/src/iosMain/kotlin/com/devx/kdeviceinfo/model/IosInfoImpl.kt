@@ -13,7 +13,9 @@ import platform.UIKit.UIDevice
 
 internal class IosInfoImpl : IosInfo {
 
-    private lateinit var cachedDeviceOrientation: DeviceOrientation
+    private val iosDeviceOrientation: DeviceOrientation by lazy {
+        IosDeviceOrientationImpl()
+    }
 
     override val name: String
         get() = UIDevice.currentDevice.name
@@ -34,12 +36,7 @@ internal class IosInfoImpl : IosInfo {
     override val isGeneratingDeviceOrientationNotifications: Boolean
         get() = UIDevice.currentDevice.isGeneratingDeviceOrientationNotifications()
     override val deviceOrientation: DeviceOrientation
-        get() {
-            if (::cachedDeviceOrientation.isInitialized.not()) {
-                cachedDeviceOrientation = IosDeviceOrientationImpl()
-            }
-            return cachedDeviceOrientation
-        }
+        get() = iosDeviceOrientation
     override val appName: String
         get() = (NSBundle.mainBundle.infoDictionary?.get("CFBundleDisplayName")
             ?: NSBundle.mainBundle.infoDictionary?.get("CFBundleName")) as String

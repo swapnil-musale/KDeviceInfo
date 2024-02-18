@@ -10,15 +10,12 @@ import com.devx.kdeviceinfo.model.ios.IosInfo
 
 actual class DeviceInfoXState {
 
-    private lateinit var cachedAndroidInfo: AndroidInfo
+    private val androidInfoData: AndroidInfo by lazy {
+        AndroidInfoImpl()
+    }
 
     actual val androidInfo: AndroidInfo
-        get() {
-            if (::cachedAndroidInfo.isInitialized.not()) {
-                cachedAndroidInfo = AndroidInfoImpl()
-            }
-            return cachedAndroidInfo
-        }
+        get() = androidInfoData
     actual val iosInfo: IosInfo
         get() = throw Exception("trying to access incorrect platform info")
     actual val isAndroid: Boolean

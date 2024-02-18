@@ -16,13 +16,21 @@ import com.devx.kdeviceinfo.model.common.Locale
 
 internal class AndroidInfoImpl : AndroidInfo {
 
-    private val packageManager: PackageManager = applicationContext.packageManager
-    private val packageInfo: PackageInfo =
+    private val packageManager: PackageManager by lazy {
+        applicationContext.packageManager
+    }
+    private val packageInfo: PackageInfo by lazy {
         packageManager.getPackageInfo(applicationContext.packageName, 0)
-
-    private lateinit var cachedAndroidVersion: Version
-    private lateinit var cachedAndroidVersionCode: VersionCode
-    private lateinit var cachedAndroidDisplayMetrics: DisplayMetrics
+    }
+    private val androidVersion: Version by lazy {
+        AndroidVersionImpl()
+    }
+    private val androidVersionCode: VersionCode by lazy {
+        AndroidVersionCodeImpl()
+    }
+    private val androidDisplayMetrics: DisplayMetrics by lazy {
+        AndroidDisplayMetricsImpl()
+    }
 
     override val appName: String
         get() = packageInfo.applicationInfo?.loadLabel(packageManager)?.toString().orEmpty()
@@ -31,12 +39,7 @@ internal class AndroidInfoImpl : AndroidInfo {
         get() = applicationContext.packageName
 
     override val version: Version
-        get() {
-            if (::cachedAndroidVersion.isInitialized.not()) {
-                cachedAndroidVersion = AndroidVersionImpl()
-            }
-            return cachedAndroidVersion
-        }
+        get() = androidVersion
     override val board: String
         get() = Build.BOARD
     override val bootloader: String
@@ -73,24 +76,14 @@ internal class AndroidInfoImpl : AndroidInfo {
         get() = getSystemFeatures()
 
     override val displayMetrics: DisplayMetrics
-        get() {
-            if (::cachedAndroidDisplayMetrics.isInitialized.not()) {
-                cachedAndroidDisplayMetrics = AndroidDisplayMetricsImpl()
-            }
-            return cachedAndroidDisplayMetrics
-        }
+        get() = androidDisplayMetrics
 
     override val serialNumber: String
         @SuppressLint("MissingPermission")
         @RequiresApi(Build.VERSION_CODES.O)
         get() = Build.getSerial()
     override val VERSION_CODES: VersionCode
-        get() {
-            if (::cachedAndroidVersionCode.isInitialized.not()) {
-                cachedAndroidVersionCode = AndroidVersionCodeImpl()
-            }
-            return cachedAndroidVersionCode
-        }
+        get() = androidVersionCode
 
     override val versionName: String
         get() = packageInfo.versionName
