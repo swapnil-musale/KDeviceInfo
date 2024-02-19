@@ -9,7 +9,7 @@ ios devices without writing expect actual boilerplate code.
 <a href="https://github.com/swapnil-musale/KDeviceInfo"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/io.github.swapnil-musale/KDeviceInfo?style=for-the-badge"/></a>
 <a href="https://github.com/swapnil-musale/KDeviceInfo"><img alt="CI Status" src="https://img.shields.io/github/actions/workflow/status/swapnil-musale/KDeviceInfo/build.yml?style=for-the-badge"/></a>
 
-# Demo ❤️
+# Demo   ❤️
 
 <table style="width:100%">
   <tr>
