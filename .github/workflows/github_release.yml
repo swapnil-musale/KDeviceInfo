@@ -28,6 +28,6 @@ jobs:
       - name: Create Github Release
         uses: softprops/action-gh-release@v1
         with:
-          name: github.event.pull_request.labels[0].name
+          name: github.event.pull_request.labels[1].name
           generate_release_notes: true
           prerelease: false
