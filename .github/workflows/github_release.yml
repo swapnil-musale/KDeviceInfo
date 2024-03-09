@@ -1,33 +1,33 @@
-name: Github Release
-
-on:
-  pull_request:
-    types: [ opened, labeled, unlabeled ]
-
-permissions:
-  contents: write
-
-jobs:
-  validate-label:
-    name: Validate Label
-    runs-on: ubuntu-latest
-    steps:
-      - name: Exit if pull request does not have release label
-        if: contains(github.event.pull_request.labels.*.name, 'release')
-        run: exit -1
-
-  release:
-    needs: validate-label
-    name: Prepare Github Release
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Create Github Release
-        uses: softprops/action-gh-release@v2
-        with:
-          name: github.event.pull_request.labels[1].name
-          generate_release_notes: true
-          prerelease: false
+#name: Github Release
+#
+#on:
+#  pull_request:
+#    types: [ opened, labeled, unlabeled ]
+#
+#permissions:
+#  contents: write
+#
+#jobs:
+#  validate-label:
+#    name: Validate Label
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Exit if pull request does not have release label
+#        if: contains(github.event.pull_request.labels.*.name, 'release')
+#        run: exit -1
+#
+#  release:
+#    needs: validate-label
+#    name: Prepare Github Release
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Checkout Repository
+#        uses: actions/checkout@v4
+#
+#      - name: Create Github Release
+#        uses: softprops/action-gh-release@v2
+#        with:
+#          name: github.event.pull_request.labels[1].name
+#          generate_release_notes: true
+#          prerelease: false
