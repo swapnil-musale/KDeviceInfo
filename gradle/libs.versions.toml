@@ -2,7 +2,7 @@
 # Plugin Versions
 kotlin = "1.9.22"
 androidGrdlePlugin = "8.3.0"
-jetbrainsCompose = "1.6.0"
+jetbrainsCompose = "1.6.1"
 
 # Library Versions
 annotation = "1.7.1"
