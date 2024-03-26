@@ -9,6 +9,7 @@ import androidx.core.app.LocaleManagerCompat
 import androidx.core.content.pm.PackageInfoCompat
 import com.devx.kdeviceinfo.initilizer.applicationContext
 import com.devx.kdeviceinfo.model.android.AndroidInfo
+import com.devx.kdeviceinfo.model.android.DeviceOrientation
 import com.devx.kdeviceinfo.model.android.DisplayMetrics
 import com.devx.kdeviceinfo.model.android.Version
 import com.devx.kdeviceinfo.model.android.VersionCode
@@ -99,6 +100,9 @@ internal class AndroidInfoImpl : AndroidInfo {
                 region = locale?.country.orEmpty()
             )
         }
+
+    override val deviceOrientation: DeviceOrientation
+        get() = AndroidDeviceOrientation()
 
     private fun getIsPhysicalDevice(): Boolean {
         return !((Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))

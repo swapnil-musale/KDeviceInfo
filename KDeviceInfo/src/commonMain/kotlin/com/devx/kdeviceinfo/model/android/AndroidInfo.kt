@@ -31,4 +31,5 @@ interface AndroidInfo {
     val versionName: String
     val versionCode: Long
     val locale: Locale
+    val deviceOrientation: DeviceOrientation
 }

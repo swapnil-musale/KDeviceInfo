@@ -4,6 +4,7 @@ package com.devx.kdeviceinfo
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalConfiguration
 import com.devx.kdeviceinfo.model.AndroidInfoImpl
 import com.devx.kdeviceinfo.model.android.AndroidInfo
 import com.devx.kdeviceinfo.model.ios.IosInfo
@@ -26,5 +27,6 @@ actual class DeviceInfoXState {
 
 @Composable
 actual fun rememberDeviceInfoXState(): DeviceInfoXState {
-    return remember { DeviceInfoXState() }
+    val orientation = LocalConfiguration.current.orientation
+    return remember(key1 = orientation) { DeviceInfoXState() }
 }

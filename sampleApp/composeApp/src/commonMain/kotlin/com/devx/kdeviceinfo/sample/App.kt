@@ -61,6 +61,7 @@ private fun ShowAndroidDeviceInfo(androidInfo: AndroidInfo) {
         Text(text = "IsPhysicalDevice : ${androidInfo.isPhysicalDevice}")
         Text(text = "Manufacturer : ${androidInfo.manufacturer}")
         Text(text = "Model : ${androidInfo.model}")
+        Text(text = "Orientation : ${androidInfo.deviceOrientation.getDeviceOrientation()}")
     }
 }
 
