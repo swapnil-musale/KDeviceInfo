@@ -1,8 +1,8 @@
 [versions]
 # Plugin Versions
-kotlin = "1.9.22"
-androidGrdlePlugin = "8.3.0"
-jetbrainsCompose = "1.6.0"
+kotlin = "1.9.23"
+androidGrdlePlugin = "8.3.1"
+jetbrainsCompose = "1.6.1"
 
 # Library Versions
 annotation = "1.7.1"
@@ -13,7 +13,7 @@ kDeviceInfoLibraryVersion = "0.0.4"
 # sampleApp Versions
 androidxAppcompat = "1.6.1"
 androidxActivityCompose = "1.8.2"
-androidXCompose = "1.6.3"
+androidXCompose = "1.6.4"
 kDeviceInfo = "0.0.4"
 
 
