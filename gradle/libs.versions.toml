@@ -8,13 +8,13 @@ jetbrainsCompose = "1.6.1"
 annotation = "1.7.1"
 startupRuntime = "1.1.1"
 androidXCore = "1.12.0"
-kDeviceInfoLibraryVersion = "0.0.4"
+kDeviceInfoLibraryVersion = "0.0.5"
 
 # sampleApp Versions
 androidxAppcompat = "1.6.1"
 androidxActivityCompose = "1.8.2"
 androidXCompose = "1.6.4"
-kDeviceInfo = "0.0.4"
+kDeviceInfo = "0.0.5"
 
 
 [libraries]
