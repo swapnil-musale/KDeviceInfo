@@ -7,13 +7,8 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.androidLibrary)
-    id("convention.publication")
+    alias(libs.plugins.mavenPublish)
 }
-
-val Project.versionCatalog
-    get(): VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
-group = "io.github.swapnil-musale"
-version = "${versionCatalog.findVersion("kDeviceInfoLibraryVersion").get()}"
 
 kotlin {
     androidTarget {
@@ -73,6 +68,19 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "sonatype"
+            setUrl("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+            credentials {
+                username = System.getProperty("mavenCentralUsername")
+                password = System.getProperty("mavenCentralPassword")
+            }
+        }
     }
 }
 

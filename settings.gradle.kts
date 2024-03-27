@@ -19,5 +19,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "KMP-DeviceInfo"
 include(":KDeviceInfo")
-includeBuild("convention-plugins")
 include("sampleApp:composeApp")
