@@ -11,14 +11,15 @@ ios devices without writing expect actual boilerplate code.
 
 # Demo ❤️
 
+
 <table style="width:100%">
   <tr>
     <th>Android</th>
     <th>Ios</th> 
   </tr>
   <tr>
-    <td><img src = "https://github.com/swapnil-musale/KDeviceInfo/assets/15209914/b84d855b-71db-4b05-aa2f-28b7662b5d0c" width=250/></td> 
-    <td><img src = "https://github.com/swapnil-musale/KDeviceInfo/assets/15209914/f103e70e-1188-48cc-933c-8950ad5f467e" width=250/></td>
+    <td><img src = "https://github.com/swapnil-musale/KDeviceInfo/assets/15209914/230a0983-ca7b-4983-a17d-e90cc639add5" width=250/></td> 
+    <td><img src = "https://github.com/swapnil-musale/KDeviceInfo/assets/15209914/2024b962-e3ea-4e3f-beef-81561ca8371e" width=250/></td>
   </tr>
 </table>
 
