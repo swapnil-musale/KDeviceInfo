@@ -63,15 +63,3 @@ jobs:
           git push origin $TAG
         env:
           TAG: ${{ github.event.inputs.versionName }}
-
-      - name: Create Release on GitHub
-        id: create_release
-        uses: ncipollo/release-action@v1
-        env:
-          token: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag: ${{ github.event.inputs.versionName }}
-          name: ${{ github.event.inputs.versionName }}
-          generateReleaseNotes: true
-          draft: true
-          prerelease: false
