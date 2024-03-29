@@ -41,7 +41,7 @@ jobs:
       - name: Publish Library
         run: |
           echo "Publishing library🚀"
-          ./gradlew createStagingRepository --no-configuration-cache
+          ./gradlew publishAllPublicationsToMavenCentralRepository --no-configuration-cache
           echo "Published✅"
 
 #          echo "Releasing repository...🚀"
