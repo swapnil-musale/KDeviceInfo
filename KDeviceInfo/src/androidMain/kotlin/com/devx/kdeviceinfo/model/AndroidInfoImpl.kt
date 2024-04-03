@@ -9,10 +9,10 @@ import androidx.core.app.LocaleManagerCompat
 import androidx.core.content.pm.PackageInfoCompat
 import com.devx.kdeviceinfo.initilizer.applicationContext
 import com.devx.kdeviceinfo.model.android.AndroidInfo
-import com.devx.kdeviceinfo.model.android.DeviceOrientation
 import com.devx.kdeviceinfo.model.android.DisplayMetrics
 import com.devx.kdeviceinfo.model.android.Version
 import com.devx.kdeviceinfo.model.android.VersionCode
+import com.devx.kdeviceinfo.model.common.DeviceOrientation
 import com.devx.kdeviceinfo.model.common.Locale
 
 internal class AndroidInfoImpl : AndroidInfo {
@@ -31,6 +31,10 @@ internal class AndroidInfoImpl : AndroidInfo {
     }
     private val androidDisplayMetrics: DisplayMetrics by lazy {
         AndroidDisplayMetricsImpl()
+    }
+
+    private val androidDeviceOrientation: DeviceOrientation by lazy {
+        AndroidDeviceOrientation()
     }
 
     override val appName: String
@@ -102,7 +106,7 @@ internal class AndroidInfoImpl : AndroidInfo {
         }
 
     override val deviceOrientation: DeviceOrientation
-        get() = AndroidDeviceOrientation()
+        get() = androidDeviceOrientation
 
     private fun getIsPhysicalDevice(): Boolean {
         return !((Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))

@@ -1,7 +1,7 @@
 package com.devx.kdeviceinfo.model
 
+import com.devx.kdeviceinfo.model.common.DeviceOrientation
 import com.devx.kdeviceinfo.model.common.Locale
-import com.devx.kdeviceinfo.model.ios.DeviceOrientation
 import com.devx.kdeviceinfo.model.ios.IosInfo
 import platform.Foundation.NSBundle
 import platform.Foundation.NSLocale
