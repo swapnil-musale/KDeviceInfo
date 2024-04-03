@@ -70,7 +70,8 @@ private fun ShowAndroidDeviceInfo(androidInfo: AndroidInfo) {
         Text(text = "IsPhysicalDevice : ${androidInfo.isPhysicalDevice}")
         Text(text = "Manufacturer : ${androidInfo.manufacturer}")
         Text(text = "Model : ${androidInfo.model}")
-        Text(text = "Orientation : ${androidInfo.deviceOrientation.getDeviceOrientation()}")
+        Text(text = "Device Orientation : ${androidInfo.deviceOrientation.getDeviceOrientation()}")
+        Text(text = "IsPortrait : ${androidInfo.deviceOrientation.isPortrait}")
         Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
 
         // Locale
@@ -103,7 +104,8 @@ private fun ShowIosDeviceInfo(iosInfo: IosInfo) {
         Text(text = "SystemVersion : ${iosInfo.systemVersion}")
         Text(text = "LocalizedModel : ${iosInfo.localizedModel}")
         Text(text = "IsPhysicalDevice : ${iosInfo.isPhysicalDevice}")
-        Text(text = "Orientation : ${iosInfo.deviceOrientation.getDeviceOrientation()}")
+        Text(text = "Device Orientation : ${iosInfo.deviceOrientation.getDeviceOrientation()}")
+        Text(text = "IsPortrait : ${iosInfo.deviceOrientation.isPortrait}")
         Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
 
         // Locale Info

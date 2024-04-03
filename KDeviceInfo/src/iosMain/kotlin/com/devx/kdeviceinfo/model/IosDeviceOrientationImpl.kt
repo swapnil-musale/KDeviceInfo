@@ -1,37 +1,33 @@
 package com.devx.kdeviceinfo.model
 
-import com.devx.kdeviceinfo.model.ios.DeviceOrientation
-import platform.UIKit.UIDevice
+import com.devx.kdeviceinfo.model.common.DeviceOrientation
+import platform.UIKit.UIApplication
+import platform.UIKit.UIWindow
+import platform.UIKit.UIWindowScene
 
 internal class IosDeviceOrientationImpl : DeviceOrientation {
+
+    private val windows =
+        (UIApplication.sharedApplication.connectedScenes.first() as UIWindowScene).windows
+    private val windowOrientation =
+        (windows.first() as UIWindow).windowScene?.interfaceOrientation?.toInt()
+
     override val UNKNOWN: String
         get() = "unknown"
     override val PORTRAIT: String
         get() = "portrait"
     override val LANDSCAPE: String
         get() = "landscape"
-    override val PORTRAIT_UPSIDE_DOWN: String
-        get() = "portraitUpsideDown"
-    override val LANDSCAPE_LEFT: String
-        get() = "landscapeLeft"
-    override val LANDSCAPE_RIGHT: String
-        get() = "landscapeRight"
-    override val FACE_UP: String
-        get() = "faceUp"
-    override val FACE_DOWN: String
-        get() = "faceDown"
     override val isPortrait: Boolean
-        get() = UIDevice.currentDevice.orientation.value.toString() == PORTRAIT
+        get() = windowOrientation == 1
+    override val isLandscape: Boolean
+        get() = windowOrientation == 3 || windowOrientation == 4
 
     override fun getDeviceOrientation(): String {
-        return when (UIDevice.currentDevice.orientation.value.toInt()) {
+        return when (windowOrientation) {
             0 -> UNKNOWN
             1 -> PORTRAIT
-            2 -> PORTRAIT_UPSIDE_DOWN
-            3 -> LANDSCAPE_LEFT
-            4 -> LANDSCAPE_RIGHT
-            5 -> FACE_UP
-            6 -> FACE_DOWN
+            3, 4 -> LANDSCAPE
             else -> UNKNOWN
         }
     }

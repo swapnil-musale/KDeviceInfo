@@ -2,7 +2,7 @@ package com.devx.kdeviceinfo.model
 
 import android.content.res.Configuration
 import com.devx.kdeviceinfo.initilizer.applicationContext
-import com.devx.kdeviceinfo.model.android.DeviceOrientation
+import com.devx.kdeviceinfo.model.common.DeviceOrientation
 
 internal class AndroidDeviceOrientation : DeviceOrientation {
 

@@ -1,5 +1,6 @@
 package com.devx.kdeviceinfo.model.ios
 
+import com.devx.kdeviceinfo.model.common.DeviceOrientation
 import com.devx.kdeviceinfo.model.common.Locale
 
 interface IosInfo {
