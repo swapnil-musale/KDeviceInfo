@@ -63,6 +63,7 @@ private fun ShowAndroidDeviceInfo(androidInfo: AndroidInfo) {
         // Device Info
         Text(text = "Device Info", style = TextStyle(fontSize = 20.sp))
         Text(text = "Device : ${androidInfo.device}")
+        Text(text = "Android ID : ${androidInfo.androidId}")
         Text(text = "SdkInt : ${androidInfo.version.sdkInt}")
         Text(text = "Release : ${androidInfo.version.release}")
         Text(text = "CodeName : ${androidInfo.version.codeName}")

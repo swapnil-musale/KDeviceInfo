@@ -1,8 +1,10 @@
 package com.devx.kdeviceinfo.model
 
+import android.annotation.SuppressLint
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
+import android.provider.Settings
 import androidx.core.app.LocaleManagerCompat
 import androidx.core.content.pm.PackageInfoCompat
 import com.devx.kdeviceinfo.initilizer.applicationContext
@@ -101,6 +103,13 @@ internal class AndroidInfoImpl : AndroidInfo {
 
     override val deviceOrientation: DeviceOrientation
         get() = androidDeviceOrientation
+
+    override val androidId: String
+        @SuppressLint("HardwareIds")
+        get() = Settings.Secure.getString(
+            applicationContext.contentResolver,
+            Settings.Secure.ANDROID_ID
+        )
 
     private fun getIsPhysicalDevice(): Boolean {
         return !((Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
