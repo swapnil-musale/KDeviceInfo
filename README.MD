@@ -41,7 +41,7 @@ Add the library dependency in ```shared``` module (```build.gradle.kts```)
 ```
 commonMain.dependencies {
     ...
-    api or implementation("io.github.swapnil-musale:KDeviceInfo:0.0.4")
+    api or implementation("io.github.swapnil-musale:KDeviceInfo:0.0.6")
 }
 ```
 
@@ -52,7 +52,7 @@ Add the library dependency in ```composeApp``` module (```build.gradle.kts```)
 ```
 commonMain.dependencies {
     ...
-    implementation("io.github.swapnil-musale:KDeviceInfo:0.0.4")
+    implementation("io.github.swapnil-musale:KDeviceInfo:0.0.6")
 }
 ```
 
