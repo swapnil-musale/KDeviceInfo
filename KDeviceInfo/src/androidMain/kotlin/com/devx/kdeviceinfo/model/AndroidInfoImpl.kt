@@ -1,10 +1,8 @@
 package com.devx.kdeviceinfo.model
 
-import android.annotation.SuppressLint
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.core.app.LocaleManagerCompat
 import androidx.core.content.pm.PackageInfoCompat
 import com.devx.kdeviceinfo.initilizer.applicationContext
@@ -83,10 +81,6 @@ internal class AndroidInfoImpl : AndroidInfo {
     override val displayMetrics: DisplayMetrics
         get() = androidDisplayMetrics
 
-    override val serialNumber: String
-        @SuppressLint("MissingPermission")
-        @RequiresApi(Build.VERSION_CODES.O)
-        get() = Build.getSerial()
     override val VERSION_CODES: VersionCode
         get() = androidVersionCode
 
