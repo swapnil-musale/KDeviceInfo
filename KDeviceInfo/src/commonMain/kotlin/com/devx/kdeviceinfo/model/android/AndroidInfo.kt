@@ -27,7 +27,6 @@ interface AndroidInfo {
     val isPhysicalDevice: Boolean
     val systemFeatureList: List<String>
     val displayMetrics: DisplayMetrics
-    val serialNumber: String
     val VERSION_CODES: VersionCode
     val versionName: String
     val versionCode: Long
