@@ -160,7 +160,7 @@ improvements, please feel free to open an issue or submit a pull request on GitH
 [![Twitter](https://skillicons.dev/icons?i=twitter)][3]
 
 
-[0]: https://github.com/swapnil-musale/KDeviceInfo/tree/read_me/sampleApp
+[0]: https://github.com/swapnil-musale/KDeviceInfo/blob/master/sampleApp/composeApp/src/commonMain/kotlin/com/devx/kdeviceinfo/sample/App.kt
 [1]: https://github.com/swapnil-musale
 [2]: https://linkedin.com/in/swapnil-musale
 [3]: https://twitter.com/swapnil_musale
