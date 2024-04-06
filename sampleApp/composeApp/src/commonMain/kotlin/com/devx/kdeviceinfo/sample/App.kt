@@ -40,8 +40,10 @@ internal fun App() = AppTheme {
         ) {
             if (deviceInfoXState.isAndroid) {
                 ShowAndroidDeviceInfo(androidInfo = deviceInfoXState.androidInfo)
-            } else {
+            } else if (deviceInfoXState.isIos) {
                 ShowIosDeviceInfo(iosInfo = deviceInfoXState.iosInfo)
+            } else {
+                Text(text = "Welcome to Desktop App")
             }
         }
     }
