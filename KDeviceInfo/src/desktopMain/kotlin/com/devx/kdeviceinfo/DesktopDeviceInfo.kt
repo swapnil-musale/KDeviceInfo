@@ -3,36 +3,32 @@
 package com.devx.kdeviceinfo
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.ui.interop.LocalUIViewController
-import com.devx.kdeviceinfo.model.IosInfoImpl
+import com.devx.kdeviceinfo.model.DesktopInfoImpl
 import com.devx.kdeviceinfo.model.android.AndroidInfo
 import com.devx.kdeviceinfo.model.desktop.DesktopInfo
 import com.devx.kdeviceinfo.model.ios.IosInfo
-import platform.UIKit.interfaceOrientation
 
 actual class DeviceInfoXState {
 
-    private val iosInfoData: IosInfo by lazy {
-        IosInfoImpl()
+    private val desktopInfoData: DesktopInfo by lazy {
+        DesktopInfoImpl()
     }
 
-    actual val isIos: Boolean
+    actual val isDesktop: Boolean
         get() = true
-    actual val iosInfo: IosInfo
-        get() = iosInfoData
+    actual val desktopInfo: DesktopInfo
+        get() = desktopInfoData
     actual val isAndroid: Boolean
         get() = false
     actual val androidInfo: AndroidInfo
         get() = throw Exception("trying to access incorrect platform info")
-    actual val isDesktop: Boolean
+    actual val isIos: Boolean
         get() = false
-    actual val desktopInfo: DesktopInfo
+    actual val iosInfo: IosInfo
         get() = throw Exception("trying to access incorrect platform info")
 }
 
 @Composable
 actual fun rememberDeviceInfoXState(): DeviceInfoXState {
-    val orientation = LocalUIViewController.current.interfaceOrientation
-    return remember(key1 = orientation) { DeviceInfoXState() }
+    return DeviceInfoXState()
 }
