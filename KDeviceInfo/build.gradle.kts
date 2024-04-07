@@ -11,6 +11,7 @@ plugins {
 }
 
 kotlin {
+    // Android
     androidTarget {
         compilations.all {
             kotlinOptions {
@@ -20,6 +21,7 @@ kotlin {
         publishLibraryVariants("release")
     }
 
+    // Ios
     listOf(
         iosX64(),
         iosArm64(),
@@ -28,6 +30,13 @@ kotlin {
         it.binaries.framework {
             baseName = "KDeviceInfo"
             isStatic = true
+        }
+    }
+
+    // Desktop (macOS, Windows, Linux)
+    jvm("desktop") {
+        compilations.all {
+            kotlinOptions.jvmTarget = "17"
         }
     }
 
