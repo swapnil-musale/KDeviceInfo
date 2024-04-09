@@ -60,6 +60,7 @@ private fun ShowAndroidDeviceInfo(androidInfo: AndroidInfo) {
         Text(text = "Version Code : ${androidInfo.versionCode}")
         Text(text = "Version Name : ${androidInfo.versionName}")
         Text(text = "Package Name : ${androidInfo.packageName}")
+        Text(text = "Debug App : ${androidInfo.isDebug}")
         Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
 
         // Device Info
@@ -97,6 +98,7 @@ private fun ShowIosDeviceInfo(iosInfo: IosInfo) {
         Text(text = "App Version : ${iosInfo.appVersion}")
         Text(text = "App Short Version : ${iosInfo.appShortVersion}")
         Text(text = "Bundle Id : ${iosInfo.bundleId}")
+        Text(text = "Debug App : ${iosInfo.isDebug}")
         Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
 
         // Device Info

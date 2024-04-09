@@ -10,6 +10,7 @@ import platform.Foundation.currentLocale
 import platform.Foundation.languageCode
 import platform.Foundation.regionCode
 import platform.UIKit.UIDevice
+import kotlin.experimental.ExperimentalNativeApi
 
 internal class IosInfoImpl : IosInfo {
 
@@ -51,4 +52,8 @@ internal class IosInfoImpl : IosInfo {
             languageCode = NSLocale.currentLocale.languageCode,
             region = NSLocale.currentLocale.regionCode.orEmpty()
         )
+
+    @OptIn(ExperimentalNativeApi::class)
+    override val isDebug: Boolean
+        get() = Platform.isDebugBinary
 }
