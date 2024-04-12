@@ -23,6 +23,11 @@ ios devices without writing expect actual boilerplate code.
   </tr>
 </table>
 
+> **IMPORTANT:**
+
+> The project is in the experimental phase. All APIs can change incompatibly or be dropped without the deprecation cycle!
+
+
 # Installation
 
 This library is available on mavenCentral. To use it in your project add following block of code
