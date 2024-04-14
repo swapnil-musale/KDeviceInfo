@@ -63,6 +63,11 @@ android {
         versionCode = 1
         versionName = "1.0.0"
     }
+    buildTypes {
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("debug")
+        }
+    }
     sourceSets["main"].apply {
         manifest.srcFile("src/androidMain/AndroidManifest.xml")
         res.srcDirs("src/androidMain/resources")
@@ -86,8 +91,12 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "com.devx.kdeviceinfo.sample.desktop"
+            packageName = "KDeviceInfo"
             packageVersion = "1.0.0"
+
+            macOS {
+                bundleID = "com.devx.kdeviceinfo.sample.macOs"
+            }
         }
     }
 }

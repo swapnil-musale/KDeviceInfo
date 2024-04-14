@@ -7,6 +7,7 @@ import android.os.Build
 import android.provider.Settings
 import androidx.core.app.LocaleManagerCompat
 import androidx.core.content.pm.PackageInfoCompat
+import com.devx.kdeviceinfo.BuildConfig
 import com.devx.kdeviceinfo.initilizer.applicationContext
 import com.devx.kdeviceinfo.model.android.AndroidInfo
 import com.devx.kdeviceinfo.model.android.DisplayMetrics
@@ -110,6 +111,9 @@ internal class AndroidInfoImpl : AndroidInfo {
             applicationContext.contentResolver,
             Settings.Secure.ANDROID_ID
         )
+
+    override val isDebug: Boolean
+        get() = BuildConfig.DEBUG
 
     private fun getIsPhysicalDevice(): Boolean {
         return !((Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
