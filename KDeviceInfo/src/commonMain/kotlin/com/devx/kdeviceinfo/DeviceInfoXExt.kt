@@ -26,7 +26,7 @@ fun onPlatform(
     val deviceInfoXState = DeviceInfoXState()
     if (deviceInfoXState.isAndroid) {
         onAndroid?.invoke(deviceInfoXState.androidInfo)
-    } else {
+    } else if (deviceInfoXState.isIos) {
         onIos?.invoke(deviceInfoXState.iosInfo)
     }
 }
