@@ -49,13 +49,3 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.GPG_PASSWORD }}
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
-
-      - name: Create and push tag
-        run: |
-          git config --global user.email "swapnilmusale19@gmail.com"
-          git config --global user.name "Swapnil Musale"
-
-          git tag -a $TAG -m "Release v$TAG"
-          git push origin $TAG
-        env:
-          TAG: ${{ github.event.inputs.versionName }}
