@@ -12,7 +12,7 @@ class AppViewModel {
         if (deviceInfoXState.isAndroid) {
             val androidInfo: AndroidInfo = deviceInfoXState.androidInfo
             println("DeviceInfoX - App Name : ${androidInfo.appName}")
-        } else {
+        } else if (deviceInfoXState.isIos) {
             val iosInfo: IosInfo = deviceInfoXState.iosInfo
             println("DeviceInfoX - System Name : ${iosInfo.systemName}")
         }
