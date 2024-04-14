@@ -19,4 +19,5 @@ interface IosInfo {
     val appVersion: String
     val appShortVersion: String
     val locale: Locale
+    val isDebug: Boolean
 }

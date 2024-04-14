@@ -33,4 +33,5 @@ interface AndroidInfo {
     val locale: Locale
     val deviceOrientation: DeviceOrientation
     val androidId: String
+    val isDebug: Boolean
 }
