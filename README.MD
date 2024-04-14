@@ -18,8 +18,8 @@ ios devices without writing expect actual boilerplate code.
     <th>Ios</th> 
   </tr>
   <tr>
-    <td><img src = "https://github.com/swapnil-musale/KDeviceInfo/assets/15209914/230a0983-ca7b-4983-a17d-e90cc639add5" width=250/></td> 
-    <td><img src = "https://github.com/swapnil-musale/KDeviceInfo/assets/15209914/2024b962-e3ea-4e3f-beef-81561ca8371e" width=250/></td>
+    <td><img src = "https://github.com/swapnil-musale/KDeviceInfo/assets/15209914/230a0983-ca7b-4983-a17d-e90cc639add5" width=250 alt="android"/></td> 
+    <td><img src = "https://github.com/swapnil-musale/KDeviceInfo/assets/15209914/2024b962-e3ea-4e3f-beef-81561ca8371e" width=250 alt="ios"/></td>
   </tr>
 </table>
 
@@ -46,7 +46,7 @@ Add the library dependency in ```shared``` module (```build.gradle.kts```)
 ```
 commonMain.dependencies {
     ...
-    api or implementation("io.github.swapnil-musale:KDeviceInfo:0.0.6")
+    api or implementation("io.github.swapnil-musale:KDeviceInfo:0.0.7")
 }
 ```
 
@@ -57,7 +57,7 @@ Add the library dependency in ```composeApp``` module (```build.gradle.kts```)
 ```
 commonMain.dependencies {
     ...
-    implementation("io.github.swapnil-musale:KDeviceInfo:0.0.6")
+    implementation("io.github.swapnil-musale:KDeviceInfo:0.0.7")
 }
 ```
 
@@ -78,11 +78,13 @@ fun DeviceInfoExample() {
             Text(text = "App Name : ${androidInfo.appName}")
             Text(text = "SdkInt : ${androidInfo.version.sdkInt}")
             Text(text = "PackageName : ${androidInfo.packageName}")
-        } else {
+        } else if(deviceInfoXState.isIos) {
             val iosInfo = deviceInfoXState.iosInfo
             Text(text = "SystemName : ${iosInfo.systemName}")
             Text(text = "SystemVersion : ${iosInfo.systemVersion}")
             Text(text = "IsPhysicalDevice : ${iosInfo.isPhysicalDevice}")
+        } else if(deviceInfoXState.isDesktop) {
+            Text(text = "Welcome to Desktop App")
         }
     }
 }
@@ -121,11 +123,11 @@ class AppViewModel {
         if (deviceInfoXState.isAndroid) {
             val androidInfo: AndroidInfo = deviceInfoXState.androidInfo
             println("DeviceInfoX - App Name : ${androidInfo.appName}")
-            println("DeviceInfoX - App Name : ${androidInfo.versionName}")
-        } else {
+            println("DeviceInfoX - Version Name : ${androidInfo.versionName}")
+        } else else if (deviceInfoXState.isIos) {
             val iosInfo: IosInfo = deviceInfoXState.iosInfo
-            println("DeviceInfoX - System Name : ${iosInfo.appName}")
-            println("DeviceInfoX - System Name : ${iosInfo.appVersion}")
+            println("DeviceInfoX - App Name : ${iosInfo.appName}")
+            println("DeviceInfoX - App Version : ${iosInfo.appVersion}")
         }
     }
 }
@@ -139,11 +141,11 @@ class AppViewModel {
         onPlatform(
             onAndroid = { androidInfo ->
                 println("DeviceInfoX - App Name : ${androidInfo.appName}")
-                println("DeviceInfoX - App Name : ${androidInfo.versionName}")
+                println("DeviceInfoX - Version Name : ${androidInfo.versionName}")
             },
             onIos = { iosInfo ->
-                println("DeviceInfoX - System Name : ${iosInfo.appName}")
-                println("DeviceInfoX - System Name : ${iosInfo.appVersion}")
+                println("DeviceInfoX - App Name : ${iosInfo.appName}")
+                println("DeviceInfoX - App Version : ${iosInfo.appVersion}")
             }
         )
     }
