@@ -8,7 +8,7 @@ mavenPublish = "0.28.0"
 # Library Versions
 annotation = "1.7.1"
 startupRuntime = "1.1.1"
-androidXCore = "1.12.0"
+androidXCore = "1.13.0"
 
 # sampleApp Versions
 androidxAppcompat = "1.6.1"
