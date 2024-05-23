@@ -38,3 +38,4 @@ jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "jetbrainsCompo
 androidLibrary = { id = "com.android.library", version.ref = "androidGrdlePlugin" }
 androidApplication = { id = "com.android.application", version.ref = "androidGrdlePlugin" }
 mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
