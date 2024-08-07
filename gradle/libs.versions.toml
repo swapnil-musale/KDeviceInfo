@@ -6,7 +6,7 @@ jetbrainsCompose = "1.6.11"
 mavenPublish = "0.29.0"
 
 # Library Versions
-annotation = "1.8.0"
+annotation = "1.8.2"
 startupRuntime = "1.1.1"
 androidXCore = "1.13.1"
 
