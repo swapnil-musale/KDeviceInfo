@@ -1,29 +1,29 @@
 [versions]
 # Plugin Versions
-kotlin = "2.0.0"
-androidGrdlePlugin = "8.5.0"
+kotlin = "2.0.20"
+androidGrdlePlugin = "8.7.0"
 jetbrainsCompose = "1.6.11"
 mavenPublish = "0.29.0"
 
 # Library Versions
-annotation = "1.8.0"
-startupRuntime = "1.1.1"
+annotation = "1.8.2"
+startupRuntime = "1.2.0"
 androidXCore = "1.13.1"
 
 # sampleApp Versions
 androidxAppcompat = "1.7.0"
-androidxActivityCompose = "1.9.0"
-androidXCompose = "1.6.8"
+androidxActivityCompose = "1.9.2"
+androidXCompose = "1.7.3"
 kDeviceInfo = "0.0.7"
 
 
 [libraries]
 # KDeviceInfo module libraries
+androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidXCore" }
+startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "startupRuntime" }
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "jetbrainsCompose" }
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "jetbrainsCompose" }
-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "startupRuntime" }
-androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidXCore" }
 
 # sampleApp module libraries
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidxAppcompat" }
