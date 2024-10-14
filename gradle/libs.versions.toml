@@ -1,7 +1,7 @@
 [versions]
 # Plugin Versions
 kotlin = "2.0.20"
-androidGrdlePlugin = "8.7.0"
+androidGrdlePlugin = "8.7.1"
 jetbrainsCompose = "1.6.11"
 mavenPublish = "0.29.0"
 
