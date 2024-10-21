@@ -1,19 +1,19 @@
 [versions]
 # Plugin Versions
-kotlin = "2.0.20"
-androidGrdlePlugin = "8.7.0"
-jetbrainsCompose = "1.6.11"
-mavenPublish = "0.29.0"
+kotlin = "2.0.21"
+androidGrdlePlugin = "8.7.1"
+jetbrainsCompose = "1.7.0"
+mavenPublish = "0.30.0"
 
 # Library Versions
-annotation = "1.8.2"
+annotation = "1.9.0"
 startupRuntime = "1.2.0"
 androidXCore = "1.13.1"
 
 # sampleApp Versions
 androidxAppcompat = "1.7.0"
-androidxActivityCompose = "1.9.2"
-androidXCompose = "1.7.3"
+androidxActivityCompose = "1.9.3"
+androidXCompose = "1.7.4"
 kDeviceInfo = "0.0.7"
 
 
