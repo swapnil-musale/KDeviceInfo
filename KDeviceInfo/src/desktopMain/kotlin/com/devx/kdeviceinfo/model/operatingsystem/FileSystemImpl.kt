@@ -2,29 +2,30 @@ package com.devx.kdeviceinfo.model.operatingsystem
 
 import com.devx.kdeviceinfo.model.desktop.operatingsystem.FileSystem
 import com.devx.kdeviceinfo.model.desktop.operatingsystem.OSFileStore
-import oshi.SystemInfo
 
-class FileSystemImpl : FileSystem {
-    
-    private val fileSystem by lazy { SystemInfo().operatingSystem.fileSystem }
+class FileSystemImpl(
+    private val fileSystemInfo: oshi.software.os.FileSystem
+) : FileSystem {
     
     override val fileStores: List<OSFileStore>
         get() = loadFileStoresList(
-            sourceList = fileSystem.fileStores
+            sourceList = fileSystemInfo.fileStores
         )
 
     override val openFileDescriptors
-        get() = fileSystem.openFileDescriptors
+        get() = fileSystemInfo.openFileDescriptors
     
     override val maxFileDescriptors
-        get() = fileSystem.maxFileDescriptors
+        get() = fileSystemInfo.maxFileDescriptors
     
     override val maxFileDescriptorsPerProcess
-        get() = fileSystem.maxFileDescriptorsPerProcess
+        get() = fileSystemInfo.maxFileDescriptorsPerProcess
 
-    fun getFileStores(localOnly: Boolean): List<OSFileStore> {
+    override fun getFileStores(
+        localOnly: Boolean
+    ): List<OSFileStore> {
         return loadFileStoresList(
-            sourceList = fileSystem.getFileStores(localOnly)
+            sourceList = fileSystemInfo.getFileStores(localOnly)
         )
     }
 

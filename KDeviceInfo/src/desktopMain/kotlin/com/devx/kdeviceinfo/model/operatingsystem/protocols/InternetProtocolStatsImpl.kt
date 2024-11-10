@@ -1,35 +1,34 @@
 package com.devx.kdeviceinfo.model.operatingsystem.protocols
 
 import com.devx.kdeviceinfo.model.desktop.operatingsystem.protocols.*
-import oshi.SystemInfo
 
-class InternetProtocolStatsImpl: InternetProtocolStats {
-
-    private val stats by lazy { SystemInfo().operatingSystem.internetProtocolStats }
+class InternetProtocolStatsImpl(
+    private val internetProtocolStatsInfo: oshi.software.os.InternetProtocolStats
+): InternetProtocolStats {
 
     override val TCPv4Stats: TcpStats
         get() = initTcpStats(
-            source = stats.tcPv4Stats
+            source = internetProtocolStatsInfo.tcPv4Stats
         )
 
     override val TCPv6Stats: TcpStats
         get() = initTcpStats(
-            source = stats.tcPv6Stats
+            source = internetProtocolStatsInfo.tcPv6Stats
         )
 
     override val UDPv4Stats: UdpStats
         get() = initUdpStats(
-            source = stats.udPv4Stats
+            source = internetProtocolStatsInfo.udPv4Stats
         )
 
     override val UDPv6Stats: UdpStats
         get() = initUdpStats(
-            source = stats.udPv6Stats
+            source = internetProtocolStatsInfo.udPv6Stats
         )
 
     override val IPConnection: List<IPConnection>
         get() = loadIpConnections(
-            sourceList = stats.connections
+            sourceList = internetProtocolStatsInfo.connections
         )
 
     private fun initTcpStats(

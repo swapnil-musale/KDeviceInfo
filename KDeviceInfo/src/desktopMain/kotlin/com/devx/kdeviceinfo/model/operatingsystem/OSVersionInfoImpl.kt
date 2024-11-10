@@ -1,19 +1,18 @@
 package com.devx.kdeviceinfo.model.operatingsystem
 
 import com.devx.kdeviceinfo.model.desktop.operatingsystem.OSVersionInfo
-import oshi.SystemInfo
 
-class OSVersionInfoImpl : OSVersionInfo {
-
-    private val versionInfo by lazy { SystemInfo().operatingSystem.versionInfo }
+class OSVersionInfoImpl(
+    private val osVersionInfo: oshi.software.os.OperatingSystem.OSVersionInfo
+) : OSVersionInfo {
 
     override val version: String
-        get() = versionInfo.version
+        get() = osVersionInfo.version
 
     override val codeName: String
-        get() = versionInfo.codeName
+        get() = osVersionInfo.codeName
 
     override val buildNumber: String
-        get() = versionInfo.buildNumber
+        get() = osVersionInfo.buildNumber
 
 }

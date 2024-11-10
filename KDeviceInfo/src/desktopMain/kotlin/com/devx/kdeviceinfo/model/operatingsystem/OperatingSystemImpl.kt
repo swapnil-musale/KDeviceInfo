@@ -18,13 +18,29 @@ class OperatingSystemImpl(
 
     private val fileSystemInfo by lazy { systemInfo.operatingSystem }
 
-    private val osVersionInfo by lazy { OSVersionInfoImpl() }
+    private val osVersionInfo by lazy {
+        OSVersionInfoImpl(
+            osVersionInfo = fileSystemInfo.versionInfo
+        )
+    }
 
-    private val fileSystemImpl by lazy { FileSystemImpl() }
+    private val fileSystemImpl by lazy {
+        FileSystemImpl(
+            fileSystemInfo = fileSystemInfo.fileSystem
+        )
+    }
 
-    private val internetProtocolStatsImpl by lazy { InternetProtocolStatsImpl() }
+    private val internetProtocolStatsImpl by lazy {
+        InternetProtocolStatsImpl(
+            internetProtocolStatsInfo = fileSystemInfo.internetProtocolStats
+        )
+    }
 
-    private val networkParamsImpl by lazy { NetworkParamsImpl() }
+    private val networkParamsImpl by lazy {
+        NetworkParamsImpl(
+            networkParamsInfo = fileSystemInfo.networkParams
+        )
+    }
 
     override val family: String
         get() = fileSystemInfo.family
@@ -88,15 +104,13 @@ class OperatingSystemImpl(
             sourceList = fileSystemInfo.sessions
         )
 
-    fun getProcesses(
-        osProcess: OSProcess? = null
-    ): List<OSProcess> {
+    override fun getProcesses(): List<OSProcess> {
         return loadOSProcesses(
             sourceList = fileSystemInfo.processes
         )
     }
 
-    fun getProcesses(
+    override fun getProcesses(
         pids: Collection<Int>
     ): List<OSProcess> {
         return loadOSProcesses(
@@ -104,7 +118,7 @@ class OperatingSystemImpl(
         )
     }
 
-    fun getProcess(
+    override fun getProcess(
         pid: Int
     ) : OSProcess {
         return initOSProcess(
@@ -112,7 +126,7 @@ class OperatingSystemImpl(
         )
     }
 
-    fun getOSDesktopWindows(
+    override fun getOSDesktopWindows(
          visibleOnly: Boolean
     ) : List<OSDesktopWindow> {
         return loadOSDesktopWindows(
