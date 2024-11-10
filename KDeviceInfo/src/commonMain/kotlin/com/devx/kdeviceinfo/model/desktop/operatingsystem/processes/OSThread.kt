@@ -1,4 +1,4 @@
-package com.devx.kdeviceinfo.model.desktop
+package com.devx.kdeviceinfo.model.desktop.operatingsystem.processes
 
 interface OSThread {
     val threadId: Int

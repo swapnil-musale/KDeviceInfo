@@ -1,4 +1,4 @@
-package com.devx.kdeviceinfo.model.desktop
+package com.devx.kdeviceinfo.model.desktop.operatingsystem.protocols
 
 interface TcpStats {
     val connectionsEstablished: Long

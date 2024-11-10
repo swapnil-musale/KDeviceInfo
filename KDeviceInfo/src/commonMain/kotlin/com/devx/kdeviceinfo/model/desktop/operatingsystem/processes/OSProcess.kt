@@ -1,4 +1,4 @@
-package com.devx.kdeviceinfo.model.desktop
+package com.devx.kdeviceinfo.model.desktop.operatingsystem.processes
 
 interface OSProcess {
     val name: String
@@ -11,7 +11,7 @@ interface OSProcess {
     val userId: String
     val group: String
     val groupId: String
-    val state: String
+    val state: State
     val processId: Int
     val parentProcessId: Int
     val threadCount: Int
@@ -26,7 +26,7 @@ interface OSProcess {
     val openFiles: Long
     val softOpenFileLimit: Long
     val hardOpenFileLimit: Long
-    val processCpuLoadCumulative: Long
+    val processCpuLoadCumulative: Double
     val processCpuLoadBetweenTicks: Double
     val bitness: Int
     val affinityMask: Long

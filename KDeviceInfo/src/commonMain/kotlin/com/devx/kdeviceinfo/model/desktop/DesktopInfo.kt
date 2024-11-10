@@ -1,10 +1,7 @@
 package com.devx.kdeviceinfo.model.desktop
 
+import com.devx.kdeviceinfo.model.desktop.operatingsystem.OperatingSystem
+
 interface DesktopInfo {
-    val family: String
-    val manufacturer: String
-    val versionInfo: OSVersionInfo
-    val fileSystem: FileSystem
-    val internetProtocolStats: InternetProtocolStats
-    val osProcess: List<OSProcess>
+    val operatingSystem: OperatingSystem
 }

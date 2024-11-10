@@ -1,11 +1,6 @@
 package com.devx.kdeviceinfo.sample
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -19,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.devx.kdeviceinfo.DeviceInfoXState
 import com.devx.kdeviceinfo.model.android.AndroidInfo
+import com.devx.kdeviceinfo.model.desktop.DesktopInfo
 import com.devx.kdeviceinfo.model.ios.IosInfo
 import com.devx.kdeviceinfo.rememberDeviceInfoXState
 import com.devx.kdeviceinfo.sample.theme.AppTheme
@@ -42,8 +38,10 @@ internal fun App() = AppTheme {
                 ShowAndroidDeviceInfo(androidInfo = deviceInfoXState.androidInfo)
             } else if (deviceInfoXState.isIos) {
                 ShowIosDeviceInfo(iosInfo = deviceInfoXState.iosInfo)
+            } else if(deviceInfoXState.isDesktop) {
+                ShowDesktopDeviceInfo(desktopInfo = deviceInfoXState.desktopInfo)
             } else {
-                Text(text = "Welcome to Desktop App")
+                Text(text = "Welcome to Web App")
             }
         }
     }
@@ -118,5 +116,40 @@ private fun ShowIosDeviceInfo(iosInfo: IosInfo) {
         Text(text = "Language Code : ${iosInfo.locale.languageCode}")
         Text(text = "Region : ${iosInfo.locale.region}")
         Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
+    }
+}
+
+@Composable
+private fun ShowDesktopDeviceInfo(desktopInfo: DesktopInfo) {
+    val verticalScrollState = rememberScrollState()
+
+    Column(modifier = Modifier.verticalScroll(state = verticalScrollState)) {
+
+        // Operating System Info (only easy to print info)
+        val operatingSystem = desktopInfo.operatingSystem
+        Text(text = "Operating System Info", style = TextStyle(fontSize = 20.sp))
+        Text(text = "Family : ${operatingSystem.family}")
+        Text(text = "Manufacturer : ${operatingSystem.manufacturer}")
+        val versionInfo = operatingSystem.versionInfo
+        Text(text = "Version : ${versionInfo.version}")
+        Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
+
+        /*// Device Info
+        Text(text = "Device Info", style = TextStyle(fontSize = 20.sp))
+        Text(text = "Name : ${desktopInfo.name}")
+        Text(text = "Model : ${desktopInfo.model}")
+        Text(text = "SystemName : ${desktopInfo.systemName}")
+        Text(text = "SystemVersion : ${desktopInfo.systemVersion}")
+        Text(text = "LocalizedModel : ${desktopInfo.localizedModel}")
+        Text(text = "IsPhysicalDevice : ${desktopInfo.isPhysicalDevice}")
+        Text(text = "Device Orientation : ${desktopInfo.deviceOrientation.getDeviceOrientation()}")
+        Text(text = "IsPortrait : ${desktopInfo.deviceOrientation.isPortrait}")
+        Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
+
+        // Locale Info
+        Text(text = "Locale Info", style = TextStyle(fontSize = 20.sp))
+        Text(text = "Language Code : ${desktopInfo.locale.languageCode}")
+        Text(text = "Region : ${desktopInfo.locale.region}")
+        Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))*/
     }
 }

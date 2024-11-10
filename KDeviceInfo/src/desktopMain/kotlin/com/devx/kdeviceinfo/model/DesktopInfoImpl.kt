@@ -1,8 +1,14 @@
 package com.devx.kdeviceinfo.model
 
 import com.devx.kdeviceinfo.model.desktop.DesktopInfo
-import oshi.SystemInfo
+import com.devx.kdeviceinfo.model.desktop.operatingsystem.OperatingSystem
+import com.devx.kdeviceinfo.model.operatingsystem.OperatingSystemImpl
 
 class DesktopInfoImpl : DesktopInfo {
-    val systeInfoStatus = SystemInfo
+
+    private val operatingSystemImpl by lazy { OperatingSystemImpl() }
+
+    override val operatingSystem: OperatingSystem
+        get() = operatingSystemImpl
+
 }
