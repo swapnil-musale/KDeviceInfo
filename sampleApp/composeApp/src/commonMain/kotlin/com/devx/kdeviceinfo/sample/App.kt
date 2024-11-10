@@ -126,30 +126,34 @@ private fun ShowDesktopDeviceInfo(desktopInfo: DesktopInfo) {
     Column(modifier = Modifier.verticalScroll(state = verticalScrollState)) {
 
         // Operating System Info (only easy to print info)
+        // NOT PRINTED BUT AVAILABLE
+        // - FileSystem
+        // - InternetProtocolStats
+        // - currentProcess: OSProcess
+        // - currentThread: OSThread
+        // - networkParams: NetworkParams
+        // - services: List<OSService>
+        // - sessions: List<OSSession>
         val operatingSystem = desktopInfo.operatingSystem
         Text(text = "Operating System Info", style = TextStyle(fontSize = 20.sp))
         Text(text = "Family : ${operatingSystem.family}")
         Text(text = "Manufacturer : ${operatingSystem.manufacturer}")
         val versionInfo = operatingSystem.versionInfo
         Text(text = "Version : ${versionInfo.version}")
+        Text(text = "Codename : ${versionInfo.codeName}")
+        Text(text = "Build number : ${versionInfo.buildNumber}")
         Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
 
-        /*// Device Info
-        Text(text = "Device Info", style = TextStyle(fontSize = 20.sp))
-        Text(text = "Name : ${desktopInfo.name}")
-        Text(text = "Model : ${desktopInfo.model}")
-        Text(text = "SystemName : ${desktopInfo.systemName}")
-        Text(text = "SystemVersion : ${desktopInfo.systemVersion}")
-        Text(text = "LocalizedModel : ${desktopInfo.localizedModel}")
-        Text(text = "IsPhysicalDevice : ${desktopInfo.isPhysicalDevice}")
-        Text(text = "Device Orientation : ${desktopInfo.deviceOrientation.getDeviceOrientation()}")
-        Text(text = "IsPortrait : ${desktopInfo.deviceOrientation.isPortrait}")
+        // General info
+        Text(text = "General Info", style = TextStyle(fontSize = 20.sp))
+        Text(text = "Process id : ${operatingSystem.processId}")
+        Text(text = "Process count : ${operatingSystem.processCount}")
+        Text(text = "Thread id : ${operatingSystem.threadId}")
+        Text(text = "Thread count : ${operatingSystem.threadCount}")
+        Text(text = "Bitness : ${operatingSystem.bitness}")
+        Text(text = "System uptime : ${operatingSystem.systemUptime}")
+        Text(text = "System boot time : ${operatingSystem.systemBootTime}")
+        Text(text = "Is elevated : ${operatingSystem.isElevated}")
         Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
-
-        // Locale Info
-        Text(text = "Locale Info", style = TextStyle(fontSize = 20.sp))
-        Text(text = "Language Code : ${desktopInfo.locale.languageCode}")
-        Text(text = "Region : ${desktopInfo.locale.region}")
-        Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))*/
     }
 }
