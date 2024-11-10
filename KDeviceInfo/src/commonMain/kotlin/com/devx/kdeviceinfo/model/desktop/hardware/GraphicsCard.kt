@@ -1,4 +1,4 @@
-package com.devx.kdeviceinfo.model.desktop
+package com.devx.kdeviceinfo.model.desktop.hardware
 
 interface GraphicsCard {
     val name: String

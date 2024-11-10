@@ -6,9 +6,9 @@ interface HWDiskStore {
     val serial: String
     val size: Long
     val reads: Long
-    var readBytes: Long
+    val readBytes: Long
     val writes: Long
-    var writesBytes: Long
+    val writesBytes: Long
     val currentQueueLength: Long
     val transferTime: Long
     val partitions: List<HWPartition>

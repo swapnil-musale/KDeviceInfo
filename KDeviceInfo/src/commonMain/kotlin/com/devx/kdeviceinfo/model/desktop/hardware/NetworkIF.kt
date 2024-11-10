@@ -1,8 +1,6 @@
 package com.devx.kdeviceinfo.model.desktop.hardware
 
 interface NetworkIF {
-    // TODO: TO USE CORRECTLY
-    //val queryNetworkInterface: NetworkInterface
     val name: String
     val index: Int
     val displayName: String
@@ -11,9 +9,9 @@ interface NetworkIF {
     val MTU: Long
     val macaddr: String
     val ipv4addr: Array<String>
-    val subnetMasks: Array<String>
+    val subnetMasks: Array<Short>
     val ipv6addr: Array<String>
-    val prefixLengths: Array<String>
+    val prefixLengths: Array<Short>
     val ifType: Int
     val ndisPhysicalMediumType: Int
     val isConnectorPresent: Boolean

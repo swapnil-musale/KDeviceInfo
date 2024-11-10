@@ -18,10 +18,9 @@ interface PowerSource {
     val designCapacity: Int
     val cycleCount: Int
     val chemistry: String
-    val manufacturerDate: Long
     val manufacturer: String
     val serialNumber: String
-    val temperature: Long
+    val temperature: Double
     val updateAttributes: Boolean
 }
 

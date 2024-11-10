@@ -1,7 +1,7 @@
-package com.devx.kdeviceinfo.model.desktop
+package com.devx.kdeviceinfo.model.desktop.hardware
 
 interface Sensors {
     val cpuTemperature: Double
-    val fanSpeeds: Array<Int>
+    val fanSpeeds: IntArray
     val cpuVoltage: Double
 }
