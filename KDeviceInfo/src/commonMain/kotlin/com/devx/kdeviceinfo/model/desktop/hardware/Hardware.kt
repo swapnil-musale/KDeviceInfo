@@ -18,4 +18,13 @@ interface Hardware {
     val sensors: Sensors
     val soundCards: List<SoundCard>
     val graphicsCards: List<GraphicsCard>
+
+    fun getNetworkIfs(
+        includeLocalInterfaces: Boolean
+    ): List<NetworkIF>
+
+    fun getUsbDevices(
+        tree: Boolean
+    ): List<UsbDevice>
+
 }

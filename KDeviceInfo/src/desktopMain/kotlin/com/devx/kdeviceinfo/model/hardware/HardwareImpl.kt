@@ -92,7 +92,7 @@ class HardwareImpl(
             sourceList = hardwareInfo.graphicsCards
         )
 
-    fun getNetworkIfs(
+    override fun getNetworkIfs(
         includeLocalInterfaces: Boolean
     ): List<NetworkIF> {
         return loadNetworkIf(
@@ -100,7 +100,7 @@ class HardwareImpl(
         )
     }
 
-    fun getUsbDevices(
+    override fun getUsbDevices(
         tree: Boolean
     ): List<UsbDevice> {
         return loadUsbDevices(

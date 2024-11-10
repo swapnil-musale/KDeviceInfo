@@ -60,25 +60,25 @@ class CentralProcessorImpl(
     override val interrupts: Long
         get() = centralProcessorInfo.interrupts
 
-    fun getSystemCpuLoadBetweenTicks(
+    override fun getSystemCpuLoadBetweenTicks(
         oldTickets: LongArray
     ) : Double {
         return centralProcessorInfo.getSystemCpuLoadBetweenTicks(oldTickets)
     }
 
-    fun getSystemLoadAverage(
+    override fun getSystemLoadAverage(
         nelem: Int
     ): DoubleArray {
         return centralProcessorInfo.getSystemLoadAverage(nelem)
     }
 
-    fun getSystemCpuLoad(
+    override fun getSystemCpuLoad(
         delay: Long
     ): Double {
         return centralProcessorInfo.getSystemCpuLoad(delay)
     }
 
-    fun getProcessorCpuLoadBetweenTicks(
+    override fun getProcessorCpuLoadBetweenTicks(
         oldTickets: Array<LongArray>
     ): DoubleArray {
         return centralProcessorInfo.getProcessorCpuLoadBetweenTicks(oldTickets)
