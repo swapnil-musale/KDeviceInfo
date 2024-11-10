@@ -9,6 +9,7 @@ import com.devx.kdeviceinfo.model.desktop.hardware.computersystem.ComputerSystem
 import com.devx.kdeviceinfo.model.desktop.hardware.memory.GlobalMemory
 import com.devx.kdeviceinfo.model.desktop.hardware.storage.HWDiskStore
 import com.devx.kdeviceinfo.model.desktop.hardware.storage.LogicalVolumeGroup
+import com.devx.kdeviceinfo.model.hardware.computersystem.ComputerSystemImpl
 import oshi.SystemInfo
 
 class HardwareImpl(
@@ -17,8 +18,14 @@ class HardwareImpl(
 
     private val hardwareInfo by lazy { systemInfo.hardware }
 
+    private val computerSystemImpl by lazy {
+        ComputerSystemImpl(
+            computerSystemInfo = hardwareInfo.computerSystem
+        )
+    }
+
     override val computerSystem: ComputerSystem
-        get() = TODO("Not yet implemented")
+        get() = computerSystemImpl
 
     override val centralProcessor: CentralProcessor
         get() = TODO("Not yet implemented")

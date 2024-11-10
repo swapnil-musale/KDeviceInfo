@@ -6,8 +6,8 @@ interface ProcessorIdentifier {
     val cpuFamily: String
     val cpuModel: String
     val cpuStepping: String
-    val processorID: String
+    val processorId: String
     val cpuIdentifier: String
-    val cpu64bit: Boolean
+    val isCpu64bit: Boolean
     val cpuVendorFreq: Long
 }
