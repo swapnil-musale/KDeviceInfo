@@ -12,9 +12,11 @@ import com.devx.kdeviceinfo.model.operatingsystem.protocols.InternetProtocolStat
 import com.devx.kdeviceinfo.model.operatingsystem.protocols.NetworkParamsImpl
 import oshi.SystemInfo
 
-class OperatingSystemImpl : OperatingSystem {
+class OperatingSystemImpl(
+    systemInfo: SystemInfo
+) : OperatingSystem {
 
-    private val fileSystemInfo by lazy { SystemInfo().operatingSystem }
+    private val fileSystemInfo by lazy { systemInfo.operatingSystem }
 
     private val osVersionInfo by lazy { OSVersionInfoImpl() }
 
