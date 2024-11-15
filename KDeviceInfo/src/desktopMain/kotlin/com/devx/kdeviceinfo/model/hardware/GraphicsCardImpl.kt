@@ -7,5 +7,5 @@ class GraphicsCardImpl(
     override val deviceId: String,
     override val vendor: String,
     override val versionInfo: String,
-    override val VRam: Long
+    override val vRam: Long
 ) : GraphicsCard

@@ -5,5 +5,5 @@ interface GraphicsCard {
     val deviceId: String
     val vendor: String
     val versionInfo: String
-    val VRam: Long
+    val vRam: Long
 }

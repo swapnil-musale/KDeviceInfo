@@ -15,34 +15,24 @@ import com.devx.kdeviceinfo.model.hardware.storage.HWPartitionImpl
 import com.devx.kdeviceinfo.model.hardware.storage.LogicalVolumeGroupImpl
 import oshi.SystemInfo
 
-class HardwareImpl(
-    systemInfo: SystemInfo
-) : Hardware {
+class HardwareImpl(systemInfo: SystemInfo) : Hardware {
 
     private val hardwareInfo by lazy { systemInfo.hardware }
 
     private val computerSystemImpl by lazy {
-        ComputerSystemImpl(
-            computerSystemInfo = hardwareInfo.computerSystem
-        )
+        ComputerSystemImpl(computerSystemInfo = hardwareInfo.computerSystem)
     }
 
     private val centralProcessorImpl by lazy {
-        CentralProcessorImpl(
-            centralProcessorInfo = hardwareInfo.processor
-        )
+        CentralProcessorImpl(centralProcessorInfo = hardwareInfo.processor)
     }
 
     private val globalMemoryImpl by lazy {
-        GlobalMemoryImpl(
-            globalMemory = hardwareInfo.memory
-        )
+        GlobalMemoryImpl(globalMemory = hardwareInfo.memory)
     }
 
     private val sensorsImpl by lazy {
-        SensorsImpl(
-            sensorsInfo = hardwareInfo.sensors
-        )
+        SensorsImpl(sensorsInfo = hardwareInfo.sensors)
     }
 
     override val computerSystem: ComputerSystem
@@ -55,76 +45,46 @@ class HardwareImpl(
         get() = globalMemoryImpl
 
     override val powerSources: List<PowerSource>
-        get() = loadPowerSources(
-            sourceList = hardwareInfo.powerSources
-        )
+        get() = loadPowerSources(sourceList = hardwareInfo.powerSources)
 
     override val diskStores: List<HWDiskStore>
-        get() = loadDisks(
-            sourceList = hardwareInfo.diskStores
-        )
+        get() = loadDisks(sourceList = hardwareInfo.diskStores)
 
     override val logicalVolumeGroups: List<LogicalVolumeGroup>
-        get() = loadLogicalVolumeGroup(
-            sourceList = hardwareInfo.logicalVolumeGroups
-        )
+        get() = loadLogicalVolumeGroup(sourceList = hardwareInfo.logicalVolumeGroups)
 
     override val networkIFs: List<NetworkIF>
-        get() = loadNetworkIf(
-            sourceList = hardwareInfo.networkIFs
-        )
+        get() = loadNetworkIf(sourceList = hardwareInfo.networkIFs)
 
     override val displays: List<Display>
-        get() = loadDisplays(
-            sourceList = hardwareInfo.displays
-        )
+        get() = loadDisplays(sourceList = hardwareInfo.displays)
 
     override val sensors: Sensors
         get() = sensorsImpl
 
     override val soundCards: List<SoundCard>
-        get() = loadSoundcards(
-            sourceList = hardwareInfo.soundCards
-        )
+        get() = loadSoundcards(sourceList = hardwareInfo.soundCards)
 
     override val graphicsCards: List<GraphicsCard>
-        get() = loadGraphicCards(
-            sourceList = hardwareInfo.graphicsCards
-        )
+        get() = loadGraphicCards(sourceList = hardwareInfo.graphicsCards)
 
-    override fun getNetworkIfs(
-        includeLocalInterfaces: Boolean
-    ): List<NetworkIF> {
-        return loadNetworkIf(
-            sourceList = hardwareInfo.getNetworkIFs(includeLocalInterfaces)
-        )
+    override fun getNetworkIfs(includeLocalInterfaces: Boolean): List<NetworkIF> {
+        return loadNetworkIf(sourceList = hardwareInfo.getNetworkIFs(includeLocalInterfaces))
     }
 
-    override fun getUsbDevices(
-        tree: Boolean
-    ): List<UsbDevice> {
-        return loadUsbDevices(
-            sourceList = hardwareInfo.getUsbDevices(tree)
-        )
+    override fun getUsbDevices(tree: Boolean): List<UsbDevice> {
+        return loadUsbDevices(sourceList = hardwareInfo.getUsbDevices(tree))
     }
 
-    private fun loadPowerSources(
-        sourceList: List<oshi.hardware.PowerSource>
-    ) : List<PowerSource> {
+    private fun loadPowerSources(sourceList: List<oshi.hardware.PowerSource>): List<PowerSource> {
         val result = mutableListOf<PowerSource>()
         sourceList.forEach { source ->
-            result.add(
-                PowerSourceImpl(
-                    powerSourceInfo = source
-                )
-            )
+            result.add(PowerSourceImpl(powerSourceInfo = source))
         }
         return result
     }
 
-    private fun loadDisks(
-        sourceList: List<oshi.hardware.HWDiskStore>
-    ) : List<HWDiskStore> {
+    private fun loadDisks(sourceList: List<oshi.hardware.HWDiskStore>): List<HWDiskStore> {
         val result = mutableListOf<HWDiskStore>()
         sourceList.forEach { disk ->
             result.add(
@@ -150,9 +110,7 @@ class HardwareImpl(
         return result
     }
 
-    private fun loadPartitions(
-        sourceList: List<oshi.hardware.HWPartition>
-    ) : List<HWPartition> {
+    private fun loadPartitions(sourceList: List<oshi.hardware.HWPartition>): List<HWPartition> {
         val result = mutableListOf<HWPartition>()
         sourceList.forEach { partition ->
             result.add(
@@ -171,9 +129,7 @@ class HardwareImpl(
         return result
     }
 
-    private fun loadLogicalVolumeGroup(
-        sourceList: List<oshi.hardware.LogicalVolumeGroup>
-    ) : List<LogicalVolumeGroup> {
+    private fun loadLogicalVolumeGroup(sourceList: List<oshi.hardware.LogicalVolumeGroup>): List<LogicalVolumeGroup> {
         val result = mutableListOf<LogicalVolumeGroup>()
         sourceList.forEach { volumeGroup ->
             result.add(
@@ -187,9 +143,7 @@ class HardwareImpl(
         return result
     }
 
-    private fun loadNetworkIf(
-        sourceList: List<oshi.hardware.NetworkIF>
-    ) : List<NetworkIF> {
+    private fun loadNetworkIf(sourceList: List<oshi.hardware.NetworkIF>): List<NetworkIF> {
         val result = mutableListOf<NetworkIF>()
         sourceList.forEach { networkIf ->
             result.add(
@@ -199,7 +153,7 @@ class HardwareImpl(
                     displayName = networkIf.displayName,
                     ifAlias = networkIf.ifAlias,
                     ifOperStatus = IfOperStatus.valueOf(networkIf.ifOperStatus.name),
-                    MTU = networkIf.mtu,
+                    mtu = networkIf.mtu,
                     macaddr = networkIf.macaddr,
                     ipv4addr = networkIf.iPv4addr,
                     subnetMasks = networkIf.subnetMasks,
@@ -226,28 +180,18 @@ class HardwareImpl(
         return result
     }
 
-    private fun loadDisplays(
-        sourceList: List<oshi.hardware.Display>
-    ) : List<Display> {
+    private fun loadDisplays(sourceList: List<oshi.hardware.Display>): List<Display> {
         val result = mutableListOf<Display>()
         sourceList.forEach { display ->
-            result.add(
-                DisplayImpl(
-                    edid = display.edid
-                )
-            )
+            result.add(DisplayImpl(edid = display.edid))
         }
         return result
     }
 
-    private fun loadUsbDevices(
-        sourceList: List<oshi.hardware.UsbDevice>
-    ) : List<UsbDevice> {
+    private fun loadUsbDevices(sourceList: List<oshi.hardware.UsbDevice>): List<UsbDevice> {
         val result = mutableListOf<UsbDevice>()
         sourceList.forEach { usbDevice ->
-            val connectedDevices = loadUsbDevices(
-                sourceList = usbDevice.connectedDevices
-            )
+            val connectedDevices = loadUsbDevices(sourceList = usbDevice.connectedDevices)
             result.add(
                 UsbDeviceImpl(
                     name = usbDevice.name,
@@ -263,9 +207,7 @@ class HardwareImpl(
         return result
     }
 
-    private fun loadSoundcards(
-        sourceList: List<oshi.hardware.SoundCard>
-    ) : List<SoundCard> {
+    private fun loadSoundcards(sourceList: List<oshi.hardware.SoundCard>): List<SoundCard> {
         val result = mutableListOf<SoundCard>()
         sourceList.forEach { card ->
             result.add(
@@ -279,9 +221,7 @@ class HardwareImpl(
         return result
     }
 
-    private fun loadGraphicCards(
-        sourceList: List<oshi.hardware.GraphicsCard>
-    ) : List<GraphicsCard> {
+    private fun loadGraphicCards(sourceList: List<oshi.hardware.GraphicsCard>): List<GraphicsCard> {
         val result = mutableListOf<GraphicsCard>()
         sourceList.forEach { card ->
             result.add(
@@ -290,11 +230,10 @@ class HardwareImpl(
                     deviceId = card.deviceId,
                     vendor = card.vendor,
                     versionInfo = card.versionInfo,
-                    VRam = card.vRam
+                    vRam = card.vRam
                 )
             )
         }
         return result
     }
-
 }

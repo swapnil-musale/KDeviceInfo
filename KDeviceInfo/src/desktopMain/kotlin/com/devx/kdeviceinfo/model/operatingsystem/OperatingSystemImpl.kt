@@ -1,6 +1,12 @@
 package com.devx.kdeviceinfo.model.operatingsystem
 
-import com.devx.kdeviceinfo.model.desktop.operatingsystem.*
+import com.devx.kdeviceinfo.model.desktop.operatingsystem.FileSystem
+import com.devx.kdeviceinfo.model.desktop.operatingsystem.OSDesktopWindow
+import com.devx.kdeviceinfo.model.desktop.operatingsystem.OSService
+import com.devx.kdeviceinfo.model.desktop.operatingsystem.OSSession
+import com.devx.kdeviceinfo.model.desktop.operatingsystem.OSVersionInfo
+import com.devx.kdeviceinfo.model.desktop.operatingsystem.OperatingSystem
+import com.devx.kdeviceinfo.model.desktop.operatingsystem.ServiceState
 import com.devx.kdeviceinfo.model.desktop.operatingsystem.processes.OSProcess
 import com.devx.kdeviceinfo.model.desktop.operatingsystem.processes.OSThread
 import com.devx.kdeviceinfo.model.desktop.operatingsystem.processes.State
@@ -12,34 +18,24 @@ import com.devx.kdeviceinfo.model.operatingsystem.protocols.InternetProtocolStat
 import com.devx.kdeviceinfo.model.operatingsystem.protocols.NetworkParamsImpl
 import oshi.SystemInfo
 
-class OperatingSystemImpl(
-    systemInfo: SystemInfo
-) : OperatingSystem {
+class OperatingSystemImpl(systemInfo: SystemInfo) : OperatingSystem {
 
     private val fileSystemInfo by lazy { systemInfo.operatingSystem }
 
     private val osVersionInfo by lazy {
-        OSVersionInfoImpl(
-            osVersionInfo = fileSystemInfo.versionInfo
-        )
+        OSVersionInfoImpl(osVersionInfo = fileSystemInfo.versionInfo)
     }
 
     private val fileSystemImpl by lazy {
-        FileSystemImpl(
-            fileSystemInfo = fileSystemInfo.fileSystem
-        )
+        FileSystemImpl(fileSystemInfo = fileSystemInfo.fileSystem)
     }
 
     private val internetProtocolStatsImpl by lazy {
-        InternetProtocolStatsImpl(
-            internetProtocolStatsInfo = fileSystemInfo.internetProtocolStats
-        )
+        InternetProtocolStatsImpl(internetProtocolStatsInfo = fileSystemInfo.internetProtocolStats)
     }
 
     private val networkParamsImpl by lazy {
-        NetworkParamsImpl(
-            networkParamsInfo = fileSystemInfo.networkParams
-        )
+        NetworkParamsImpl(networkParamsInfo = fileSystemInfo.networkParams)
     }
 
     override val family: String
@@ -61,9 +57,7 @@ class OperatingSystemImpl(
         get() = fileSystemInfo.processId
 
     override val currentProcess: OSProcess
-        get() = initOSProcess(
-            source = fileSystemInfo.currentProcess
-        )
+        get() = initOSProcess(source = fileSystemInfo.currentProcess)
 
     override val processCount: Int
         get() = fileSystemInfo.processCount
@@ -72,9 +66,7 @@ class OperatingSystemImpl(
         get() = fileSystemInfo.threadId
 
     override val currentThread: OSThread
-        get() = initOSThread(
-            source = fileSystemInfo.currentThread
-        )
+        get() = initOSThread(source = fileSystemInfo.currentThread)
 
     override val threadCount: Int
         get() = fileSystemInfo.threadCount
@@ -95,62 +87,36 @@ class OperatingSystemImpl(
         get() = networkParamsImpl
 
     override val services: List<OSService>
-        get() = loadOSServices(
-            sourceList = fileSystemInfo.services
-        )
+        get() = loadOSServices(sourceList = fileSystemInfo.services)
 
     override val sessions: List<OSSession>
-        get() = loadOSSessions(
-            sourceList = fileSystemInfo.sessions
-        )
+        get() = loadOSSessions(sourceList = fileSystemInfo.sessions)
 
     override fun getProcesses(): List<OSProcess> {
-        return loadOSProcesses(
-            sourceList = fileSystemInfo.processes
-        )
+        return loadOSProcesses(sourceList = fileSystemInfo.processes)
     }
 
-    override fun getProcesses(
-        pids: Collection<Int>
-    ): List<OSProcess> {
-        return loadOSProcesses(
-            sourceList = fileSystemInfo.getProcesses(pids)
-        )
+    override fun getProcesses(pids: Collection<Int>): List<OSProcess> {
+        return loadOSProcesses(sourceList = fileSystemInfo.getProcesses(pids))
     }
 
-    override fun getProcess(
-        pid: Int
-    ) : OSProcess {
-        return initOSProcess(
-            source = fileSystemInfo.getProcess(pid)
-        )
+    override fun getProcess(pid: Int): OSProcess {
+        return initOSProcess(source = fileSystemInfo.getProcess(pid))
     }
 
-    override fun getOSDesktopWindows(
-         visibleOnly: Boolean
-    ) : List<OSDesktopWindow> {
-        return loadOSDesktopWindows(
-            sourceList = fileSystemInfo.getDesktopWindows(visibleOnly)
-        )
+    override fun getOSDesktopWindows(visibleOnly: Boolean): List<OSDesktopWindow> {
+        return loadOSDesktopWindows(sourceList = fileSystemInfo.getDesktopWindows(visibleOnly))
     }
 
-    private fun loadOSProcesses(
-        sourceList: List<oshi.software.os.OSProcess>
-    ) : List<OSProcess> {
+    private fun loadOSProcesses(sourceList: List<oshi.software.os.OSProcess>): List<OSProcess> {
         val result = mutableListOf<OSProcess>()
         sourceList.forEach { process ->
-            result.add(
-                initOSProcess(
-                    source = process
-                )
-            )
+            result.add(initOSProcess(source = process))
         }
         return result
     }
 
-    private fun initOSProcess(
-        source: oshi.software.os.OSProcess,
-    ) : OSProcess {
+    private fun initOSProcess(source: oshi.software.os.OSProcess): OSProcess {
         return OSProcessImpl(
             name = source.name,
             path = source.path,
@@ -182,32 +148,22 @@ class OperatingSystemImpl(
             bitness = source.bitness,
             affinityMask = source.affinityMask,
             updateAttributes = source.updateAttributes(),
-            threadDetails = loadOSThreads(
-                sourceList = source.threadDetails
-            ),
+            threadDetails = loadOSThreads(sourceList = source.threadDetails),
             minorFaults = source.minorFaults,
             majorFaults = source.majorFaults,
             contextSwitches = source.contextSwitches
         )
     }
 
-    private fun loadOSThreads(
-        sourceList: List<oshi.software.os.OSThread>
-    ) : List<OSThread> {
+    private fun loadOSThreads(sourceList: List<oshi.software.os.OSThread>): List<OSThread> {
         val result = mutableListOf<OSThread>()
         sourceList.forEach { thread ->
-            result.add(
-                initOSThread(
-                    source = thread
-                )
-            )
+            result.add(initOSThread(source = thread))
         }
         return result
     }
 
-    private fun initOSThread(
-        source: oshi.software.os.OSThread
-    ) : OSThread {
+    private fun initOSThread(source: oshi.software.os.OSThread): OSThread {
         return OSThreadImpl(
             threadId = source.threadId,
             name = source.name,
@@ -228,9 +184,7 @@ class OperatingSystemImpl(
         )
     }
 
-    private fun loadOSServices(
-        sourceList: List<oshi.software.os.OSService>
-    ) : List<OSService> {
+    private fun loadOSServices(sourceList: List<oshi.software.os.OSService>): List<OSService> {
         val result = mutableListOf<OSService>()
         sourceList.forEach { service ->
             result.add(
@@ -244,9 +198,7 @@ class OperatingSystemImpl(
         return result
     }
 
-    private fun loadOSSessions(
-        sourceList: List<oshi.software.os.OSSession>
-    ) : List<OSSession> {
+    private fun loadOSSessions(sourceList: List<oshi.software.os.OSSession>): List<OSSession> {
         val result = mutableListOf<OSSession>()
         sourceList.forEach { session ->
             result.add(
@@ -261,9 +213,7 @@ class OperatingSystemImpl(
         return result
     }
 
-    private fun loadOSDesktopWindows(
-        sourceList: List<oshi.software.os.OSDesktopWindow>
-    ) : List<OSDesktopWindow> {
+    private fun loadOSDesktopWindows(sourceList: List<oshi.software.os.OSDesktopWindow>): List<OSDesktopWindow> {
         val result = mutableListOf<OSDesktopWindow>()
         sourceList.forEach { desktopWindow ->
             result.add(
@@ -279,5 +229,4 @@ class OperatingSystemImpl(
         }
         return result
     }
-
 }

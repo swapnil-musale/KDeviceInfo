@@ -6,7 +6,7 @@ interface NetworkIF {
     val displayName: String
     val ifAlias: String
     val ifOperStatus: IfOperStatus
-    val MTU: Long
+    val mtu: Long
     val macaddr: String
     val ipv4addr: Array<String>
     val subnetMasks: Array<Short>
@@ -72,5 +72,4 @@ enum class IfOperStatus(
      * Down due to state of lower-layer interface(s).
      */
     LOWER_LAYER_DOWN(7);
-
 }

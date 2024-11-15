@@ -4,14 +4,10 @@ import com.devx.kdeviceinfo.model.desktop.hardware.memory.GlobalMemory
 import com.devx.kdeviceinfo.model.desktop.hardware.memory.PhysicalMemory
 import com.devx.kdeviceinfo.model.desktop.hardware.memory.VirtualMemory
 
-class GlobalMemoryImpl(
-    private val globalMemory: oshi.hardware.GlobalMemory
-): GlobalMemory {
+class GlobalMemoryImpl(private val globalMemory: oshi.hardware.GlobalMemory) : GlobalMemory {
 
     private val virtualMemoryImpl by lazy {
-        VirtualMemoryImpl(
-            virtualMemory = globalMemory.virtualMemory
-        )
+        VirtualMemoryImpl(virtualMemory = globalMemory.virtualMemory)
     }
 
     override val total: Long
@@ -27,13 +23,9 @@ class GlobalMemoryImpl(
         get() = virtualMemoryImpl
 
     override val physicalMemory: List<PhysicalMemory>
-        get() = loadPhysicalMemories(
-            sourceList = globalMemory.physicalMemory
-        )
+        get() = loadPhysicalMemories(sourceList = globalMemory.physicalMemory)
 
-    private fun loadPhysicalMemories(
-        sourceList: List<oshi.hardware.PhysicalMemory>
-    ) : List<PhysicalMemory> {
+    private fun loadPhysicalMemories(sourceList: List<oshi.hardware.PhysicalMemory>): List<PhysicalMemory> {
         val result = mutableListOf<PhysicalMemory>()
         sourceList.forEach { physicalMemory ->
             result.add(
@@ -50,5 +42,4 @@ class GlobalMemoryImpl(
         }
         return result
     }
-
 }

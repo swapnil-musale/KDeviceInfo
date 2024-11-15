@@ -16,14 +16,19 @@ actual class DeviceInfoXState {
 
     actual val isDesktop: Boolean
         get() = true
+
     actual val desktopInfo: DesktopInfo
         get() = desktopInfoData
+
     actual val isAndroid: Boolean
         get() = false
+
     actual val androidInfo: AndroidInfo
         get() = throw Exception("trying to access incorrect platform info")
+
     actual val isIos: Boolean
         get() = false
+
     actual val iosInfo: IosInfo
         get() = throw Exception("trying to access incorrect platform info")
 }

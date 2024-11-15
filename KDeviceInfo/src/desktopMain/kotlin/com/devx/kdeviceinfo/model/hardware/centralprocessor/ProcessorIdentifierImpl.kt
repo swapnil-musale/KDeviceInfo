@@ -4,8 +4,8 @@ import com.devx.kdeviceinfo.model.desktop.hardware.centralprocessor.ProcessorIde
 import oshi.hardware.CentralProcessor
 
 class ProcessorIdentifierImpl(
-    val processorIdentifierInfo: CentralProcessor.ProcessorIdentifier
-): ProcessorIdentifier {
+    val processorIdentifierInfo: CentralProcessor.ProcessorIdentifier,
+) : ProcessorIdentifier {
 
     override val cpuVendor: String
         get() = processorIdentifierInfo.vendor
@@ -33,5 +33,4 @@ class ProcessorIdentifierImpl(
 
     override val cpuVendorFreq: Long
         get() = processorIdentifierInfo.vendorFreq
-
 }

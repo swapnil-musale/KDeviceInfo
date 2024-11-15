@@ -3,37 +3,25 @@ package com.devx.kdeviceinfo.model.operatingsystem.protocols
 import com.devx.kdeviceinfo.model.desktop.operatingsystem.protocols.*
 
 class InternetProtocolStatsImpl(
-    private val internetProtocolStatsInfo: oshi.software.os.InternetProtocolStats
-): InternetProtocolStats {
+    private val internetProtocolStatsInfo: oshi.software.os.InternetProtocolStats,
+) : InternetProtocolStats {
 
-    override val TCPv4Stats: TcpStats
-        get() = initTcpStats(
-            source = internetProtocolStatsInfo.tcPv4Stats
-        )
+    override val tcpV4Stats: TcpStats
+        get() = initTcpStats(source = internetProtocolStatsInfo.tcPv4Stats)
 
-    override val TCPv6Stats: TcpStats
-        get() = initTcpStats(
-            source = internetProtocolStatsInfo.tcPv6Stats
-        )
+    override val tcpV6Stats: TcpStats
+        get() = initTcpStats(source = internetProtocolStatsInfo.tcPv6Stats)
 
-    override val UDPv4Stats: UdpStats
-        get() = initUdpStats(
-            source = internetProtocolStatsInfo.udPv4Stats
-        )
+    override val udpV4Stats: UdpStats
+        get() = initUdpStats(source = internetProtocolStatsInfo.udPv4Stats)
 
-    override val UDPv6Stats: UdpStats
-        get() = initUdpStats(
-            source = internetProtocolStatsInfo.udPv6Stats
-        )
+    override val udpV6Stats: UdpStats
+        get() = initUdpStats(source = internetProtocolStatsInfo.udPv6Stats)
 
-    override val IPConnection: List<IPConnection>
-        get() = loadIpConnections(
-            sourceList = internetProtocolStatsInfo.connections
-        )
+    override val ipConnections: List<IPConnection>
+        get() = loadIpConnections(sourceList = internetProtocolStatsInfo.connections)
 
-    private fun initTcpStats(
-        source: oshi.software.os.InternetProtocolStats.TcpStats
-    ) : TcpStats {
+    private fun initTcpStats(source: oshi.software.os.InternetProtocolStats.TcpStats): TcpStats {
         return TcpStatsImpl(
             connectionsEstablished = source.connectionsEstablished,
             connectionsActive = source.connectionsActive,
@@ -48,9 +36,7 @@ class InternetProtocolStatsImpl(
         )
     }
 
-    private fun initUdpStats(
-        source: oshi.software.os.InternetProtocolStats.UdpStats
-    ) : UdpStats {
+    private fun initUdpStats(source: oshi.software.os.InternetProtocolStats.UdpStats): UdpStats {
         return UdpStatsImpl(
             datagramsSent = source.datagramsSent,
             datagramsReceived = source.datagramsReceived,
@@ -59,9 +45,7 @@ class InternetProtocolStatsImpl(
         )
     }
 
-    private fun loadIpConnections(
-        sourceList: List<oshi.software.os.InternetProtocolStats.IPConnection>
-    ) : List<IPConnection> {
+    private fun loadIpConnections(sourceList: List<oshi.software.os.InternetProtocolStats.IPConnection>): List<IPConnection> {
         val result = mutableListOf<IPConnection>()
         sourceList.forEach { connection ->
             result.add(
@@ -80,5 +64,4 @@ class InternetProtocolStatsImpl(
         }
         return result
     }
-
 }

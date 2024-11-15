@@ -10,7 +10,7 @@ class NetworkIFImpl(
     override val displayName: String,
     override val ifAlias: String,
     override val ifOperStatus: IfOperStatus,
-    override val MTU: Long,
+    override val mtu: Long,
     override val macaddr: String,
     override val ipv4addr: Array<String>,
     override val subnetMasks: Array<Short>,
@@ -30,13 +30,12 @@ class NetworkIFImpl(
     override val speed: Long,
     override val timestamp: Long,
     override val isKnownVmMacAddr: Boolean,
-    override val updateAttributes: Boolean
+    override val updateAttributes: Boolean,
 ) : NetworkIF {
 
     fun queryNetworkInterface(
-        source: oshi.hardware.NetworkIF
+        source: oshi.hardware.NetworkIF,
     ): NetworkInterface {
         return source.queryNetworkInterface()
     }
-
 }
