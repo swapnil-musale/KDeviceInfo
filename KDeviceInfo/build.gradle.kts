@@ -50,6 +50,13 @@ kotlin {
             implementation(libs.startup.runtime)
             implementation(libs.androidx.core)
         }
+
+        val desktopMain by getting {
+            dependencies {
+                implementation("com.github.oshi:oshi-core:6.6.5")
+            }
+        }
+
     }
 
     //https://kotlinlang.org/docs/native-objc-interop.html#export-of-kdoc-comments-to-generated-objective-c-headers
