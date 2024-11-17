@@ -12,15 +12,11 @@ class DesktopInfoImpl : DesktopInfo {
     private val systemInfo by lazy { SystemInfo() }
 
     private val operatingSystemImpl by lazy {
-        OperatingSystemImpl(
-            systemInfo = systemInfo
-        )
+        OperatingSystemImpl(systemInfo = systemInfo)
     }
 
     private val hardwareImpl by lazy {
-        HardwareImpl(
-            systemInfo = systemInfo
-        )
+        HardwareImpl(systemInfo = systemInfo)
     }
 
     override val operatingSystem: OperatingSystem
@@ -28,5 +24,4 @@ class DesktopInfoImpl : DesktopInfo {
 
     override val hardware: Hardware
         get() = hardwareImpl
-
 }

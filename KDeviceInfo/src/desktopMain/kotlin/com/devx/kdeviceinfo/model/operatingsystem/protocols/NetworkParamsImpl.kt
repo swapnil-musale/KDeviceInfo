@@ -2,9 +2,8 @@ package com.devx.kdeviceinfo.model.operatingsystem.protocols
 
 import com.devx.kdeviceinfo.model.desktop.operatingsystem.protocols.NetworkParams
 
-class NetworkParamsImpl(
-    private val networkParamsInfo: oshi.software.os.NetworkParams
-) : NetworkParams {
+class NetworkParamsImpl(private val networkParamsInfo: oshi.software.os.NetworkParams) :
+    NetworkParams {
 
     override val hostName: String
         get() = networkParamsInfo.hostName
@@ -20,5 +19,4 @@ class NetworkParamsImpl(
 
     override val ipv6DefaultGateway: String
         get() = networkParamsInfo.ipv6DefaultGateway
-
 }

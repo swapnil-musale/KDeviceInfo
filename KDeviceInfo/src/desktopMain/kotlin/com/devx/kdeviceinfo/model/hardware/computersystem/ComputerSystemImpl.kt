@@ -5,8 +5,8 @@ import com.devx.kdeviceinfo.model.desktop.hardware.computersystem.ComputerSystem
 import com.devx.kdeviceinfo.model.desktop.hardware.computersystem.Firmware
 
 class ComputerSystemImpl(
-    val computerSystemInfo: oshi.hardware.ComputerSystem
-): ComputerSystem {
+    val computerSystemInfo: oshi.hardware.ComputerSystem,
+) : ComputerSystem {
 
     override val manufacturer: String
         get() = computerSystemInfo.manufacturer
@@ -21,18 +21,12 @@ class ComputerSystemImpl(
         get() = computerSystemInfo.hardwareUUID
 
     override val firmware: Firmware
-        get() = initFirmware(
-            source = computerSystemInfo.firmware
-        )
+        get() = initFirmware(source = computerSystemInfo.firmware)
 
     override val baseboard: Baseboard
-        get() = initBaseBoard(
-            source = computerSystemInfo.baseboard
-        )
+        get() = initBaseBoard(source = computerSystemInfo.baseboard)
 
-    private fun initFirmware(
-        source: oshi.hardware.Firmware
-    ) : Firmware {
+    private fun initFirmware(source: oshi.hardware.Firmware): Firmware {
         return FirmwareImpl(
             manufacturer = source.manufacturer,
             name = source.name,
@@ -42,9 +36,7 @@ class ComputerSystemImpl(
         )
     }
 
-    private fun initBaseBoard(
-        source: oshi.hardware.Baseboard
-    ) : Baseboard {
+    private fun initBaseBoard(source: oshi.hardware.Baseboard): Baseboard {
         return BaseboardImpl(
             manufacturer = source.manufacturer,
             model = source.model,
@@ -52,5 +44,4 @@ class ComputerSystemImpl(
             serialNumber = source.serialNumber
         )
     }
-
 }

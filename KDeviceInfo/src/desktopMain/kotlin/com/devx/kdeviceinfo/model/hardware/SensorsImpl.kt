@@ -2,9 +2,7 @@ package com.devx.kdeviceinfo.model.hardware
 
 import com.devx.kdeviceinfo.model.desktop.hardware.Sensors
 
-class SensorsImpl(
-    private val sensorsInfo: oshi.hardware.Sensors
-): Sensors {
+class SensorsImpl(private val sensorsInfo: oshi.hardware.Sensors) : Sensors {
 
     override val cpuTemperature: Double
         get() = sensorsInfo.cpuTemperature
@@ -14,5 +12,4 @@ class SensorsImpl(
 
     override val cpuVoltage: Double
         get() = sensorsInfo.cpuVoltage
-
 }

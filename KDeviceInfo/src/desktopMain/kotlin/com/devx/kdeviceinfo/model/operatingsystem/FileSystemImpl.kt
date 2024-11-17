@@ -4,34 +4,26 @@ import com.devx.kdeviceinfo.model.desktop.operatingsystem.FileSystem
 import com.devx.kdeviceinfo.model.desktop.operatingsystem.OSFileStore
 
 class FileSystemImpl(
-    private val fileSystemInfo: oshi.software.os.FileSystem
+    private val fileSystemInfo: oshi.software.os.FileSystem,
 ) : FileSystem {
-    
+
     override val fileStores: List<OSFileStore>
-        get() = loadFileStoresList(
-            sourceList = fileSystemInfo.fileStores
-        )
+        get() = loadFileStoresList(sourceList = fileSystemInfo.fileStores)
 
     override val openFileDescriptors
         get() = fileSystemInfo.openFileDescriptors
-    
+
     override val maxFileDescriptors
         get() = fileSystemInfo.maxFileDescriptors
-    
+
     override val maxFileDescriptorsPerProcess
         get() = fileSystemInfo.maxFileDescriptorsPerProcess
 
-    override fun getFileStores(
-        localOnly: Boolean
-    ): List<OSFileStore> {
-        return loadFileStoresList(
-            sourceList = fileSystemInfo.getFileStores(localOnly)
-        )
+    override fun getFileStores(localOnly: Boolean): List<OSFileStore> {
+        return loadFileStoresList(sourceList = fileSystemInfo.getFileStores(localOnly))
     }
 
-    private fun loadFileStoresList(
-        sourceList: List<oshi.software.os.OSFileStore>
-    ) : List<OSFileStore> {
+    private fun loadFileStoresList(sourceList: List<oshi.software.os.OSFileStore>): List<OSFileStore> {
         val result: MutableList<OSFileStore> = mutableListOf()
         sourceList.forEach { fileStore ->
             result.add(
@@ -56,5 +48,4 @@ class FileSystemImpl(
         }
         return result
     }
-
 }

@@ -25,19 +25,11 @@ interface OperatingSystem {
     val services: List<OSService>
     val sessions: List<OSSession>
 
-    fun getProcesses(
-    ): List<OSProcess>
+    fun getProcesses(): List<OSProcess>
 
-    fun getProcesses(
-        pids: Collection<Int>
-    ): List<OSProcess>
+    fun getProcesses(pids: Collection<Int>): List<OSProcess>
 
-    fun getProcess(
-        pid: Int
-    ) : OSProcess
+    fun getProcess(pid: Int): OSProcess
 
-    fun getOSDesktopWindows(
-        visibleOnly: Boolean
-    ) : List<OSDesktopWindow>
-
+    fun getOSDesktopWindows(visibleOnly: Boolean): List<OSDesktopWindow>
 }

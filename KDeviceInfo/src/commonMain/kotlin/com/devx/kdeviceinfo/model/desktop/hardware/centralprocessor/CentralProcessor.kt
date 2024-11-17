@@ -16,20 +16,11 @@ interface CentralProcessor {
     val contextSwitches: Long
     val interrupts: Long
 
-    fun getSystemCpuLoadBetweenTicks(
-        oldTickets: LongArray
-    ) : Double
+    fun getSystemCpuLoadBetweenTicks(oldTickets: LongArray): Double
 
-    fun getSystemLoadAverage(
-        nelem: Int
-    ): DoubleArray
+    fun getSystemLoadAverage(nelem: Int): DoubleArray
 
-    fun getSystemCpuLoad(
-        delay: Long
-    ): Double
+    fun getSystemCpuLoad(delay: Long): Double
 
-    fun getProcessorCpuLoadBetweenTicks(
-        oldTickets: Array<LongArray>
-    ): DoubleArray
-
+    fun getProcessorCpuLoadBetweenTicks(oldTickets: Array<LongArray>): DoubleArray
 }

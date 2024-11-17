@@ -5,7 +5,7 @@ import com.devx.kdeviceinfo.model.desktop.hardware.PowerSource
 import java.time.LocalDate
 
 class PowerSourceImpl(
-    private val powerSourceInfo: oshi.hardware.PowerSource
+    private val powerSourceInfo: oshi.hardware.PowerSource,
 ) : PowerSource {
 
     override val name: String
@@ -71,8 +71,7 @@ class PowerSourceImpl(
     override val updateAttributes: Boolean
         get() = powerSourceInfo.updateAttributes()
 
-    fun getManufacturerDate() : LocalDate {
+    fun getManufacturerDate(): LocalDate {
         return powerSourceInfo.manufactureDate
     }
-
 }

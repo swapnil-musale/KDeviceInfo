@@ -2,9 +2,7 @@ package com.devx.kdeviceinfo.model.hardware.memory
 
 import com.devx.kdeviceinfo.model.desktop.hardware.memory.VirtualMemory
 
-class VirtualMemoryImpl(
-    private val virtualMemory: oshi.hardware.VirtualMemory
-): VirtualMemory {
+class VirtualMemoryImpl(private val virtualMemory: oshi.hardware.VirtualMemory) : VirtualMemory {
 
     override val swapTotal: Long
         get() = virtualMemory.swapTotal
@@ -23,5 +21,4 @@ class VirtualMemoryImpl(
 
     override val swapPagesOut: Long
         get() = virtualMemory.swapPagesOut
-
 }

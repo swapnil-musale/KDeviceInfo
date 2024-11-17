@@ -3,13 +3,11 @@ package com.devx.kdeviceinfo.model.hardware.centralprocessor
 import com.devx.kdeviceinfo.model.desktop.hardware.centralprocessor.*
 
 class CentralProcessorImpl(
-    private val centralProcessorInfo: oshi.hardware.CentralProcessor
+    private val centralProcessorInfo: oshi.hardware.CentralProcessor,
 ) : CentralProcessor {
 
     private val processorIdentifierImpl by lazy {
-        ProcessorIdentifierImpl(
-            processorIdentifierInfo = centralProcessorInfo.processorIdentifier
-        )
+        ProcessorIdentifierImpl(processorIdentifierInfo = centralProcessorInfo.processorIdentifier)
     }
 
     override val processorIdentifier: ProcessorIdentifier
@@ -22,19 +20,13 @@ class CentralProcessorImpl(
         get() = centralProcessorInfo.currentFreq
 
     override val logicalProcessors: List<LogicalProcessor>
-        get() = loadLogicalProcessors(
-            sourceList = centralProcessorInfo.logicalProcessors
-        )
+        get() = loadLogicalProcessors(sourceList = centralProcessorInfo.logicalProcessors)
 
     override val physicalProcessors: List<PhysicalProcessor>
-        get() = loadPhysicalProcessors(
-            sourceList = centralProcessorInfo.physicalProcessors
-        )
+        get() = loadPhysicalProcessors(sourceList = centralProcessorInfo.physicalProcessors)
 
     override val processorCaches: List<ProcessorCache>
-        get() = loadProcessorCache(
-            sourceList = centralProcessorInfo.processorCaches
-        )
+        get() = loadProcessorCache(sourceList = centralProcessorInfo.processorCaches)
 
     override val featureFlags: List<String>
         get() = centralProcessorInfo.featureFlags
@@ -60,33 +52,23 @@ class CentralProcessorImpl(
     override val interrupts: Long
         get() = centralProcessorInfo.interrupts
 
-    override fun getSystemCpuLoadBetweenTicks(
-        oldTickets: LongArray
-    ) : Double {
+    override fun getSystemCpuLoadBetweenTicks(oldTickets: LongArray): Double {
         return centralProcessorInfo.getSystemCpuLoadBetweenTicks(oldTickets)
     }
 
-    override fun getSystemLoadAverage(
-        nelem: Int
-    ): DoubleArray {
+    override fun getSystemLoadAverage(nelem: Int): DoubleArray {
         return centralProcessorInfo.getSystemLoadAverage(nelem)
     }
 
-    override fun getSystemCpuLoad(
-        delay: Long
-    ): Double {
+    override fun getSystemCpuLoad(delay: Long): Double {
         return centralProcessorInfo.getSystemCpuLoad(delay)
     }
 
-    override fun getProcessorCpuLoadBetweenTicks(
-        oldTickets: Array<LongArray>
-    ): DoubleArray {
+    override fun getProcessorCpuLoadBetweenTicks(oldTickets: Array<LongArray>): DoubleArray {
         return centralProcessorInfo.getProcessorCpuLoadBetweenTicks(oldTickets)
     }
 
-    private fun loadLogicalProcessors(
-        sourceList: List<oshi.hardware.CentralProcessor.LogicalProcessor>
-    ) : List<LogicalProcessor> {
+    private fun loadLogicalProcessors(sourceList: List<oshi.hardware.CentralProcessor.LogicalProcessor>): List<LogicalProcessor> {
         val result = mutableListOf<LogicalProcessor>()
         sourceList.forEach { processor ->
             result.add(
@@ -102,9 +84,7 @@ class CentralProcessorImpl(
         return result
     }
 
-    private fun loadPhysicalProcessors(
-        sourceList: List<oshi.hardware.CentralProcessor.PhysicalProcessor>
-    ) : List<PhysicalProcessor> {
+    private fun loadPhysicalProcessors(sourceList: List<oshi.hardware.CentralProcessor.PhysicalProcessor>): List<PhysicalProcessor> {
         val result = mutableListOf<PhysicalProcessor>()
         sourceList.forEach { processor ->
             result.add(
@@ -119,9 +99,7 @@ class CentralProcessorImpl(
         return result
     }
 
-    private fun loadProcessorCache(
-        sourceList: List<oshi.hardware.CentralProcessor.ProcessorCache>
-    ) : List<ProcessorCache> {
+    private fun loadProcessorCache(sourceList: List<oshi.hardware.CentralProcessor.ProcessorCache>): List<ProcessorCache> {
         val result = mutableListOf<ProcessorCache>()
         sourceList.forEach { cache ->
             result.add(
@@ -137,5 +115,4 @@ class CentralProcessorImpl(
         }
         return result
     }
-
 }

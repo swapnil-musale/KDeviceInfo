@@ -9,5 +9,4 @@ interface FileSystem {
     fun getFileStores(
         localOnly: Boolean
     ): List<OSFileStore>
-
 }
