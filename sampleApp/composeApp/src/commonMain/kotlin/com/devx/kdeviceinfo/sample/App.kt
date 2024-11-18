@@ -16,6 +16,7 @@ import com.devx.kdeviceinfo.DeviceInfoXState
 import com.devx.kdeviceinfo.model.android.AndroidInfo
 import com.devx.kdeviceinfo.model.desktop.DesktopInfo
 import com.devx.kdeviceinfo.model.ios.IosInfo
+import com.devx.kdeviceinfo.model.web.WebInfo
 import com.devx.kdeviceinfo.rememberDeviceInfoXState
 import com.devx.kdeviceinfo.sample.theme.AppTheme
 
@@ -41,7 +42,9 @@ internal fun App() = AppTheme {
             } else if(deviceInfoXState.isDesktop) {
                 ShowDesktopDeviceInfo(desktopInfo = deviceInfoXState.desktopInfo)
             } else {
-                Text(text = "Welcome to Web App")
+                ShowWebDeviceInfo(
+                    webInfo = deviceInfoXState.webInfo
+                )
             }
         }
     }
@@ -193,5 +196,56 @@ private fun ShowDesktopDeviceInfo(desktopInfo: DesktopInfo) {
             }
             Text(text = "Ram size: ${hardware.globalMemory.total} bytes")
         }
+    }
+}
+
+@Composable
+private fun ShowWebDeviceInfo(
+    webInfo: WebInfo
+) {
+    val verticalScrollState = rememberScrollState()
+
+    Column(modifier = Modifier.verticalScroll(state = verticalScrollState)) {
+
+        // Browser Info
+        val userAgent = webInfo.userAgent
+        Text(text = "User Agent Info", style = TextStyle(fontSize = 20.sp))
+        Text(text = "UA : $userAgent")
+        Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
+
+        // Browser Info
+        val browser = webInfo.browser
+        Text(text = "Browser Info", style = TextStyle(fontSize = 20.sp))
+        Text(text = "Name : ${browser.name}")
+        Text(text = "Version : ${browser.version}")
+        Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
+
+        // Device Info
+        val device = webInfo.device
+        Text(text = "Device Info", style = TextStyle(fontSize = 20.sp))
+        Text(text = "Model : ${device.model}")
+        Text(text = "Type : ${device.type}")
+        Text(text = "Vendor : ${device.vendor}")
+        Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
+
+        // Engine Info
+        val engine = webInfo.engine
+        Text(text = "Engine Info", style = TextStyle(fontSize = 20.sp))
+        Text(text = "Name : ${engine.name}")
+        Text(text = "Version : ${engine.version}")
+        Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
+
+        // Engine Info
+        val os = webInfo.os
+        Text(text = "Operating System Info", style = TextStyle(fontSize = 20.sp))
+        Text(text = "Name : ${os.name}")
+        Text(text = "Version : ${os.version}")
+        Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
+
+        // Engine Info
+        val cpu = webInfo.cpu
+        Text(text = "CPU Info", style = TextStyle(fontSize = 20.sp))
+        Text(text = "Architecture : ${cpu.architecture}")
+        Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
     }
 }

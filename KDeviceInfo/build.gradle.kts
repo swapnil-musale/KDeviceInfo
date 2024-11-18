@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.KotlinCommonCompile
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
@@ -39,6 +40,19 @@ kotlin {
         }
     }
 
+    // Web (WASM JavaScript)
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        binaries.executable()
+        browser {
+            webpackTask {
+                dependencies {
+                    implementation(libs.x.cdn.jsdelivr.net.npm.ua.parser.js)
+                }
+            }
+        }
+    }
+
     sourceSets {
         commonMain.dependencies {
             implementation(libs.compose.ui)
@@ -53,7 +67,7 @@ kotlin {
 
         val desktopMain by getting {
             dependencies {
-                implementation("com.github.oshi:oshi-core:6.6.5")
+                implementation(libs.oshi.core)
             }
         }
 

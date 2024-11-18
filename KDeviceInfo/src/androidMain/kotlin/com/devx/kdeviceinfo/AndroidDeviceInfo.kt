@@ -9,6 +9,7 @@ import com.devx.kdeviceinfo.model.AndroidInfoImpl
 import com.devx.kdeviceinfo.model.android.AndroidInfo
 import com.devx.kdeviceinfo.model.desktop.DesktopInfo
 import com.devx.kdeviceinfo.model.ios.IosInfo
+import com.devx.kdeviceinfo.model.web.WebInfo
 
 actual class DeviceInfoXState {
 
@@ -33,6 +34,13 @@ actual class DeviceInfoXState {
 
     actual val desktopInfo: DesktopInfo
         get() = throw Exception("trying to access incorrect platform info")
+
+    actual val webInfo: WebInfo
+        get() = throw Exception("trying to access incorrect platform info")
+
+    actual val isWeb: Boolean
+        get() = false
+
 }
 
 @Composable
