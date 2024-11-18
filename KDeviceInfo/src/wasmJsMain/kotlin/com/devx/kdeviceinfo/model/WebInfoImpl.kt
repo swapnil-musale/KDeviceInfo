@@ -15,8 +15,7 @@ import kotlinx.browser.window
 
 class WebInfoImpl : WebInfo {
 
-    override val userAgent: String
-        get() = window.navigator.userAgent
+    override val userAgent: String = window.navigator.userAgent
 
     override val browser: Browser
 

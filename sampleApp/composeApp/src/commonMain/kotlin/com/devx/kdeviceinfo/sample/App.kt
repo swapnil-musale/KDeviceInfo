@@ -13,6 +13,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.devx.kdeviceinfo.DeviceInfoXState
+import com.devx.kdeviceinfo.OnPlatform
 import com.devx.kdeviceinfo.model.android.AndroidInfo
 import com.devx.kdeviceinfo.model.desktop.DesktopInfo
 import com.devx.kdeviceinfo.model.ios.IosInfo
@@ -35,17 +36,19 @@ internal fun App() = AppTheme {
                 .padding(paddingValues = it)
                 .padding(horizontal = 16.dp)
         ) {
-            if (deviceInfoXState.isAndroid) {
-                ShowAndroidDeviceInfo(androidInfo = deviceInfoXState.androidInfo)
-            } else if (deviceInfoXState.isIos) {
-                ShowIosDeviceInfo(iosInfo = deviceInfoXState.iosInfo)
-            } else if(deviceInfoXState.isDesktop) {
-                ShowDesktopDeviceInfo(desktopInfo = deviceInfoXState.desktopInfo)
-            } else {
-                ShowWebDeviceInfo(
-                    webInfo = deviceInfoXState.webInfo
-                )
-            }
+            OnPlatform(
+                deviceInfoXState = deviceInfoXState,
+                onAndroid = { androidInfo ->
+                    ShowAndroidDeviceInfo(androidInfo = androidInfo)
+                },
+                onIos = { iosInfo ->
+                    ShowIosDeviceInfo(iosInfo = iosInfo)
+                },
+                onDesktop = { desktopInfo ->
+                    ShowDesktopDeviceInfo(desktopInfo = desktopInfo)
+                },
+                onWeb =  { webInfo -> ShowWebDeviceInfo(webInfo = webInfo) }
+            )
         }
     }
 }
