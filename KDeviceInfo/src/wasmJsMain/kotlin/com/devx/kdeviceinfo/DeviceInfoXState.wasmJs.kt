@@ -1,9 +1,7 @@
-@file:Suppress("unused")
-
 package com.devx.kdeviceinfo
 
 import androidx.compose.runtime.Composable
-import com.devx.kdeviceinfo.model.DesktopInfoImpl
+import com.devx.kdeviceinfo.model.WebInfoImpl
 import com.devx.kdeviceinfo.model.android.AndroidInfo
 import com.devx.kdeviceinfo.model.desktop.DesktopInfo
 import com.devx.kdeviceinfo.model.ios.IosInfo
@@ -11,15 +9,15 @@ import com.devx.kdeviceinfo.model.web.WebInfo
 
 actual class DeviceInfoXState {
 
-    private val desktopInfoData: DesktopInfo by lazy {
-        DesktopInfoImpl()
+    private val webInfoData: WebInfo by lazy {
+        WebInfoImpl()
     }
 
     actual val isDesktop: Boolean
-        get() = true
+        get() = false
 
     actual val desktopInfo: DesktopInfo
-        get() = desktopInfoData
+        get() = throw Exception("trying to access incorrect platform info")
 
     actual val isAndroid: Boolean
         get() = false
@@ -34,10 +32,10 @@ actual class DeviceInfoXState {
         get() = throw Exception("trying to access incorrect platform info")
 
     actual val webInfo: WebInfo
-        get() = throw Exception("trying to access incorrect platform info")
+        get() = webInfoData
 
     actual val isWeb: Boolean
-        get() = false
+        get() = true
 
 }
 

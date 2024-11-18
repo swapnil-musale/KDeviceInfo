@@ -1,12 +1,13 @@
 [versions]
 # Plugin Versions
 kotlin = "2.0.21"
-androidGrdlePlugin = "8.7.2"
+androidGrdlePlugin = "8.6.0-alpha07"
 jetbrainsCompose = "1.7.1"
 mavenPublish = "0.30.0"
 
 # Library Versions
 annotation = "1.9.1"
+oshiCore = "6.6.5"
 startupRuntime = "1.2.0"
 androidXCore = "1.13.1"
 
@@ -20,10 +21,12 @@ kDeviceInfo = "0.0.7"
 [libraries]
 # KDeviceInfo module libraries
 androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidXCore" }
+oshi-core = { module = "com.github.oshi:oshi-core", version.ref = "oshiCore" }
 startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "startupRuntime" }
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "jetbrainsCompose" }
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "jetbrainsCompose" }
+x_cdn-jsdelivr-net_npm_ua-parser-js = { module = "https://cdn.jsdelivr.net/npm/ua-parser-js" }
 
 # sampleApp module libraries
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidxAppcompat" }
