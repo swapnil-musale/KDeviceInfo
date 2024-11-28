@@ -26,7 +26,6 @@ startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "jetbrainsCompose" }
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "jetbrainsCompose" }
-x_cdn-jsdelivr-net_npm_ua-parser-js = { module = "https://cdn.jsdelivr.net/npm/ua-parser-js" }
 
 # sampleApp module libraries
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidxAppcompat" }

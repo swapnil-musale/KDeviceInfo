@@ -47,7 +47,7 @@ kotlin {
         browser {
             webpackTask {
                 dependencies {
-                    implementation(libs.x.cdn.jsdelivr.net.npm.ua.parser.js)
+                    implementation(npm("ua-parser-js", "2.0.0"))
                 }
             }
         }
