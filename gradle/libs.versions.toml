@@ -7,7 +7,7 @@ mavenPublish = "0.31.0"
 
 # Library Versions
 annotation = "1.9.1"
-oshiCore = "6.8.5"
+oshiCore = "6.8.0"
 startupRuntime = "1.2.0"
 androidXCore = "1.13.1"
 
