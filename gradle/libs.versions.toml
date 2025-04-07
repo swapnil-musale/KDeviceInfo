@@ -3,7 +3,7 @@
 kotlin = "2.0.21"
 androidGrdlePlugin = "8.6.0-alpha07"
 jetbrainsCompose = "1.7.1"
-mavenPublish = "0.30.0"
+mavenPublish = "0.31.0"
 
 # Library Versions
 annotation = "1.9.1"
