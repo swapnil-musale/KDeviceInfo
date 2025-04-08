@@ -1,7 +1,9 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnLockMismatchReport
+import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlugin
 import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnRootExtension
 
 plugins {
@@ -13,55 +15,63 @@ plugins {
 
 kotlin {
     androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "17"
-            }
+        compilations {
+            compilerOptions.jvmTarget.set(JvmTarget.JVM_17)
         }
     }
 
-    listOf(
+    val iosTargets = listOf(
         iosX64(),
         iosArm64(),
         iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
+    )
+
+    configure(iosTargets) {
+        binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
         }
     }
 
-    jvm("desktop")
+    jvm("desktop") {
+        compilations {
+            compilerOptions.jvmTarget.set(JvmTarget.JVM_17)
+        }
+    }
 
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
-        moduleName = "composeApp"
+        outputModuleName.set("composeApp")
+
         browser {
             val rootDirPath = project.rootDir.path
             val projectDirPath = project.projectDir.path
+
             commonWebpackConfig {
+                sourceMaps = false
                 outputFileName = "composeApp.js"
+
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
                     static = (static ?: mutableListOf()).apply {
-                        // Serve sources to debug inside browser
                         add(rootDirPath)
                         add(projectDirPath)
                     }
                 }
             }
         }
+
         binaries.executable()
     }
 
     sourceSets {
-        commonMain.dependencies {
+        getByName("commonMain").dependencies {
             implementation(compose.runtime)
             implementation(compose.material3)
 //            implementation(libs.kDeviceinfo)
             implementation(projects.kDeviceInfo)
         }
 
-        androidMain.dependencies {
+        getByName("androidMain").dependencies {
             implementation(libs.androidx.appcompat)
             implementation(libs.androidx.activityCompose)
             implementation(libs.compose.uitooling)
@@ -88,20 +98,24 @@ android {
         versionCode = 1
         versionName = "1.0.0"
     }
+
     buildTypes {
         getByName("release") {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+
     sourceSets["main"].apply {
         manifest.srcFile("src/androidMain/AndroidManifest.xml")
         res.srcDirs("src/androidMain/resources")
-        resources.srcDirs("src/commonMain/resources")
+//        resources.srcDirs("src/commonMain/resources")
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+
     buildFeatures {
         compose = true
     }
@@ -123,13 +137,10 @@ compose.desktop {
     }
 }
 
-task("testClasses").doLast {
-    println("This is a dummy testClasses task")
-}
+tasks.register("testClasses")
 
-rootProject.plugins.withType(org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlugin::class.java) {
-    rootProject.the<YarnRootExtension>().yarnLockMismatchReport =
-        YarnLockMismatchReport.WARNING
-    rootProject.the<YarnRootExtension>().reportNewYarnLock = false // true
+rootProject.plugins.withType(YarnPlugin::class.java) {
+    rootProject.the<YarnRootExtension>().yarnLockMismatchReport = YarnLockMismatchReport.WARNING
+    rootProject.the<YarnRootExtension>().reportNewYarnLock = false
     rootProject.the<YarnRootExtension>().yarnLockAutoReplace = true
 }

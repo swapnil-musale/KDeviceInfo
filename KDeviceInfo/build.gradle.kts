@@ -1,6 +1,8 @@
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
-import org.jetbrains.kotlin.gradle.dsl.KotlinCommonCompile
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -13,21 +15,21 @@ plugins {
 kotlin {
     // Android
     androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "17"
-            }
+        compilations {
+            compilerOptions.jvmTarget.set(JvmTarget.JVM_17)
         }
         publishLibraryVariants("release")
     }
 
     // Ios
-    listOf(
+    val iosTargets = listOf(
         iosX64(),
         iosArm64(),
         iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
+    )
+
+    configure(iosTargets) {
+        binaries.framework {
             baseName = "KDeviceInfo"
             isStatic = true
         }
@@ -35,8 +37,8 @@ kotlin {
 
     // Desktop (macOS, Windows, Linux)
     jvm("desktop") {
-        compilations.all {
-            kotlinOptions.jvmTarget = "17"
+        compilations {
+            compilerOptions.jvmTarget.set(JvmTarget.JVM_17)
         }
     }
 
@@ -54,13 +56,13 @@ kotlin {
     }
 
     sourceSets {
-        commonMain.dependencies {
+        getByName("commonMain").dependencies {
             implementation(libs.compose.ui)
             implementation(libs.compose.runtime)
             implementation(libs.androidx.annotation)
         }
 
-        androidMain.dependencies {
+        getByName("androidMain").dependencies {
             implementation(libs.startup.runtime)
             implementation(libs.androidx.core)
         }
@@ -70,18 +72,22 @@ kotlin {
                 implementation(libs.oshi.core)
             }
         }
-
     }
+}
 
-    //https://kotlinlang.org/docs/native-objc-interop.html#export-of-kdoc-comments-to-generated-objective-c-headers
-    targets.withType<KotlinNativeTarget> {
-        compilations["main"].compilerOptions.options.freeCompilerArgs.add("-Xexport-kdoc")
-    }
-
-    tasks.withType<KotlinCommonCompile> {
-        compilerOptions {
-            freeCompilerArgs.add("-Xexpect-actual-classes")
+afterEvaluate {
+    extensions.configure<KotlinMultiplatformExtension>("kotlin") {
+        targets.withType<KotlinNativeTarget>().configureEach {
+            compilations.getByName("main").compileTaskProvider.configure {
+                compilerOptions.freeCompilerArgs.add("-Xexport-kdoc")
+            }
         }
+    }
+}
+
+tasks.withType<KotlinCompilationTask<*>>().configureEach {
+    compilerOptions {
+        freeCompilerArgs.add("-Xexpect-actual-classes")
     }
 }
 
@@ -94,9 +100,11 @@ android {
     defaultConfig {
         minSdk = 21
     }
+
     buildFeatures {
         buildConfig = true
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -116,6 +124,4 @@ publishing {
     }
 }
 
-task("testClasses").doLast {
-    println("This is a dummy testClasses task")
-}
+tasks.register("testClasses")
