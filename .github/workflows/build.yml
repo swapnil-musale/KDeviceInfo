@@ -7,6 +7,10 @@ on:
     paths-ignore:
       - '**.md'
 
+permissions:
+  issues: write
+  pull-requests: write
+
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
@@ -49,7 +53,7 @@ jobs:
         id: KDeviceInfo
         run: ./gradlew :KDeviceInfo:build --stacktrace
 
-      - name: Run Lint
+      - name: Run Android Lint
         id: lint
         run: ./gradlew lint --stacktrace
 
