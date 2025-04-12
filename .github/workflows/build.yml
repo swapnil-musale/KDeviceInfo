@@ -41,5 +41,34 @@ jobs:
       - name: Setup gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Build with Gradle
+      - name: Build sampleApp
+        id: sampleApp
+        run: ./gradlew :sampleApp:build --stacktrace
+
+      - name: Build KDeviceInfo
+        id: KDeviceInfo
         run: ./gradlew :KDeviceInfo:build --stacktrace
+
+      - name: Run Lint
+        id: lint
+        run: ./gradlew lint --stacktrace
+
+      - name: Comment Results on PR
+        uses: actions/github-script@v7
+        if: always()
+        with:
+          script: |
+            const output = `
+            ## Pull Request Verification Results
+
+            **KDeviceInfo Build** ${{ steps.KDeviceInfo.outcome }}
+            **sampleApp Build** ${{ steps.sampleApp.outcome }}
+            **Project Lint** ${{ steps.lint.outcome }}
+            `;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: output
+            })
