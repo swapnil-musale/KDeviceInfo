@@ -15,7 +15,7 @@ androidXCore = "1.16.0"
 androidxAppcompat = "1.7.0"
 androidxActivityCompose = "1.9.3"
 androidXCompose = "1.7.8"
-kDeviceInfo = "0.0.7"
+kDeviceInfo = "1.0.0"
 
 
 [libraries]
