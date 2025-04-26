@@ -77,18 +77,16 @@ kotlin {
             implementation(libs.compose.uitooling)
         }
 
-        val desktopMain by getting {
-            dependencies {
-                implementation(compose.desktop.currentOs)
-                implementation(compose.desktop.common)
-            }
+        getByName("desktopMain").dependencies {
+            implementation(compose.desktop.currentOs)
+            implementation(compose.desktop.common)
         }
     }
 }
 
 android {
     namespace = "com.devx.kdeviceinfo.sample"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 24
