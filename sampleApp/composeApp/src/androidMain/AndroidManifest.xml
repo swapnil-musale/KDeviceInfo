@@ -6,6 +6,7 @@
         android:icon="@android:drawable/ic_menu_compass"
         android:label="KDeviceInfo"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+
         <activity
             android:name=".AppActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"

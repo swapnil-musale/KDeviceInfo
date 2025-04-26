@@ -28,24 +28,11 @@ class WebInfoImpl : WebInfo {
     override val os: Os
 
     init {
-        val result = UAParser(
-            userAgent = userAgent
-        ).getResult()
-        browser = BrowserImpl(
-           parsedBrowser = result.browser
-        )
-        cpu = CPUImpl(
-            parsedCPU = result.cpu
-        )
-        device = DeviceImpl(
-            parsedDevice = result.device
-        )
-        engine = EngineImpl(
-            parsedEngine = result.engine
-        )
-        os = OsImpl(
-            parsedOs = result.os
-        )
+        val result = UAParser(userAgent = userAgent).getResult()
+        browser = BrowserImpl(parsedBrowser = result.browser)
+        cpu = CPUImpl(parsedCPU = result.cpu)
+        device = DeviceImpl(parsedDevice = result.device)
+        engine = EngineImpl(parsedEngine = result.engine)
+        os = OsImpl(parsedOs = result.os)
     }
-
 }

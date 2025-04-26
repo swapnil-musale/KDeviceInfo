@@ -15,10 +15,10 @@ class AppViewModel {
         } else if (deviceInfoXState.isIos) {
             val iosInfo: IosInfo = deviceInfoXState.iosInfo
             println("DeviceInfoX - System Name : ${iosInfo.systemName}")
-        } else if(deviceInfoXState.isDesktop) {
+        } else if (deviceInfoXState.isDesktop) {
             val desktopInfo = deviceInfoXState.desktopInfo
             println("DeviceInfoX - System Name : ${desktopInfo.operatingSystem.versionInfo.version}")
-        } else if(deviceInfoXState.isWeb) {
+        } else if (deviceInfoXState.isWeb) {
             val webInfo = deviceInfoXState.webInfo
             println("DeviceInfoX - System Name : ${webInfo.os.version}")
         }

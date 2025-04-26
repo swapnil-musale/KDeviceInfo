@@ -14,5 +14,4 @@ class DeviceImpl(
 
     override val vendor: String
         get() = parsedDevice.vendor.safeValue()
-
 }

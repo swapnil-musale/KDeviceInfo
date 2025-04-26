@@ -6,7 +6,5 @@ interface FileSystem {
     val maxFileDescriptors: Long
     val maxFileDescriptorsPerProcess: Long
 
-    fun getFileStores(
-        localOnly: Boolean
-    ): List<OSFileStore>
+    fun getFileStores(localOnly: Boolean): List<OSFileStore>
 }

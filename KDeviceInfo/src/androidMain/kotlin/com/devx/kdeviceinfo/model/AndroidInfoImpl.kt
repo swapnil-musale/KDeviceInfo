@@ -21,15 +21,19 @@ internal class AndroidInfoImpl : AndroidInfo {
     private val packageManager: PackageManager by lazy {
         applicationContext.packageManager
     }
+
     private val packageInfo: PackageInfo by lazy {
         packageManager.getPackageInfo(applicationContext.packageName, 0)
     }
+
     private val androidVersion: Version by lazy {
         AndroidVersionImpl()
     }
+
     private val androidVersionCode: VersionCode by lazy {
         AndroidVersionCodeImpl()
     }
+
     private val androidDisplayMetrics: DisplayMetrics by lazy {
         AndroidDisplayMetricsImpl()
     }
@@ -46,38 +50,55 @@ internal class AndroidInfoImpl : AndroidInfo {
 
     override val version: Version
         get() = androidVersion
+
     override val board: String
         get() = Build.BOARD
+
     override val bootloader: String
         get() = Build.BOOTLOADER
+
     override val device: String
         get() = Build.DEVICE
+
     override val display: String
         get() = Build.DISPLAY
+
     override val fingerprint: String
         get() = Build.FINGERPRINT
+
     override val hardware: String
         get() = Build.HARDWARE
+
     override val host: String
         get() = Build.HOST
+
     override val id: String
         get() = Build.ID
+
     override val manufacturer: String
         get() = Build.MANUFACTURER
+
     override val model: String
         get() = Build.MODEL
+
     override val product: String
         get() = Build.PRODUCT
+
     override val supportedAbis: Array<String>
         get() = Build.SUPPORTED_ABIS
+
     override val supported32BitAbis: Array<String>
         get() = Build.SUPPORTED_32_BIT_ABIS
+
     override val supported64BitAbis: Array<String>
         get() = Build.SUPPORTED_64_BIT_ABIS
+
     override val tags: String
         get() = Build.TAGS
+
     override val isPhysicalDevice: Boolean
         get() = getIsPhysicalDevice()
+
     override val systemFeatureList: List<String>
         get() = getSystemFeatures()
 

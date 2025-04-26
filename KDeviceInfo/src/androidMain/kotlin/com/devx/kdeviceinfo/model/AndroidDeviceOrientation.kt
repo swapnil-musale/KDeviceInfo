@@ -10,12 +10,16 @@ internal class AndroidDeviceOrientation : DeviceOrientation {
 
     override val UNKNOWN: String
         get() = "unknown"
+
     override val PORTRAIT: String
         get() = "portrait"
+
     override val LANDSCAPE: String
         get() = "landscape"
+
     override val isPortrait: Boolean
         get() = orientation == Configuration.ORIENTATION_PORTRAIT
+
     override val isLandscape: Boolean
         get() = orientation == Configuration.ORIENTATION_LANDSCAPE
 
