@@ -67,7 +67,7 @@ jobs:
 
             **KDeviceInfo Build** ${{ steps.KDeviceInfo.outcome }}
             **sampleApp Build** ${{ steps.sampleApp.outcome }}
-            **Project Lint** ${{ steps.lint.outcome }}
+            **Android Lint** ${{ steps.lint.outcome }}
             `;
             
             github.rest.issues.createComment({

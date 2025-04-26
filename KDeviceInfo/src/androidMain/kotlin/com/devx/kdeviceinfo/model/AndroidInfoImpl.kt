@@ -88,7 +88,7 @@ internal class AndroidInfoImpl : AndroidInfo {
         get() = androidVersionCode
 
     override val versionName: String
-        get() = packageInfo.versionName
+        get() = packageInfo.versionName.orEmpty()
 
     override val versionCode: Long
         get() = PackageInfoCompat.getLongVersionCode(packageInfo)
