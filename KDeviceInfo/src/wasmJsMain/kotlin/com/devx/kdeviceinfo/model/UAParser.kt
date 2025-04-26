@@ -6,7 +6,6 @@ external class UAParser(
 ) {
 
     fun getResult(): UAParserResult
-
 }
 
 external interface UAParserResult {

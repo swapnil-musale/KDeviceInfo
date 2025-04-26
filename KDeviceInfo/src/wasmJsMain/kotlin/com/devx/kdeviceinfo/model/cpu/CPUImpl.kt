@@ -8,5 +8,4 @@ class CPUImpl(
 
     override val architecture: String
         get() = parsedCPU.architecture.safeValue()
-
 }

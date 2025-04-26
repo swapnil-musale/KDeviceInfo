@@ -67,10 +67,8 @@ kotlin {
             implementation(libs.androidx.core)
         }
 
-        val desktopMain by getting {
-            dependencies {
-                implementation(libs.oshi.core)
-            }
+        getByName("desktopMain").dependencies {
+            implementation(libs.oshi.core)
         }
     }
 }
@@ -93,7 +91,7 @@ tasks.withType<KotlinCompilationTask<*>>().configureEach {
 
 android {
     namespace = "com.devx.kdeviceinfo"
-    compileSdk = 34
+    compileSdk = 35
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
 

@@ -7,6 +7,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.interop.LocalUIViewController
 import com.devx.kdeviceinfo.model.IosInfoImpl
 import com.devx.kdeviceinfo.model.android.AndroidInfo
+import com.devx.kdeviceinfo.model.common.UnsupportedPlatformException
 import com.devx.kdeviceinfo.model.desktop.DesktopInfo
 import com.devx.kdeviceinfo.model.ios.IosInfo
 import com.devx.kdeviceinfo.model.web.WebInfo
@@ -28,20 +29,28 @@ actual class DeviceInfoXState {
         get() = false
 
     actual val androidInfo: AndroidInfo
-        get() = throw Exception("trying to access incorrect platform info")
+        get() = throw UnsupportedPlatformException(
+            requestedPlatform = "Android",
+            currentPlatform = "iOS",
+        )
 
     actual val isDesktop: Boolean
         get() = false
 
     actual val desktopInfo: DesktopInfo
-        get() = throw Exception("trying to access incorrect platform info")
-
-    actual val webInfo: WebInfo
-        get() = throw Exception("trying to access incorrect platform info")
+        get() = throw UnsupportedPlatformException(
+            requestedPlatform = "Desktop",
+            currentPlatform = "iOS",
+        )
 
     actual val isWeb: Boolean
         get() = false
 
+    actual val webInfo: WebInfo
+        get() = throw UnsupportedPlatformException(
+            requestedPlatform = "Web",
+            currentPlatform = "iOS",
+        )
 }
 
 @Composable

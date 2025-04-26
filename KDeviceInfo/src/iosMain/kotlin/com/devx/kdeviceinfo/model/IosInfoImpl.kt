@@ -20,33 +20,47 @@ internal class IosInfoImpl : IosInfo {
 
     override val name: String
         get() = UIDevice.currentDevice.name
+
     override val systemName: String
         get() = UIDevice.currentDevice.systemName
+
     override val systemVersion: String
         get() = UIDevice.currentDevice.systemVersion
+
     override val model: String
         get() = UIDevice.currentDevice.model
+
     override val localizedModel: String
         get() = UIDevice.currentDevice.localizedModel
+
     override val identifierForVendor: String
         get() = UIDevice.currentDevice.identifierForVendor?.UUIDString.orEmpty()
+
     override val isPhysicalDevice: Boolean
         get() = NSProcessInfo.processInfo.environment["SIMULATOR_UDID"] == null
+
     override val isMultitaskingSupported: Boolean
         get() = UIDevice.currentDevice.isMultitaskingSupported()
+
     override val isGeneratingDeviceOrientationNotifications: Boolean
         get() = UIDevice.currentDevice.isGeneratingDeviceOrientationNotifications()
+
     override val deviceOrientation: DeviceOrientation
         get() = iosDeviceOrientation
+
     override val appName: String
         get() = (NSBundle.mainBundle.infoDictionary?.get("CFBundleDisplayName")
             ?: NSBundle.mainBundle.infoDictionary?.get("CFBundleName")) as String
+
     override val bundleId: String
         get() = NSBundle.mainBundle.bundleIdentifier.orEmpty()
+
     override val appVersion: String
         get() = NSBundle.mainBundle.infoDictionary?.get("CFBundleVersion") as String
+
     override val appShortVersion: String
         get() = NSBundle.mainBundle.infoDictionary?.get("CFBundleShortVersionString") as String
+
     override val locale: Locale
         get() = Locale(
             languageCode = NSLocale.currentLocale.languageCode,

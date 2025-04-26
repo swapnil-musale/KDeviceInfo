@@ -10,5 +10,7 @@ interface OSService {
  * Service Execution States
  */
 enum class ServiceState {
-    RUNNING, STOPPED, OTHER
+    RUNNING,
+    STOPPED,
+    OTHER
 }

@@ -11,5 +11,4 @@ class OsImpl(
 
     override val version: String
         get() = parsedOs.version.safeValue()
-
 }

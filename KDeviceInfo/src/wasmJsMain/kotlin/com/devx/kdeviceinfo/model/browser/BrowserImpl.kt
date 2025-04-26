@@ -11,5 +11,4 @@ class BrowserImpl(
 
     override val version: String
         get() = parsedBrowser.version.safeValue()
-
 }
