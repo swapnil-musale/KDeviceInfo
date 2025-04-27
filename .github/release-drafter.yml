@@ -16,6 +16,9 @@ categories:
   - title: '🖥 Desktop'
     label: 'desktop'
 
+  - title: '🌐 Web'
+    label: 'wasm'
+
   - title: '🐛 Bug Fixes'
     label: 'bugfix'
 
