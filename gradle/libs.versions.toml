@@ -12,7 +12,7 @@ startupRuntime = "1.2.0"
 androidXCore = "1.16.0"
 
 # sampleApp Versions
-androidxAppcompat = "1.7.0"
+androidxAppcompat = "1.7.1"
 androidxActivityCompose = "1.10.1"
 androidXCompose = "1.8.0"
 kDeviceInfo = "1.0.1"
