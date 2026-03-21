@@ -1,0 +1,767 @@
+public abstract interface class com/devx/kdeviceinfo/AndroidDeviceInfo : com/devx/kdeviceinfo/DeviceInfo {
+	public abstract fun getAndroidInfo ()Lcom/devx/kdeviceinfo/model/android/AndroidInfo;
+	public fun getPlatform ()Lcom/devx/kdeviceinfo/Platform;
+}
+
+public final class com/devx/kdeviceinfo/AndroidDeviceInfo$DefaultImpls {
+	public static fun getPlatform (Lcom/devx/kdeviceinfo/AndroidDeviceInfo;)Lcom/devx/kdeviceinfo/Platform;
+}
+
+public abstract interface class com/devx/kdeviceinfo/DesktopDeviceInfo : com/devx/kdeviceinfo/DeviceInfo {
+	public abstract fun getDesktopInfo ()Lcom/devx/kdeviceinfo/model/desktop/DesktopInfo;
+	public fun getPlatform ()Lcom/devx/kdeviceinfo/Platform;
+}
+
+public final class com/devx/kdeviceinfo/DesktopDeviceInfo$DefaultImpls {
+	public static fun getPlatform (Lcom/devx/kdeviceinfo/DesktopDeviceInfo;)Lcom/devx/kdeviceinfo/Platform;
+}
+
+public final class com/devx/kdeviceinfo/DesktopDeviceInfoImplKt {
+	public static final fun getDeviceInfo ()Lcom/devx/kdeviceinfo/DeviceInfo;
+}
+
+public abstract interface class com/devx/kdeviceinfo/DeviceInfo {
+	public abstract fun getPlatform ()Lcom/devx/kdeviceinfo/Platform;
+}
+
+public abstract interface class com/devx/kdeviceinfo/DeviceInfoProvider {
+	public abstract fun get ()Lcom/devx/kdeviceinfo/DeviceInfo;
+}
+
+public final class com/devx/kdeviceinfo/DeviceInfoProviderKt {
+	public static final fun DeviceInfoProvider ()Lcom/devx/kdeviceinfo/DeviceInfoProvider;
+}
+
+public abstract interface class com/devx/kdeviceinfo/IosDeviceInfo : com/devx/kdeviceinfo/DeviceInfo {
+	public abstract fun getIosInfo ()Lcom/devx/kdeviceinfo/model/ios/IosInfo;
+	public fun getPlatform ()Lcom/devx/kdeviceinfo/Platform;
+}
+
+public final class com/devx/kdeviceinfo/IosDeviceInfo$DefaultImpls {
+	public static fun getPlatform (Lcom/devx/kdeviceinfo/IosDeviceInfo;)Lcom/devx/kdeviceinfo/Platform;
+}
+
+public abstract class com/devx/kdeviceinfo/Platform {
+}
+
+public final class com/devx/kdeviceinfo/Platform$Android : com/devx/kdeviceinfo/Platform {
+	public static final field INSTANCE Lcom/devx/kdeviceinfo/Platform$Android;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/devx/kdeviceinfo/Platform$Desktop : com/devx/kdeviceinfo/Platform {
+	public static final field INSTANCE Lcom/devx/kdeviceinfo/Platform$Desktop;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/devx/kdeviceinfo/Platform$IOS : com/devx/kdeviceinfo/Platform {
+	public static final field INSTANCE Lcom/devx/kdeviceinfo/Platform$IOS;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/devx/kdeviceinfo/Platform$Web : com/devx/kdeviceinfo/Platform {
+	public static final field INSTANCE Lcom/devx/kdeviceinfo/Platform$Web;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/devx/kdeviceinfo/PlatformDslKt {
+	public static final fun onPlatform (Lcom/devx/kdeviceinfo/DeviceInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+}
+
+public abstract interface annotation class com/devx/kdeviceinfo/PlatformDslMarker : java/lang/annotation/Annotation {
+}
+
+public final class com/devx/kdeviceinfo/PlatformScope {
+	public fun <init> (Lcom/devx/kdeviceinfo/DeviceInfo;)V
+	public final fun android (Lkotlin/jvm/functions/Function1;)V
+	public final fun desktop (Lkotlin/jvm/functions/Function1;)V
+	public final fun getDeviceInfo ()Lcom/devx/kdeviceinfo/DeviceInfo;
+	public final fun getMatched ()Z
+	public final fun getResult ()Ljava/lang/Object;
+	public final fun ios (Lkotlin/jvm/functions/Function1;)V
+	public final fun setMatched (Z)V
+	public final fun setResult (Ljava/lang/Object;)V
+	public final fun web (Lkotlin/jvm/functions/Function1;)V
+}
+
+public abstract interface class com/devx/kdeviceinfo/WebDeviceInfo : com/devx/kdeviceinfo/DeviceInfo {
+	public fun getPlatform ()Lcom/devx/kdeviceinfo/Platform;
+	public abstract fun getWebInfo ()Lcom/devx/kdeviceinfo/model/web/WebInfo;
+}
+
+public final class com/devx/kdeviceinfo/WebDeviceInfo$DefaultImpls {
+	public static fun getPlatform (Lcom/devx/kdeviceinfo/WebDeviceInfo;)Lcom/devx/kdeviceinfo/Platform;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/android/AndroidInfo {
+	public abstract fun getAndroidId ()Ljava/lang/String;
+	public abstract fun getAppName ()Ljava/lang/String;
+	public abstract fun getBoard ()Ljava/lang/String;
+	public abstract fun getBootloader ()Ljava/lang/String;
+	public abstract fun getDevice ()Ljava/lang/String;
+	public abstract fun getDeviceOrientation ()Lcom/devx/kdeviceinfo/model/common/DeviceOrientation;
+	public abstract fun getDisplay ()Ljava/lang/String;
+	public abstract fun getDisplayMetrics ()Lcom/devx/kdeviceinfo/model/android/DisplayMetrics;
+	public abstract fun getFingerprint ()Ljava/lang/String;
+	public abstract fun getHardware ()Ljava/lang/String;
+	public abstract fun getHost ()Ljava/lang/String;
+	public abstract fun getId ()Ljava/lang/String;
+	public abstract fun getLocale ()Lcom/devx/kdeviceinfo/model/common/Locale;
+	public abstract fun getManufacturer ()Ljava/lang/String;
+	public abstract fun getModel ()Ljava/lang/String;
+	public abstract fun getPackageName ()Ljava/lang/String;
+	public abstract fun getProduct ()Ljava/lang/String;
+	public abstract fun getSupported32BitAbis ()[Ljava/lang/String;
+	public abstract fun getSupported64BitAbis ()[Ljava/lang/String;
+	public abstract fun getSupportedAbis ()[Ljava/lang/String;
+	public abstract fun getSystemFeatureList ()Ljava/util/List;
+	public abstract fun getTags ()Ljava/lang/String;
+	public abstract fun getVERSION_CODES ()Lcom/devx/kdeviceinfo/model/android/VersionCode;
+	public abstract fun getVersion ()Lcom/devx/kdeviceinfo/model/android/Version;
+	public abstract fun getVersionCode ()J
+	public abstract fun getVersionName ()Ljava/lang/String;
+	public abstract fun isDebug ()Z
+	public abstract fun isPhysicalDevice ()Z
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/android/DisplayMetrics {
+	public abstract fun getHeightInches ()D
+	public abstract fun getWidthInches ()D
+	public abstract fun getXDpi ()D
+	public abstract fun getYDpi ()D
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/android/Version {
+	public abstract fun getBaseOs ()Ljava/lang/String;
+	public abstract fun getCodeName ()Ljava/lang/String;
+	public abstract fun getIncremental ()Ljava/lang/String;
+	public abstract fun getMediaPerformanceClass ()I
+	public abstract fun getPreviewSdkInt ()I
+	public abstract fun getRelease ()Ljava/lang/String;
+	public abstract fun getReleaseOrCodeName ()Ljava/lang/String;
+	public abstract fun getReleaseOrPreviewDisplay ()Ljava/lang/String;
+	public abstract fun getSdkInt ()I
+	public abstract fun getSecurityPatch ()Ljava/lang/String;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/android/VersionCode {
+	public abstract fun getCUR_DEVELOPMENT ()I
+	public abstract fun getLOLLIPOP ()I
+	public abstract fun getLOLLIPOP_MR1 ()I
+	public abstract fun getM ()I
+	public abstract fun getN ()I
+	public abstract fun getN_MR1 ()I
+	public abstract fun getO ()I
+	public abstract fun getO_MR1 ()I
+	public abstract fun getP ()I
+	public abstract fun getR ()I
+	public abstract fun getS ()I
+	public abstract fun getS_V2 ()I
+	public abstract fun getTIRAMISU ()I
+	public abstract fun getUPSIDE_DOWN_CAKE ()I
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/common/DeviceOrientation {
+	public abstract fun getDeviceOrientation ()Ljava/lang/String;
+	public abstract fun getLANDSCAPE ()Ljava/lang/String;
+	public abstract fun getPORTRAIT ()Ljava/lang/String;
+	public abstract fun getUNKNOWN ()Ljava/lang/String;
+	public abstract fun isLandscape ()Z
+	public abstract fun isPortrait ()Z
+}
+
+public final class com/devx/kdeviceinfo/model/common/Locale {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lcom/devx/kdeviceinfo/model/common/Locale;
+	public static synthetic fun copy$default (Lcom/devx/kdeviceinfo/model/common/Locale;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/devx/kdeviceinfo/model/common/Locale;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getLanguageCode ()Ljava/lang/String;
+	public final fun getRegion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/devx/kdeviceinfo/model/common/Orientation : java/lang/Enum {
+	public static final field LANDSCAPE Lcom/devx/kdeviceinfo/model/common/Orientation;
+	public static final field PORTRAIT Lcom/devx/kdeviceinfo/model/common/Orientation;
+	public static final field UNKNOWN Lcom/devx/kdeviceinfo/model/common/Orientation;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/devx/kdeviceinfo/model/common/Orientation;
+	public static fun values ()[Lcom/devx/kdeviceinfo/model/common/Orientation;
+}
+
+public final class com/devx/kdeviceinfo/model/common/UnsupportedPlatformException : java/lang/IllegalStateException {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/DesktopInfo {
+	public abstract fun getHardware ()Lcom/devx/kdeviceinfo/model/desktop/hardware/Hardware;
+	public abstract fun getOperatingSystem ()Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/OperatingSystem;
+}
+
+public final class com/devx/kdeviceinfo/model/desktop/hardware/CapacityUnits : java/lang/Enum {
+	public static final field MAH Lcom/devx/kdeviceinfo/model/desktop/hardware/CapacityUnits;
+	public static final field MWH Lcom/devx/kdeviceinfo/model/desktop/hardware/CapacityUnits;
+	public static final field RELATIVE Lcom/devx/kdeviceinfo/model/desktop/hardware/CapacityUnits;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/devx/kdeviceinfo/model/desktop/hardware/CapacityUnits;
+	public static fun values ()[Lcom/devx/kdeviceinfo/model/desktop/hardware/CapacityUnits;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/Display {
+	public abstract fun getEdid ()[B
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/GraphicsCard {
+	public abstract fun getDeviceId ()Ljava/lang/String;
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getVRam ()J
+	public abstract fun getVendor ()Ljava/lang/String;
+	public abstract fun getVersionInfo ()Ljava/lang/String;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/Hardware {
+	public abstract fun getCentralProcessor ()Lcom/devx/kdeviceinfo/model/desktop/hardware/centralprocessor/CentralProcessor;
+	public abstract fun getComputerSystem ()Lcom/devx/kdeviceinfo/model/desktop/hardware/computersystem/ComputerSystem;
+	public abstract fun getDiskStores ()Ljava/util/List;
+	public abstract fun getDisplays ()Ljava/util/List;
+	public abstract fun getGlobalMemory ()Lcom/devx/kdeviceinfo/model/desktop/hardware/memory/GlobalMemory;
+	public abstract fun getGraphicsCards ()Ljava/util/List;
+	public abstract fun getLogicalVolumeGroups ()Ljava/util/List;
+	public abstract fun getNetworkIFs ()Ljava/util/List;
+	public abstract fun getNetworkIfs (Z)Ljava/util/List;
+	public abstract fun getPowerSources ()Ljava/util/List;
+	public abstract fun getSensors ()Lcom/devx/kdeviceinfo/model/desktop/hardware/Sensors;
+	public abstract fun getSoundCards ()Ljava/util/List;
+	public abstract fun getUsbDevices (Z)Ljava/util/List;
+}
+
+public final class com/devx/kdeviceinfo/model/desktop/hardware/IfOperStatus : java/lang/Enum {
+	public static final field DORMANT Lcom/devx/kdeviceinfo/model/desktop/hardware/IfOperStatus;
+	public static final field DOWN Lcom/devx/kdeviceinfo/model/desktop/hardware/IfOperStatus;
+	public static final field LOWER_LAYER_DOWN Lcom/devx/kdeviceinfo/model/desktop/hardware/IfOperStatus;
+	public static final field NOT_PRESENT Lcom/devx/kdeviceinfo/model/desktop/hardware/IfOperStatus;
+	public static final field TESTING Lcom/devx/kdeviceinfo/model/desktop/hardware/IfOperStatus;
+	public static final field UNKNOWN Lcom/devx/kdeviceinfo/model/desktop/hardware/IfOperStatus;
+	public static final field UP Lcom/devx/kdeviceinfo/model/desktop/hardware/IfOperStatus;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getValue ()I
+	public static fun valueOf (Ljava/lang/String;)Lcom/devx/kdeviceinfo/model/desktop/hardware/IfOperStatus;
+	public static fun values ()[Lcom/devx/kdeviceinfo/model/desktop/hardware/IfOperStatus;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/NetworkIF {
+	public abstract fun getBytesRecv ()J
+	public abstract fun getBytesSent ()J
+	public abstract fun getCollisions ()J
+	public abstract fun getDisplayName ()Ljava/lang/String;
+	public abstract fun getIfAlias ()Ljava/lang/String;
+	public abstract fun getIfOperStatus ()Lcom/devx/kdeviceinfo/model/desktop/hardware/IfOperStatus;
+	public abstract fun getIfType ()I
+	public abstract fun getInDrops ()J
+	public abstract fun getInErrors ()J
+	public abstract fun getIndex ()I
+	public abstract fun getIpv4addr ()[Ljava/lang/String;
+	public abstract fun getIpv6addr ()[Ljava/lang/String;
+	public abstract fun getMacaddr ()Ljava/lang/String;
+	public abstract fun getMtu ()J
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getNdisPhysicalMediumType ()I
+	public abstract fun getOutErrors ()J
+	public abstract fun getPacketsRecv ()J
+	public abstract fun getPacketsSent ()J
+	public abstract fun getPrefixLengths ()[Ljava/lang/Short;
+	public abstract fun getSpeed ()J
+	public abstract fun getSubnetMasks ()[Ljava/lang/Short;
+	public abstract fun getTimestamp ()J
+	public abstract fun getUpdateAttributes ()Z
+	public abstract fun isConnectorPresent ()Z
+	public abstract fun isKnownVmMacAddr ()Z
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/PowerSource {
+	public abstract fun getAmperage ()D
+	public abstract fun getCapacityUnits ()Lcom/devx/kdeviceinfo/model/desktop/hardware/CapacityUnits;
+	public abstract fun getChemistry ()Ljava/lang/String;
+	public abstract fun getCurrentCapacity ()I
+	public abstract fun getCycleCount ()I
+	public abstract fun getDesignCapacity ()I
+	public abstract fun getDeviceName ()Ljava/lang/String;
+	public abstract fun getManufacturer ()Ljava/lang/String;
+	public abstract fun getMaxCapacity ()I
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getPowerUsageRate ()D
+	public abstract fun getRemainingCapacityPercent ()D
+	public abstract fun getSerialNumber ()Ljava/lang/String;
+	public abstract fun getTemperature ()D
+	public abstract fun getTimeRemainingEstimated ()D
+	public abstract fun getTimeRemainingInstant ()D
+	public abstract fun getUpdateAttributes ()Z
+	public abstract fun getVoltage ()D
+	public abstract fun isCharging ()Z
+	public abstract fun isDischarging ()Z
+	public abstract fun isPowerOnLine ()Z
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/Sensors {
+	public abstract fun getCpuTemperature ()D
+	public abstract fun getCpuVoltage ()D
+	public abstract fun getFanSpeeds ()[I
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/SoundCard {
+	public abstract fun getCodec ()Ljava/lang/String;
+	public abstract fun getDriverVersion ()Ljava/lang/String;
+	public abstract fun getName ()Ljava/lang/String;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/UsbDevice {
+	public abstract fun getConnectedDevices ()Ljava/util/List;
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getProductId ()Ljava/lang/String;
+	public abstract fun getSerialNumber ()Ljava/lang/String;
+	public abstract fun getUniqueDeviceId ()Ljava/lang/String;
+	public abstract fun getVendor ()Ljava/lang/String;
+	public abstract fun getVendorId ()Ljava/lang/String;
+}
+
+public final class com/devx/kdeviceinfo/model/desktop/hardware/centralprocessor/CacheType : java/lang/Enum {
+	public static final field DATA Lcom/devx/kdeviceinfo/model/desktop/hardware/centralprocessor/CacheType;
+	public static final field INSTRUCTION Lcom/devx/kdeviceinfo/model/desktop/hardware/centralprocessor/CacheType;
+	public static final field TRACE Lcom/devx/kdeviceinfo/model/desktop/hardware/centralprocessor/CacheType;
+	public static final field UNIFIED Lcom/devx/kdeviceinfo/model/desktop/hardware/centralprocessor/CacheType;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public fun toString ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/devx/kdeviceinfo/model/desktop/hardware/centralprocessor/CacheType;
+	public static fun values ()[Lcom/devx/kdeviceinfo/model/desktop/hardware/centralprocessor/CacheType;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/centralprocessor/CentralProcessor {
+	public abstract fun getContextSwitches ()J
+	public abstract fun getCurrentFreq ()[J
+	public abstract fun getFeatureFlags ()Ljava/util/List;
+	public abstract fun getInterrupts ()J
+	public abstract fun getLogicalProcessorCount ()I
+	public abstract fun getLogicalProcessors ()Ljava/util/List;
+	public abstract fun getMaxFreq ()J
+	public abstract fun getPhysicalPackageCount ()I
+	public abstract fun getPhysicalProcessorCount ()I
+	public abstract fun getPhysicalProcessors ()Ljava/util/List;
+	public abstract fun getProcessorCaches ()Ljava/util/List;
+	public abstract fun getProcessorCpuLoadBetweenTicks ([[J)[D
+	public abstract fun getProcessorCpuLoadTicks ()[[J
+	public abstract fun getProcessorIdentifier ()Lcom/devx/kdeviceinfo/model/desktop/hardware/centralprocessor/ProcessorIdentifier;
+	public abstract fun getSystemCpuLoad (J)D
+	public abstract fun getSystemCpuLoadBetweenTicks ([J)D
+	public abstract fun getSystemCpuLoadTicks ()[J
+	public abstract fun getSystemLoadAverage (I)[D
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/centralprocessor/LogicalProcessor {
+	public abstract fun getNumaNode ()I
+	public abstract fun getPhysicalPackageNumber ()I
+	public abstract fun getPhysicalProcessorNumber ()I
+	public abstract fun getProcessorGroup ()I
+	public abstract fun getProcessorNumber ()I
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/centralprocessor/PhysicalProcessor {
+	public abstract fun getEfficiency ()I
+	public abstract fun getIdString ()Ljava/lang/String;
+	public abstract fun getPhysicalPackageNumber ()I
+	public abstract fun getPhysicalProcessorNumber ()I
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/centralprocessor/ProcessorCache {
+	public abstract fun getAssociativity ()B
+	public abstract fun getCacheSize ()I
+	public abstract fun getLevel ()B
+	public abstract fun getLineSize ()S
+	public abstract fun getType ()Lcom/devx/kdeviceinfo/model/desktop/hardware/centralprocessor/CacheType;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/centralprocessor/ProcessorIdentifier {
+	public abstract fun getCpuFamily ()Ljava/lang/String;
+	public abstract fun getCpuIdentifier ()Ljava/lang/String;
+	public abstract fun getCpuModel ()Ljava/lang/String;
+	public abstract fun getCpuName ()Ljava/lang/String;
+	public abstract fun getCpuStepping ()Ljava/lang/String;
+	public abstract fun getCpuVendor ()Ljava/lang/String;
+	public abstract fun getCpuVendorFreq ()J
+	public abstract fun getProcessorId ()Ljava/lang/String;
+	public abstract fun isCpu64bit ()Z
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/computersystem/Baseboard {
+	public abstract fun getManufacturer ()Ljava/lang/String;
+	public abstract fun getModel ()Ljava/lang/String;
+	public abstract fun getSerialNumber ()Ljava/lang/String;
+	public abstract fun getVersion ()Ljava/lang/String;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/computersystem/ComputerSystem {
+	public abstract fun getBaseboard ()Lcom/devx/kdeviceinfo/model/desktop/hardware/computersystem/Baseboard;
+	public abstract fun getFirmware ()Lcom/devx/kdeviceinfo/model/desktop/hardware/computersystem/Firmware;
+	public abstract fun getHardwareUUID ()Ljava/lang/String;
+	public abstract fun getManufacturer ()Ljava/lang/String;
+	public abstract fun getModel ()Ljava/lang/String;
+	public abstract fun getSerialNumber ()Ljava/lang/String;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/computersystem/Firmware {
+	public abstract fun getDescription ()Ljava/lang/String;
+	public abstract fun getManufacturer ()Ljava/lang/String;
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getReleaseDate ()Ljava/lang/String;
+	public abstract fun getVersion ()Ljava/lang/String;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/memory/GlobalMemory {
+	public abstract fun getAvailable ()J
+	public abstract fun getPageSize ()J
+	public abstract fun getPhysicalMemory ()Ljava/util/List;
+	public abstract fun getTotal ()J
+	public abstract fun getVirtualMemory ()Lcom/devx/kdeviceinfo/model/desktop/hardware/memory/VirtualMemory;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/memory/PhysicalMemory {
+	public abstract fun getBankLabel ()Ljava/lang/String;
+	public abstract fun getCapacity ()J
+	public abstract fun getClockSpeed ()J
+	public abstract fun getManufacturer ()Ljava/lang/String;
+	public abstract fun getMemoryType ()Ljava/lang/String;
+	public abstract fun getPartNumber ()Ljava/lang/String;
+	public abstract fun getSerialNumber ()Ljava/lang/String;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/memory/VirtualMemory {
+	public abstract fun getSwapPagesIn ()J
+	public abstract fun getSwapPagesOut ()J
+	public abstract fun getSwapTotal ()J
+	public abstract fun getSwapUsed ()J
+	public abstract fun getVirtualInUse ()J
+	public abstract fun getVirtualMax ()J
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/storage/HWDiskStore {
+	public abstract fun getCurrentQueueLength ()J
+	public abstract fun getModel ()Ljava/lang/String;
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getPartitions ()Ljava/util/List;
+	public abstract fun getReadBytes ()J
+	public abstract fun getReads ()J
+	public abstract fun getSerial ()Ljava/lang/String;
+	public abstract fun getSize ()J
+	public abstract fun getTimestamp ()J
+	public abstract fun getTransferTime ()J
+	public abstract fun getUpdateAttributes ()Z
+	public abstract fun getWrites ()J
+	public abstract fun getWritesBytes ()J
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/storage/HWPartition {
+	public abstract fun getIdentification ()Ljava/lang/String;
+	public abstract fun getMajor ()I
+	public abstract fun getMinor ()I
+	public abstract fun getMountPoint ()Ljava/lang/String;
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getSize ()J
+	public abstract fun getType ()Ljava/lang/String;
+	public abstract fun getUuid ()Ljava/lang/String;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/hardware/storage/LogicalVolumeGroup {
+	public abstract fun getLogicalVolumes ()Ljava/util/Map;
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getPhysicalVolumes ()Ljava/util/Set;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/operatingsystem/FileSystem {
+	public abstract fun getFileStores ()Ljava/util/List;
+	public abstract fun getFileStores (Z)Ljava/util/List;
+	public abstract fun getMaxFileDescriptors ()J
+	public abstract fun getMaxFileDescriptorsPerProcess ()J
+	public abstract fun getOpenFileDescriptors ()J
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/operatingsystem/OSDesktopWindow {
+	public abstract fun getCommand ()Ljava/lang/String;
+	public abstract fun getOrder ()I
+	public abstract fun getOwningProcessId ()J
+	public abstract fun getTitle ()Ljava/lang/String;
+	public abstract fun getVisible ()Z
+	public abstract fun getWindowId ()J
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/operatingsystem/OSFileStore {
+	public abstract fun getDescription ()Ljava/lang/String;
+	public abstract fun getFreeInodes ()J
+	public abstract fun getFreeSpace ()J
+	public abstract fun getLabel ()Ljava/lang/String;
+	public abstract fun getLogicalVolume ()Ljava/lang/String;
+	public abstract fun getMount ()Ljava/lang/String;
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getOptions ()Ljava/lang/String;
+	public abstract fun getTotalInodes ()J
+	public abstract fun getTotalSpace ()J
+	public abstract fun getType ()Ljava/lang/String;
+	public abstract fun getUpdateAttributes ()Z
+	public abstract fun getUsableSpace ()J
+	public abstract fun getUuid ()Ljava/lang/String;
+	public abstract fun getVolume ()Ljava/lang/String;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/operatingsystem/OSService {
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getProcessID ()I
+	public abstract fun getState ()Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/ServiceState;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/operatingsystem/OSSession {
+	public abstract fun getHost ()Ljava/lang/String;
+	public abstract fun getLoginTime ()J
+	public abstract fun getTerminalDevice ()Ljava/lang/String;
+	public abstract fun getUserName ()Ljava/lang/String;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/operatingsystem/OSVersionInfo {
+	public abstract fun getBuildNumber ()Ljava/lang/String;
+	public abstract fun getCodeName ()Ljava/lang/String;
+	public abstract fun getVersion ()Ljava/lang/String;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/operatingsystem/OperatingSystem {
+	public abstract fun getBitness ()I
+	public abstract fun getCurrentProcess ()Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/processes/OSProcess;
+	public abstract fun getCurrentThread ()Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/processes/OSThread;
+	public abstract fun getFamily ()Ljava/lang/String;
+	public abstract fun getFileSystem ()Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/FileSystem;
+	public abstract fun getInternetProtocolStats ()Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/InternetProtocolStats;
+	public abstract fun getManufacturer ()Ljava/lang/String;
+	public abstract fun getNetworkParams ()Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/NetworkParams;
+	public abstract fun getOSDesktopWindows (Z)Ljava/util/List;
+	public abstract fun getProcess (I)Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/processes/OSProcess;
+	public abstract fun getProcessCount ()I
+	public abstract fun getProcessId ()I
+	public abstract fun getProcesses ()Ljava/util/List;
+	public abstract fun getProcesses (Ljava/util/Collection;)Ljava/util/List;
+	public abstract fun getServices ()Ljava/util/List;
+	public abstract fun getSessions ()Ljava/util/List;
+	public abstract fun getSystemBootTime ()J
+	public abstract fun getSystemUptime ()J
+	public abstract fun getThreadCount ()I
+	public abstract fun getThreadId ()I
+	public abstract fun getVersionInfo ()Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/OSVersionInfo;
+	public abstract fun isElevated ()Z
+}
+
+public final class com/devx/kdeviceinfo/model/desktop/operatingsystem/ServiceState : java/lang/Enum {
+	public static final field OTHER Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/ServiceState;
+	public static final field RUNNING Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/ServiceState;
+	public static final field STOPPED Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/ServiceState;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/ServiceState;
+	public static fun values ()[Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/ServiceState;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/operatingsystem/processes/OSProcess {
+	public abstract fun getAffinityMask ()J
+	public abstract fun getArguments ()Ljava/util/List;
+	public abstract fun getBitness ()I
+	public abstract fun getBytesRead ()J
+	public abstract fun getBytesWritten ()J
+	public abstract fun getCommandLine ()Ljava/lang/String;
+	public abstract fun getContextSwitches ()J
+	public abstract fun getCurrentWorkingDirectory ()Ljava/lang/String;
+	public abstract fun getEnvironmentVariables ()Ljava/util/Map;
+	public abstract fun getGroup ()Ljava/lang/String;
+	public abstract fun getGroupId ()Ljava/lang/String;
+	public abstract fun getHardOpenFileLimit ()J
+	public abstract fun getKernelTime ()J
+	public abstract fun getMajorFaults ()J
+	public abstract fun getMinorFaults ()J
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getOpenFiles ()J
+	public abstract fun getParentProcessId ()I
+	public abstract fun getPath ()Ljava/lang/String;
+	public abstract fun getPriority ()I
+	public abstract fun getProcessCpuLoadBetweenTicks ()D
+	public abstract fun getProcessCpuLoadCumulative ()D
+	public abstract fun getProcessId ()I
+	public abstract fun getResidentSetSize ()J
+	public abstract fun getSoftOpenFileLimit ()J
+	public abstract fun getStartTime ()J
+	public abstract fun getState ()Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/processes/State;
+	public abstract fun getThreadCount ()I
+	public abstract fun getThreadDetails ()Ljava/util/List;
+	public abstract fun getUpdateAttributes ()Z
+	public abstract fun getUser ()Ljava/lang/String;
+	public abstract fun getUserId ()Ljava/lang/String;
+	public abstract fun getUserTime ()J
+	public abstract fun getVirtualSize ()J
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/operatingsystem/processes/OSThread {
+	public abstract fun getContextSwitches ()J
+	public abstract fun getKernelTime ()J
+	public abstract fun getMajorFaults ()J
+	public abstract fun getMinorFaults ()J
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getOwningProcessId ()I
+	public abstract fun getPriority ()I
+	public abstract fun getStartMemoryAddress ()J
+	public abstract fun getStartTime ()J
+	public abstract fun getState ()Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/processes/State;
+	public abstract fun getThreadCpuLoadBetweenTicks ()D
+	public abstract fun getThreadCpuLoadCumulative ()D
+	public abstract fun getThreadId ()I
+	public abstract fun getUpTime ()J
+	public abstract fun getUpdateAttributes ()Z
+	public abstract fun getUserTime ()J
+}
+
+public final class com/devx/kdeviceinfo/model/desktop/operatingsystem/processes/State : java/lang/Enum {
+	public static final field INVALID Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/processes/State;
+	public static final field NEW Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/processes/State;
+	public static final field OTHER Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/processes/State;
+	public static final field RUNNING Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/processes/State;
+	public static final field SLEEPING Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/processes/State;
+	public static final field STOPPED Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/processes/State;
+	public static final field SUSPENDED Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/processes/State;
+	public static final field WAITING Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/processes/State;
+	public static final field ZOMBIE Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/processes/State;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/processes/State;
+	public static fun values ()[Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/processes/State;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/IPConnection {
+	public abstract fun getForeignAddress ()[B
+	public abstract fun getForeignPort ()I
+	public abstract fun getLocalAddress ()[B
+	public abstract fun getLocalPort ()I
+	public abstract fun getOwningProcessId ()I
+	public abstract fun getReceiveQueue ()I
+	public abstract fun getState ()Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/TcpState;
+	public abstract fun getTransmitQueue ()I
+	public abstract fun getType ()Ljava/lang/String;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/InternetProtocolStats {
+	public abstract fun getIpConnections ()Ljava/util/List;
+	public abstract fun getTcpV4Stats ()Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/TcpStats;
+	public abstract fun getTcpV6Stats ()Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/TcpStats;
+	public abstract fun getUdpV4Stats ()Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/UdpStats;
+	public abstract fun getUdpV6Stats ()Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/UdpStats;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/NetworkParams {
+	public abstract fun getDnsServers ()[Ljava/lang/String;
+	public abstract fun getDomainName ()Ljava/lang/String;
+	public abstract fun getHostName ()Ljava/lang/String;
+	public abstract fun getIpv4DefaultGateway ()Ljava/lang/String;
+	public abstract fun getIpv6DefaultGateway ()Ljava/lang/String;
+}
+
+public final class com/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/TcpState : java/lang/Enum {
+	public static final field CLOSED Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/TcpState;
+	public static final field CLOSE_WAIT Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/TcpState;
+	public static final field CLOSING Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/TcpState;
+	public static final field ESTABLISHED Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/TcpState;
+	public static final field FIN_WAIT_1 Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/TcpState;
+	public static final field FIN_WAIT_2 Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/TcpState;
+	public static final field LAST_ACK Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/TcpState;
+	public static final field LISTEN Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/TcpState;
+	public static final field NONE Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/TcpState;
+	public static final field SYN_RECV Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/TcpState;
+	public static final field SYN_SENT Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/TcpState;
+	public static final field TIME_WAIT Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/TcpState;
+	public static final field UNKNOWN Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/TcpState;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/TcpState;
+	public static fun values ()[Lcom/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/TcpState;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/TcpStats {
+	public abstract fun getConnectionFailures ()J
+	public abstract fun getConnectionsActive ()J
+	public abstract fun getConnectionsEstablished ()J
+	public abstract fun getConnectionsPassive ()J
+	public abstract fun getConnectionsReset ()J
+	public abstract fun getInErrors ()J
+	public abstract fun getOutResets ()J
+	public abstract fun getSegmentsReceived ()J
+	public abstract fun getSegmentsRetransmitted ()J
+	public abstract fun getSegmentsSent ()J
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/desktop/operatingsystem/protocols/UdpStats {
+	public abstract fun getDatagramsNoPort ()J
+	public abstract fun getDatagramsReceived ()J
+	public abstract fun getDatagramsReceivedErrors ()J
+	public abstract fun getDatagramsSent ()J
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/ios/IosInfo {
+	public abstract fun getAppName ()Ljava/lang/String;
+	public abstract fun getAppShortVersion ()Ljava/lang/String;
+	public abstract fun getAppVersion ()Ljava/lang/String;
+	public abstract fun getBundleId ()Ljava/lang/String;
+	public abstract fun getDeviceOrientation ()Lcom/devx/kdeviceinfo/model/common/DeviceOrientation;
+	public abstract fun getIdentifierForVendor ()Ljava/lang/String;
+	public abstract fun getLocale ()Lcom/devx/kdeviceinfo/model/common/Locale;
+	public abstract fun getLocalizedModel ()Ljava/lang/String;
+	public abstract fun getModel ()Ljava/lang/String;
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getSystemName ()Ljava/lang/String;
+	public abstract fun getSystemVersion ()Ljava/lang/String;
+	public abstract fun isDebug ()Z
+	public abstract fun isGeneratingDeviceOrientationNotifications ()Z
+	public abstract fun isMultitaskingSupported ()Z
+	public abstract fun isPhysicalDevice ()Z
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/web/WebInfo {
+	public abstract fun getBrowser ()Lcom/devx/kdeviceinfo/model/web/browser/Browser;
+	public abstract fun getCpu ()Lcom/devx/kdeviceinfo/model/web/cpu/CPU;
+	public abstract fun getDevice ()Lcom/devx/kdeviceinfo/model/web/device/Device;
+	public abstract fun getEngine ()Lcom/devx/kdeviceinfo/model/web/engine/Engine;
+	public abstract fun getOs ()Lcom/devx/kdeviceinfo/model/web/operatingsystem/Os;
+	public abstract fun getUserAgent ()Ljava/lang/String;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/web/browser/Browser {
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getVersion ()Ljava/lang/String;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/web/cpu/CPU {
+	public abstract fun getArchitecture ()Ljava/lang/String;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/web/device/Device {
+	public abstract fun getModel ()Ljava/lang/String;
+	public abstract fun getType ()Ljava/lang/String;
+	public abstract fun getVendor ()Ljava/lang/String;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/web/engine/Engine {
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getVersion ()Ljava/lang/String;
+}
+
+public abstract interface class com/devx/kdeviceinfo/model/web/operatingsystem/Os {
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getVersion ()Ljava/lang/String;
+}
+

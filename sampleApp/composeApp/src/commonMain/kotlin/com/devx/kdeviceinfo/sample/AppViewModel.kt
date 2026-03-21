@@ -1,26 +1,40 @@
 package com.devx.kdeviceinfo.sample
 
-import com.devx.kdeviceinfo.DeviceInfoXState
-import com.devx.kdeviceinfo.model.android.AndroidInfo
-import com.devx.kdeviceinfo.model.ios.IosInfo
+import com.devx.kdeviceinfo.AndroidDeviceInfo
+import com.devx.kdeviceinfo.DesktopDeviceInfo
+import com.devx.kdeviceinfo.DeviceInfoProvider
+import com.devx.kdeviceinfo.IosDeviceInfo
+import com.devx.kdeviceinfo.WebDeviceInfo
+import com.devx.kdeviceinfo.onPlatform
 
-class AppViewModel {
-
-    private val deviceInfoXState: DeviceInfoXState = DeviceInfoXState()
+class AppViewModel(
+    private val deviceInfoProvider: DeviceInfoProvider = DeviceInfoProvider()
+) {
 
     init {
-        if (deviceInfoXState.isAndroid) {
-            val androidInfo: AndroidInfo = deviceInfoXState.androidInfo
-            println("DeviceInfoX - App Name : ${androidInfo.appName}")
-        } else if (deviceInfoXState.isIos) {
-            val iosInfo: IosInfo = deviceInfoXState.iosInfo
-            println("DeviceInfoX - System Name : ${iosInfo.systemName}")
-        } else if (deviceInfoXState.isDesktop) {
-            val desktopInfo = deviceInfoXState.desktopInfo
-            println("DeviceInfoX - System Name : ${desktopInfo.operatingSystem.versionInfo.version}")
-        } else if (deviceInfoXState.isWeb) {
-            val webInfo = deviceInfoXState.webInfo
-            println("DeviceInfoX - System Name : ${webInfo.os.version}")
+        val deviceInfo = deviceInfoProvider.get()
+
+        when (deviceInfo) {
+            is AndroidDeviceInfo -> {
+                println("DeviceInfo - App Name : ${deviceInfo.androidInfo.appName}")
+            }
+            is IosDeviceInfo -> {
+                println("DeviceInfo - System Name : ${deviceInfo.iosInfo.systemName}")
+            }
+            is DesktopDeviceInfo -> {
+                println("DeviceInfo - OS Version : ${deviceInfo.desktopInfo.operatingSystem.versionInfo.version}")
+            }
+            is WebDeviceInfo -> {
+                println("DeviceInfo - OS Version : ${deviceInfo.webInfo.os.version}")
+            }
         }
+
+        val platformLabel: String = onPlatform(deviceInfo) {
+            android { it.appName }
+            ios { it.systemName }
+            desktop { it.operatingSystem.family }
+            web { it.browser.name }
+        }
+        println("DeviceInfo - Platform label: $platformLabel")
     }
 }

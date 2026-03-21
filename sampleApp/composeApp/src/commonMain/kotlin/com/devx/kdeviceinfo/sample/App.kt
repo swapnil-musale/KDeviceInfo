@@ -12,20 +12,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.devx.kdeviceinfo.DeviceInfoXState
-import com.devx.kdeviceinfo.OnPlatform
+import com.devx.kdeviceinfo.AndroidDeviceInfo
+import com.devx.kdeviceinfo.DesktopDeviceInfo
+import com.devx.kdeviceinfo.IosDeviceInfo
+import com.devx.kdeviceinfo.WebDeviceInfo
+import com.devx.kdeviceinfo.compose.rememberDeviceInfo
 import com.devx.kdeviceinfo.model.android.AndroidInfo
 import com.devx.kdeviceinfo.model.desktop.DesktopInfo
 import com.devx.kdeviceinfo.model.ios.IosInfo
 import com.devx.kdeviceinfo.model.web.WebInfo
-import com.devx.kdeviceinfo.rememberDeviceInfoXState
 import com.devx.kdeviceinfo.sample.theme.AppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun App() = AppTheme {
 
-    val deviceInfoXState: DeviceInfoXState = rememberDeviceInfoXState()
+    val deviceInfo = rememberDeviceInfo()
 
     Scaffold(topBar = {
         TopAppBar(title = { Text(text = "KDeviceInfo Sample App") })
@@ -36,19 +38,12 @@ internal fun App() = AppTheme {
                 .padding(paddingValues = it)
                 .padding(horizontal = 16.dp)
         ) {
-            OnPlatform(
-                deviceInfoXState = deviceInfoXState,
-                onAndroid = { androidInfo ->
-                    ShowAndroidDeviceInfo(androidInfo = androidInfo)
-                },
-                onIos = { iosInfo ->
-                    ShowIosDeviceInfo(iosInfo = iosInfo)
-                },
-                onDesktop = { desktopInfo ->
-                    ShowDesktopDeviceInfo(desktopInfo = desktopInfo)
-                },
-                onWeb =  { webInfo -> ShowWebDeviceInfo(webInfo = webInfo) }
-            )
+            when (deviceInfo) {
+                is AndroidDeviceInfo -> ShowAndroidDeviceInfo(androidInfo = deviceInfo.androidInfo)
+                is IosDeviceInfo -> ShowIosDeviceInfo(iosInfo = deviceInfo.iosInfo)
+                is DesktopDeviceInfo -> ShowDesktopDeviceInfo(desktopInfo = deviceInfo.desktopInfo)
+                is WebDeviceInfo -> ShowWebDeviceInfo(webInfo = deviceInfo.webInfo)
+            }
         }
     }
 }
@@ -58,7 +53,6 @@ private fun ShowAndroidDeviceInfo(androidInfo: AndroidInfo) {
     val verticalScrollState = rememberScrollState()
 
     Column(modifier = Modifier.verticalScroll(state = verticalScrollState)) {
-        // App Info
         Text(text = "App Info", style = TextStyle(fontSize = 20.sp))
         Text(text = "App Name : ${androidInfo.appName}")
         Text(text = "Version Code : ${androidInfo.versionCode}")
@@ -67,7 +61,6 @@ private fun ShowAndroidDeviceInfo(androidInfo: AndroidInfo) {
         Text(text = "Debug App : ${androidInfo.isDebug}")
         Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
 
-        // Device Info
         Text(text = "Device Info", style = TextStyle(fontSize = 20.sp))
         Text(text = "Device : ${androidInfo.device}")
         Text(text = "Android ID : ${androidInfo.androidId}")
@@ -82,7 +75,6 @@ private fun ShowAndroidDeviceInfo(androidInfo: AndroidInfo) {
         Text(text = "IsPortrait : ${androidInfo.deviceOrientation.isPortrait}")
         Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
 
-        // Locale
         Text(text = "Locale Info", style = TextStyle(fontSize = 20.sp))
         Text(text = "Language Code : ${androidInfo.locale.languageCode}")
         Text(text = "Region : ${androidInfo.locale.region}")
@@ -95,8 +87,6 @@ private fun ShowIosDeviceInfo(iosInfo: IosInfo) {
     val verticalScrollState = rememberScrollState()
 
     Column(modifier = Modifier.verticalScroll(state = verticalScrollState)) {
-
-        // App Info
         Text(text = "App Info", style = TextStyle(fontSize = 20.sp))
         Text(text = "App Name : ${iosInfo.appName}")
         Text(text = "App Version : ${iosInfo.appVersion}")
@@ -105,7 +95,6 @@ private fun ShowIosDeviceInfo(iosInfo: IosInfo) {
         Text(text = "Debug App : ${iosInfo.isDebug}")
         Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
 
-        // Device Info
         Text(text = "Device Info", style = TextStyle(fontSize = 20.sp))
         Text(text = "Name : ${iosInfo.name}")
         Text(text = "Model : ${iosInfo.model}")
@@ -117,7 +106,6 @@ private fun ShowIosDeviceInfo(iosInfo: IosInfo) {
         Text(text = "IsPortrait : ${iosInfo.deviceOrientation.isPortrait}")
         Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
 
-        // Locale Info
         Text(text = "Locale Info", style = TextStyle(fontSize = 20.sp))
         Text(text = "Language Code : ${iosInfo.locale.languageCode}")
         Text(text = "Region : ${iosInfo.locale.region}")
@@ -134,20 +122,11 @@ private fun ShowDesktopDeviceInfo(desktopInfo: DesktopInfo) {
             .fillMaxSize()
             .verticalScroll(state = verticalScrollState)
     ) {
-        Column (
+        Column(
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth()
         ) {
-            // Operating System Info (only easy to print info)
-            // NOT PRINTED BUT AVAILABLE
-            // - FileSystem
-            // - InternetProtocolStats
-            // - currentProcess: OSProcess
-            // - currentThread: OSThread
-            // - networkParams: NetworkParams
-            // - services: List<OSService>
-            // - sessions: List<OSSession>
             val operatingSystem = desktopInfo.operatingSystem
             Text(text = "Operating System Info", style = TextStyle(fontSize = 20.sp))
             Text(text = "Family : ${operatingSystem.family}")
@@ -158,7 +137,6 @@ private fun ShowDesktopDeviceInfo(desktopInfo: DesktopInfo) {
             Text(text = "Build number : ${versionInfo.buildNumber}")
             Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
 
-            // General info
             Text(text = "General Info", style = TextStyle(fontSize = 20.sp))
             Text(text = "Process id : ${operatingSystem.processId}")
             Text(text = "Process count : ${operatingSystem.processCount}")
@@ -170,25 +148,11 @@ private fun ShowDesktopDeviceInfo(desktopInfo: DesktopInfo) {
             Text(text = "Is elevated : ${operatingSystem.isElevated}")
             Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
         }
-        Column (
+        Column(
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth()
         ) {
-            // Hardware Info (few example)
-            // Info available
-            // - Computer system
-            // - Central processor
-            // - Global memory
-            // - Sensors
-            // - Power sources
-            // - Disk stores
-            // - Logical volume groups
-            // - Network IFs
-            // - Displays
-            // - Sensors
-            // - Sound cards
-            // - Graphics cards
             val hardware = desktopInfo.hardware
             Text(text = "Hardware Info", style = TextStyle(fontSize = 20.sp))
             Text(text = "Cpu temperature : ${hardware.sensors.cpuTemperature}")
@@ -209,21 +173,17 @@ private fun ShowWebDeviceInfo(
     val verticalScrollState = rememberScrollState()
 
     Column(modifier = Modifier.verticalScroll(state = verticalScrollState)) {
-
-        // Browser Info
         val userAgent = webInfo.userAgent
         Text(text = "User Agent Info", style = TextStyle(fontSize = 20.sp))
         Text(text = "UA : $userAgent")
         Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
 
-        // Browser Info
         val browser = webInfo.browser
         Text(text = "Browser Info", style = TextStyle(fontSize = 20.sp))
         Text(text = "Name : ${browser.name}")
         Text(text = "Version : ${browser.version}")
         Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
 
-        // Device Info
         val device = webInfo.device
         Text(text = "Device Info", style = TextStyle(fontSize = 20.sp))
         Text(text = "Model : ${device.model}")
@@ -231,21 +191,18 @@ private fun ShowWebDeviceInfo(
         Text(text = "Vendor : ${device.vendor}")
         Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
 
-        // Engine Info
         val engine = webInfo.engine
         Text(text = "Engine Info", style = TextStyle(fontSize = 20.sp))
         Text(text = "Name : ${engine.name}")
         Text(text = "Version : ${engine.version}")
         Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
 
-        // Engine Info
         val os = webInfo.os
         Text(text = "Operating System Info", style = TextStyle(fontSize = 20.sp))
         Text(text = "Name : ${os.name}")
         Text(text = "Version : ${os.version}")
         Spacer(modifier = Modifier.fillMaxWidth().height(height = 20.dp))
 
-        // Engine Info
         val cpu = webInfo.cpu
         Text(text = "CPU Info", style = TextStyle(fontSize = 20.sp))
         Text(text = "Architecture : ${cpu.architecture}")

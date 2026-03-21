@@ -1,0 +1,8 @@
+public final class com/devx/kdeviceinfo/compose/OnPlatformKt {
+	public static final fun OnPlatform (Lcom/devx/kdeviceinfo/DeviceInfo;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function3;Landroidx/compose/runtime/Composer;II)V
+}
+
+public final class com/devx/kdeviceinfo/compose/RememberDeviceInfo_androidKt {
+	public static final fun rememberDeviceInfo (Landroidx/compose/runtime/Composer;I)Lcom/devx/kdeviceinfo/DeviceInfo;
+}
+

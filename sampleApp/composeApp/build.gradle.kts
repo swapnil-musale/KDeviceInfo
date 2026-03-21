@@ -65,10 +65,10 @@ kotlin {
 
     sourceSets {
         getByName("commonMain").dependencies {
-            implementation(compose.runtime)
-            implementation(compose.material3)
-            implementation(libs.kDeviceinfo)
-//            implementation(projects.kDeviceInfo)
+            implementation(libs.compose.runtime)
+            implementation(libs.compose.material3)
+            implementation(project(":kdeviceinfo-core"))
+            implementation(project(":kdeviceinfo-compose"))
         }
 
         getByName("androidMain").dependencies {
@@ -78,15 +78,14 @@ kotlin {
         }
 
         getByName("desktopMain").dependencies {
-            implementation(compose.desktop.currentOs)
-            implementation(compose.desktop.common)
+            implementation(libs.compose.desktop)
         }
     }
 }
 
 android {
     namespace = "com.devx.kdeviceinfo.sample"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 24

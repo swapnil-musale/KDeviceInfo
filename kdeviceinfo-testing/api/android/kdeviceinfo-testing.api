@@ -1,0 +1,207 @@
+public final class com/devx/kdeviceinfo/testing/FakeAndroidDeviceInfo : com/devx/kdeviceinfo/AndroidDeviceInfo {
+	public fun <init> ()V
+	public fun <init> (Lcom/devx/kdeviceinfo/model/android/AndroidInfo;)V
+	public synthetic fun <init> (Lcom/devx/kdeviceinfo/model/android/AndroidInfo;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getAndroidInfo ()Lcom/devx/kdeviceinfo/model/android/AndroidInfo;
+	public fun getPlatform ()Lcom/devx/kdeviceinfo/Platform;
+}
+
+public final class com/devx/kdeviceinfo/testing/FakeAndroidInfo : com/devx/kdeviceinfo/model/android/AndroidInfo {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lcom/devx/kdeviceinfo/model/android/Version;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;ZLjava/util/List;Lcom/devx/kdeviceinfo/model/android/DisplayMetrics;Lcom/devx/kdeviceinfo/model/android/VersionCode;Ljava/lang/String;JLcom/devx/kdeviceinfo/model/common/Locale;Lcom/devx/kdeviceinfo/model/common/DeviceOrientation;Ljava/lang/String;Z)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lcom/devx/kdeviceinfo/model/android/Version;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;ZLjava/util/List;Lcom/devx/kdeviceinfo/model/android/DisplayMetrics;Lcom/devx/kdeviceinfo/model/android/VersionCode;Ljava/lang/String;JLcom/devx/kdeviceinfo/model/common/Locale;Lcom/devx/kdeviceinfo/model/common/DeviceOrientation;Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getAndroidId ()Ljava/lang/String;
+	public fun getAppName ()Ljava/lang/String;
+	public fun getBoard ()Ljava/lang/String;
+	public fun getBootloader ()Ljava/lang/String;
+	public fun getDevice ()Ljava/lang/String;
+	public fun getDeviceOrientation ()Lcom/devx/kdeviceinfo/model/common/DeviceOrientation;
+	public fun getDisplay ()Ljava/lang/String;
+	public fun getDisplayMetrics ()Lcom/devx/kdeviceinfo/model/android/DisplayMetrics;
+	public fun getFingerprint ()Ljava/lang/String;
+	public fun getHardware ()Ljava/lang/String;
+	public fun getHost ()Ljava/lang/String;
+	public fun getId ()Ljava/lang/String;
+	public fun getLocale ()Lcom/devx/kdeviceinfo/model/common/Locale;
+	public fun getManufacturer ()Ljava/lang/String;
+	public fun getModel ()Ljava/lang/String;
+	public fun getPackageName ()Ljava/lang/String;
+	public fun getProduct ()Ljava/lang/String;
+	public fun getSupported32BitAbis ()[Ljava/lang/String;
+	public fun getSupported64BitAbis ()[Ljava/lang/String;
+	public fun getSupportedAbis ()[Ljava/lang/String;
+	public fun getSystemFeatureList ()Ljava/util/List;
+	public fun getTags ()Ljava/lang/String;
+	public fun getVERSION_CODES ()Lcom/devx/kdeviceinfo/model/android/VersionCode;
+	public fun getVersion ()Lcom/devx/kdeviceinfo/model/android/Version;
+	public fun getVersionCode ()J
+	public fun getVersionName ()Ljava/lang/String;
+	public fun isDebug ()Z
+	public fun isPhysicalDevice ()Z
+}
+
+public final class com/devx/kdeviceinfo/testing/FakeBrowser : com/devx/kdeviceinfo/model/web/browser/Browser {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getName ()Ljava/lang/String;
+	public fun getVersion ()Ljava/lang/String;
+}
+
+public final class com/devx/kdeviceinfo/testing/FakeCPU : com/devx/kdeviceinfo/model/web/cpu/CPU {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getArchitecture ()Ljava/lang/String;
+}
+
+public final class com/devx/kdeviceinfo/testing/FakeDesktopDeviceInfo : com/devx/kdeviceinfo/DesktopDeviceInfo {
+	public fun <init> (Lcom/devx/kdeviceinfo/model/desktop/DesktopInfo;)V
+	public fun getDesktopInfo ()Lcom/devx/kdeviceinfo/model/desktop/DesktopInfo;
+	public fun getPlatform ()Lcom/devx/kdeviceinfo/Platform;
+}
+
+public final class com/devx/kdeviceinfo/testing/FakeDevice : com/devx/kdeviceinfo/model/web/device/Device {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getModel ()Ljava/lang/String;
+	public fun getType ()Ljava/lang/String;
+	public fun getVendor ()Ljava/lang/String;
+}
+
+public final class com/devx/kdeviceinfo/testing/FakeDeviceInfoProvider {
+	public static final field INSTANCE Lcom/devx/kdeviceinfo/testing/FakeDeviceInfoProvider;
+	public final fun android (Lcom/devx/kdeviceinfo/model/android/AndroidInfo;)Lcom/devx/kdeviceinfo/DeviceInfoProvider;
+	public static synthetic fun android$default (Lcom/devx/kdeviceinfo/testing/FakeDeviceInfoProvider;Lcom/devx/kdeviceinfo/model/android/AndroidInfo;ILjava/lang/Object;)Lcom/devx/kdeviceinfo/DeviceInfoProvider;
+	public final fun desktop (Lcom/devx/kdeviceinfo/model/desktop/DesktopInfo;)Lcom/devx/kdeviceinfo/DeviceInfoProvider;
+	public final fun ios (Lcom/devx/kdeviceinfo/model/ios/IosInfo;)Lcom/devx/kdeviceinfo/DeviceInfoProvider;
+	public static synthetic fun ios$default (Lcom/devx/kdeviceinfo/testing/FakeDeviceInfoProvider;Lcom/devx/kdeviceinfo/model/ios/IosInfo;ILjava/lang/Object;)Lcom/devx/kdeviceinfo/DeviceInfoProvider;
+	public final fun web (Lcom/devx/kdeviceinfo/model/web/WebInfo;)Lcom/devx/kdeviceinfo/DeviceInfoProvider;
+	public static synthetic fun web$default (Lcom/devx/kdeviceinfo/testing/FakeDeviceInfoProvider;Lcom/devx/kdeviceinfo/model/web/WebInfo;ILjava/lang/Object;)Lcom/devx/kdeviceinfo/DeviceInfoProvider;
+}
+
+public final class com/devx/kdeviceinfo/testing/FakeDeviceOrientation : com/devx/kdeviceinfo/model/common/DeviceOrientation {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getDeviceOrientation ()Ljava/lang/String;
+	public fun getLANDSCAPE ()Ljava/lang/String;
+	public fun getPORTRAIT ()Ljava/lang/String;
+	public fun getUNKNOWN ()Ljava/lang/String;
+	public fun isLandscape ()Z
+	public fun isPortrait ()Z
+}
+
+public final class com/devx/kdeviceinfo/testing/FakeDisplayMetrics : com/devx/kdeviceinfo/model/android/DisplayMetrics {
+	public fun <init> ()V
+	public fun <init> (DDDD)V
+	public synthetic fun <init> (DDDDILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getHeightInches ()D
+	public fun getWidthInches ()D
+	public fun getXDpi ()D
+	public fun getYDpi ()D
+}
+
+public final class com/devx/kdeviceinfo/testing/FakeEngine : com/devx/kdeviceinfo/model/web/engine/Engine {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getName ()Ljava/lang/String;
+	public fun getVersion ()Ljava/lang/String;
+}
+
+public final class com/devx/kdeviceinfo/testing/FakeIosDeviceInfo : com/devx/kdeviceinfo/IosDeviceInfo {
+	public fun <init> ()V
+	public fun <init> (Lcom/devx/kdeviceinfo/model/ios/IosInfo;)V
+	public synthetic fun <init> (Lcom/devx/kdeviceinfo/model/ios/IosInfo;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getIosInfo ()Lcom/devx/kdeviceinfo/model/ios/IosInfo;
+	public fun getPlatform ()Lcom/devx/kdeviceinfo/Platform;
+}
+
+public final class com/devx/kdeviceinfo/testing/FakeIosInfo : com/devx/kdeviceinfo/model/ios/IosInfo {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZLcom/devx/kdeviceinfo/model/common/DeviceOrientation;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/devx/kdeviceinfo/model/common/Locale;Z)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZLcom/devx/kdeviceinfo/model/common/DeviceOrientation;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/devx/kdeviceinfo/model/common/Locale;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getAppName ()Ljava/lang/String;
+	public fun getAppShortVersion ()Ljava/lang/String;
+	public fun getAppVersion ()Ljava/lang/String;
+	public fun getBundleId ()Ljava/lang/String;
+	public fun getDeviceOrientation ()Lcom/devx/kdeviceinfo/model/common/DeviceOrientation;
+	public fun getIdentifierForVendor ()Ljava/lang/String;
+	public fun getLocale ()Lcom/devx/kdeviceinfo/model/common/Locale;
+	public fun getLocalizedModel ()Ljava/lang/String;
+	public fun getModel ()Ljava/lang/String;
+	public fun getName ()Ljava/lang/String;
+	public fun getSystemName ()Ljava/lang/String;
+	public fun getSystemVersion ()Ljava/lang/String;
+	public fun isDebug ()Z
+	public fun isGeneratingDeviceOrientationNotifications ()Z
+	public fun isMultitaskingSupported ()Z
+	public fun isPhysicalDevice ()Z
+}
+
+public final class com/devx/kdeviceinfo/testing/FakeOs : com/devx/kdeviceinfo/model/web/operatingsystem/Os {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getName ()Ljava/lang/String;
+	public fun getVersion ()Ljava/lang/String;
+}
+
+public final class com/devx/kdeviceinfo/testing/FakeVersion : com/devx/kdeviceinfo/model/android/Version {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II)V
+	public synthetic fun <init> (Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IIILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getBaseOs ()Ljava/lang/String;
+	public fun getCodeName ()Ljava/lang/String;
+	public fun getIncremental ()Ljava/lang/String;
+	public fun getMediaPerformanceClass ()I
+	public fun getPreviewSdkInt ()I
+	public fun getRelease ()Ljava/lang/String;
+	public fun getReleaseOrCodeName ()Ljava/lang/String;
+	public fun getReleaseOrPreviewDisplay ()Ljava/lang/String;
+	public fun getSdkInt ()I
+	public fun getSecurityPatch ()Ljava/lang/String;
+}
+
+public final class com/devx/kdeviceinfo/testing/FakeVersionCode : com/devx/kdeviceinfo/model/android/VersionCode {
+	public fun <init> ()V
+	public fun <init> (IIIIIIIIIIIIII)V
+	public synthetic fun <init> (IIIIIIIIIIIIIIILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getCUR_DEVELOPMENT ()I
+	public fun getLOLLIPOP ()I
+	public fun getLOLLIPOP_MR1 ()I
+	public fun getM ()I
+	public fun getN ()I
+	public fun getN_MR1 ()I
+	public fun getO ()I
+	public fun getO_MR1 ()I
+	public fun getP ()I
+	public fun getR ()I
+	public fun getS ()I
+	public fun getS_V2 ()I
+	public fun getTIRAMISU ()I
+	public fun getUPSIDE_DOWN_CAKE ()I
+}
+
+public final class com/devx/kdeviceinfo/testing/FakeWebDeviceInfo : com/devx/kdeviceinfo/WebDeviceInfo {
+	public fun <init> ()V
+	public fun <init> (Lcom/devx/kdeviceinfo/model/web/WebInfo;)V
+	public synthetic fun <init> (Lcom/devx/kdeviceinfo/model/web/WebInfo;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getPlatform ()Lcom/devx/kdeviceinfo/Platform;
+	public fun getWebInfo ()Lcom/devx/kdeviceinfo/model/web/WebInfo;
+}
+
+public final class com/devx/kdeviceinfo/testing/FakeWebInfo : com/devx/kdeviceinfo/model/web/WebInfo {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Lcom/devx/kdeviceinfo/model/web/browser/Browser;Lcom/devx/kdeviceinfo/model/web/cpu/CPU;Lcom/devx/kdeviceinfo/model/web/device/Device;Lcom/devx/kdeviceinfo/model/web/engine/Engine;Lcom/devx/kdeviceinfo/model/web/operatingsystem/Os;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/devx/kdeviceinfo/model/web/browser/Browser;Lcom/devx/kdeviceinfo/model/web/cpu/CPU;Lcom/devx/kdeviceinfo/model/web/device/Device;Lcom/devx/kdeviceinfo/model/web/engine/Engine;Lcom/devx/kdeviceinfo/model/web/operatingsystem/Os;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getBrowser ()Lcom/devx/kdeviceinfo/model/web/browser/Browser;
+	public fun getCpu ()Lcom/devx/kdeviceinfo/model/web/cpu/CPU;
+	public fun getDevice ()Lcom/devx/kdeviceinfo/model/web/device/Device;
+	public fun getEngine ()Lcom/devx/kdeviceinfo/model/web/engine/Engine;
+	public fun getOs ()Lcom/devx/kdeviceinfo/model/web/operatingsystem/Os;
+	public fun getUserAgent ()Ljava/lang/String;
+}
+
