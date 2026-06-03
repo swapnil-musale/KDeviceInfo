@@ -9,7 +9,7 @@ mavenPublish = "0.33.0"
 annotation = "1.9.1"
 oshiCore = "6.8.2"
 startupRuntime = "1.2.0"
-androidXCore = "1.16.0"
+androidXCore = "1.19.0"
 
 # sampleApp Versions
 androidxAppcompat = "1.7.1"
